@@ -34,7 +34,13 @@ app.add_middleware(
 
 
 @app.get('/person/', response_model=List[ApiTypes.Person])
-async def get_persons():
+async def get_persons(search_term: str = None):
+    if search_term:
+        return resources['crud'].search(
+            Models.Person,
+            ['name', 'email'],
+            search_term
+        )
     return resources['crud'].get(
         Models.Person
     )

@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "axios",
         "fastapi",
         "ilike",
         "pydantic",
