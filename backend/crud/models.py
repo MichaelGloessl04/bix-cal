@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Float, Integer, String
 from sqlalchemy.orm import DeclarativeBase
 
 
@@ -19,6 +19,6 @@ class Entry(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     person_id = Column(Integer, index=True)
-    hot = Column(Integer, index=True)
-    crazy = Column(Integer, index=True)
-    nice = Column(Integer, index=True)
+    hot = Column(Float, index=True)
+    crazy = Column(Float, index=True)
+    nice = Column(Float, index=True)

@@ -2,6 +2,8 @@
     "cSpell.words": [
         "fastapi",
         "ilike",
-        "sqlalchemy"
+        "pydantic",
+        "sqlalchemy",
+        "uvicorn"
     ]
 }
