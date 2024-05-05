@@ -35,15 +35,20 @@ app.add_middleware(
 
 @app.get('/person/', response_model=List[ApiTypes.Person])
 async def get_persons(search_term: str = None):
-    if search_term:
-        return resources['crud'].search(
-            Models.Person,
-            ['name', 'email'],
-            search_term
-        )
-    return resources['crud'].get(
-        Models.Person
-    )
+    try:
+        if search_term:
+            return resources['crud'].search(
+                Models.Person,
+                ['name', 'surname'],
+                search_term
+            )
+        else:
+            return resources['crud'].get(
+                Models.Person
+            )
+    except Exception as e:
+        print(e)
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get('/person/{person_id}', response_model=ApiTypes.Person)
@@ -63,18 +68,31 @@ async def get_person_entries(person_id: int):
     )
 
 
-@app.get('/person/{person_id}/score', response_model=float)
-async def get_person_score(person_id: int):
+@app.get('/person/{person_id}/score', response_model=ApiTypes.Score)
+async def get_person_score(
+        person_id: int):
+    scores = {}
+    categories = ['hot', 'crazy', 'nice']
+
     entries = resources['crud'].search(
         Models.Entry,
         ['person_id'],
         str(person_id)
     )
+
     if not entries:
         raise HTTPException(status_code=404, detail='No entries found')
-    return sum(
+
+    for category in categories:
+        scores[category] = sum(
+            [getattr(entry, category) for entry in entries]
+        ) / len(entries)
+
+    scores['score'] = sum(
         [entry.hot + entry.nice + (4 - entry.crazy) for entry in entries]
     ) / len(entries)
+
+    return scores
 
 
 @app.post('/person/', response_model=ApiTypes.Person)

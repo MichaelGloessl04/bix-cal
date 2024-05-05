@@ -31,3 +31,13 @@ class Entry(EntryNoID):
 
     class Config:
         orm_mode = True
+
+
+class Score(pydantic.BaseModel):
+    score: float
+    hot: float
+    crazy: float
+    nice: float
+
+    class Config:
+        orm_mode = True
