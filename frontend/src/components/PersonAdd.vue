@@ -23,6 +23,8 @@ import { addPerson } from '@/scripts/api_calls'
 import type { Ref } from 'vue'
 import type { PersonNoID } from '@/types/person'
 
+const emits = defineEmits(['submit'])
+
 const person: Ref<PersonNoID> = ref({
     name: '',
     surname: ''
@@ -34,7 +36,7 @@ const router = useRouter()
 function submit() {
     if (person.value.name && person.value.surname) {
         addPerson(person.value)
-        router.push('/')
+        emits('submit')
     } else {
         alert('Please fill in all fields')
     }

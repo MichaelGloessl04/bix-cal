@@ -1,7 +1,7 @@
 <template>
     <ul class="search-results" v-if="search_term">
         <li>
-            <div @click="$router.push('/add')">
+            <div @click="emits('add')">
                 <i class="bi bi-person-plus"></i> Add new person
             </div>
         </li>
@@ -20,17 +20,13 @@
 <script setup lang="ts">
 import PersonCard from '@/components/PersonCard.vue'
 
-import { ref } from 'vue'
-
 import { useRouter } from 'vue-router'
 
 import type { Person } from '@/types/person'
 
 const router = useRouter()
-
 const props = defineProps(['results', 'loading', 'search_term'])
-
-const add = ref(false)
+const emits = defineEmits(['add'])
 
 
 function goToPerson(person: Person) {

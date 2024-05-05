@@ -12,6 +12,7 @@
             :results="results"
             :loading="loading"
             :search_term="search_term"
+            @add="emits('add')"
         />
     </div>
 </template>
@@ -25,6 +26,8 @@ import { ref, watch} from 'vue'
 
 import type { Ref } from 'vue'
 import type { Person } from '@/types/person'
+
+const emits = defineEmits(['add'])
 
 const loading = ref(false)
 const search_term = ref('')
