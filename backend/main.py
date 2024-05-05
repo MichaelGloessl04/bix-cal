@@ -26,7 +26,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],
+    allow_origins=['http://localhost:5000'],
     allow_credentials=True,
     allow_methods=['*'],
     allow_headers=['*'],
@@ -150,8 +150,8 @@ async def get_users(username: str, password: str):
     return resources['crud'].search(
         Models.User,
         ['username'],
-        [username]
-    )
+        username
+    )[0]
 
 
 @app.get('/user/{entries}', response_model=List[ApiTypes.Entry])
@@ -160,8 +160,8 @@ async def get_user_entries(username: str, password: str):
     user = resources['crud'].search(
         Models.User,
         ['username'],
-        [username]
-    )
+        username
+    )[0]
     return resources['crud'].search(
         Models.Entry,
         ['author_id'],
@@ -183,8 +183,8 @@ async def update_user(username: str, password: str, new_user: ApiTypes.UserNoID)
     user = resources['crud'].search(
         Models.User,
         ['username'],
-        [username]
-    )
+        username
+    )[0]
     return resources['crud'].update(
         Models.User,
         user.id,
@@ -196,8 +196,8 @@ def _validate_user(username, password):
     user = resources['crud'].search(
         Models.User,
         ['username'],
-        [username]
-    )
+        username
+    )[0]
     if not user:
         raise HTTPException(status_code=404, detail='No users found')
     if password != user.password:

@@ -2,7 +2,7 @@ from typing import List
 from sqlalchemy import or_
 from sqlalchemy.orm import Session
 
-from crud.models import Base, Person, Entry
+from crud.models import Base, Person, Entry, User
 
 
 class Crud:
@@ -60,6 +60,6 @@ class Crud:
             return instance
 
     def _check_model(self, model):
-        if model not in [Person, Entry]:
+        if model not in [Person, Entry, User]:
             raise TypeError(
                 f"Model {model} is not in the list of available models.")
