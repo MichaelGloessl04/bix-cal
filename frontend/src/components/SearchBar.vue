@@ -8,7 +8,11 @@
             placeholder="Search for a Person..."
             />
         </div>
-        <SearchResults v-if="results.length > 0" :results="results" />
+        <SearchResults
+            :results="results"
+            :loading="loading"
+            :search_term="search_term"
+        />
     </div>
 </template>
 
@@ -22,12 +26,12 @@ import { ref, watch} from 'vue'
 import type { Ref } from 'vue'
 import type { Person } from '@/types/person'
 
+const loading = ref(false)
 const search_term = ref('')
 const results: Ref<Person[]> = ref([])
 
 
 async function search() {
-    results.value.push({ id: 0, name: 'Loading...', surname: '' })
     if (search_term.value === '') {
         results.value.length = 0
     } else {
@@ -36,26 +40,35 @@ async function search() {
         params['search_term'] = search_term.value
         axios.get(`/api/person/`, { params: params })
             .then(response => {
+                clearResults()
+                loading.value = true
                 console.log(response)
                 results.value = response.data
             })
             .catch(error => {
+                loading.value = false
                 console.error(error)
             })
             .finally(() => {
+                loading.value = false
                 console.log('search completed')
             })
     }
 }
 
+
+function clearResults() {
+    results.value.length = 0
+    console.log('cleared results')
+}
+
+
 watch(search_term, search)
 watch(() => results.value, () => {
     if (search_term.value === '') {
-        results.value.length = 0
-        console.log('cleared results')
+        clearResults()
     } else if (results.value.length === 0 && search_term.value !== '') {
-        results.value.length = 0
-        results.value.push({ id: 0, name: 'No results found', surname: '' })
+        clearResults()
     }
 })
 </script>
@@ -72,12 +85,11 @@ watch(() => results.value, () => {
 .search-bar input {
     width: 100%;
     padding: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.4rem;
     border: 0;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
 }
 
-/* remove border radius if input is not empty */
 .search-bar input:not(:placeholder-shown) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -97,6 +109,4 @@ watch(() => results.value, () => {
 .search-container > * {
     width: 100%;
 }
-
-
 </style>

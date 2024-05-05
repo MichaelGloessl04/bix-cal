@@ -11,7 +11,7 @@
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "api": "python ../backend/main.py"
+    "api": "C:/Code/bix-cal/backend/venv/Scripts/activate && py ../backend/main.py"
   },
   "dependencies": {
     "axios": "^1.6.8",
