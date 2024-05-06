@@ -38,6 +38,7 @@ function goToPerson(person: Person) {
 .search-results {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 .search-results li {

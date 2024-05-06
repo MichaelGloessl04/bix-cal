@@ -14,7 +14,7 @@ class Person(Base):
     name = Column(String, index=True)
     surname = Column(String, index=True)
 
-    UniqueConstraint('name', 'surname', name='unique_name_surname')
+    __table_args__ = tuple(UniqueConstraint('name', 'surname', name='unique_name_surname'))
 
 
 class Entry(Base):
@@ -28,7 +28,7 @@ class Entry(Base):
     nice = Column(Float, index=True)
     comment = Column(String(50), index=True, nullable=True)
 
-    UniqueConstraint('person_id', 'author_id', name='unique_person_author')
+    __table_args__ = tuple(UniqueConstraint('person_id', 'author_id', name='unique_person_author'))
 
 
 class User(Base):
@@ -39,4 +39,4 @@ class User(Base):
     password = Column(String, index=True)
     email = Column(String, index=True)
 
-    UniqueConstraint('username', name='unique_username')
+    __table_args__ = tuple(UniqueConstraint('username', name='unique_username'))

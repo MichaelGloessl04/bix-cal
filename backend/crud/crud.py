@@ -23,6 +23,11 @@ class Crud:
         with Session(self._engine) as session:
             return session.query(model).get(id)
 
+    def get_where(self, model: Base, column: str, value: str) -> List[Base]:
+        self._check_model(model)
+        with Session(self._engine) as session:
+            return session.query(model).filter(getattr(model, column) == value).all()
+
     def search(self,
                model: Base,
                columns: List[str],
@@ -48,6 +53,14 @@ class Crud:
                 return instance
         except Exception as e:
             raise e   # TODO: Handle this exception
+
+    def delete(self, model: Base, id: int) -> Base:
+        self._check_model(model)
+        with Session(self._engine) as session:
+            instance = session.query(model).get(id)
+            session.delete(instance)
+            session.commit()
+            return instance
 
     def update(self, model: Base, id: int, data: dict) -> Base:
         self._check_model(model)

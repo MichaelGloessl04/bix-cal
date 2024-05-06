@@ -20,6 +20,17 @@ const add = ref(false);
 .home-view {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    padding-top: 20vh;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.search-bar {
+    margin-top: 1rem;
 }
 </style>

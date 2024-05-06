@@ -19,7 +19,7 @@ class Person(PersonNoID):
 
 class EntryNoID(pydantic.BaseModel):
     person_id: int
-    creator_id: int
+    author_id: int
     hot: float
     crazy: float
     nice: float

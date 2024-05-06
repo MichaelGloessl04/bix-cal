@@ -129,6 +129,15 @@ async def get_entry(entry_id: int):
 
 @app.post('/entry/', response_model=ApiTypes.Entry)
 async def create_entry(entry: ApiTypes.EntryNoID):
+    entries = resources['crud'].get_where(
+        Models.Entry,
+        'author_id',
+        str(entry.author_id)
+    )
+    for e in entries:
+        if e.person_id == entry.person_id:
+            raise HTTPException(status_code=409, detail='Entry already exists')
+
     return resources['crud'].create(
         Models.Entry,
         entry.model_dump()
@@ -141,6 +150,14 @@ async def update_entry(entry_id: int, entry: ApiTypes.EntryNoID):
         Models.Entry,
         entry_id,
         entry.model_dump()
+    )
+
+
+@app.delete('/entry/{entry_id}')
+async def delete_entry(entry_id: int):
+    return resources['crud'].delete(
+        Models.Entry,
+        entry_id
     )
 
 

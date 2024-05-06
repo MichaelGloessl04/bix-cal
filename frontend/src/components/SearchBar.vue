@@ -1,6 +1,7 @@
 <template>
     <div class="search-container">
         <div class="search-bar">
+            <label for="search"><i class="bi bi-search"></i></label>
             <input
             type="text"
             v-model="search_term"
@@ -76,12 +77,15 @@ watch(() => results.value, () => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+$border-radius: 2rem;
+
 .search-bar {
     display: flex;
     justify-content: center;
     margin: 1rem;
     margin-bottom: 0;
+    margin-left: 0;
     width: 100%;
 }
 
@@ -90,16 +94,33 @@ watch(() => results.value, () => {
     padding: 0.5rem;
     font-size: 1.4rem;
     border: 0;
-    border-radius: 1rem;
+    border-radius: $border-radius;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
 }
 
-.search-bar input:not(:placeholder-shown) {
+.search-bar input:not(:placeholder-shown){
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
 
 .search-bar input:focus {
     outline: none;
+}
+
+.search-bar label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    padding-left: 1rem;
+    margin: 0;
+    border: 0;
+    font-size: 1.4rem;
+    color: #6c757d;
+    background-color: #ffffff;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
 }
 
 .search-container {

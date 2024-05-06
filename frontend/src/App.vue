@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
           <router-link to="/" class="navbar-brand">Bixcal</router-link>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
 
 <style>
 .hover-box {
-  background-color: rgb(49, 49, 49);
+  background-color: rgb(33, 37, 41);
   min-width: 10rem;
   width: 20rem;
   height: auto;
