@@ -5,7 +5,10 @@
         "fastapi",
         "ilike",
         "nullable",
+        "pinia",
+        "Pinia",
         "pydantic",
+        "rushstack",
         "sqlalchemy",
         "uvicorn"
     ]

@@ -194,6 +194,20 @@ async def create_user(user: ApiTypes.UserNoID):
     )
 
 
+@app.delete('/user/{user_id}')
+async def delete_user(username: str, password: str):
+    _validate_user(username, password)
+    user = resources['crud'].search(
+        Models.User,
+        ['username'],
+        username
+    )[0]
+    return resources['crud'].delete(
+        Models.User,
+        user.id
+    )
+
+
 @app.put('/user/{user_id}', response_model=ApiTypes.User)
 async def update_user(username: str, password: str, new_user: ApiTypes.UserNoID):
     _validate_user(username, password)
@@ -219,6 +233,7 @@ def _validate_user(username, password):
         raise HTTPException(status_code=404, detail='No users found')
     if password != user.password:
         raise HTTPException(status_code=401, detail='Invalid password')
+
 
 if __name__ == '__main__':
     import uvicorn

@@ -1,6 +1,6 @@
 <template>
-    <QuickAdd :add_window="add" @close-add-window="add = false"/>
     <div class="home-view">
+        <QuickAdd :add_window="add" @close-add-window="add = false"/>
         <h1>Bixcal</h1>
         <SearchBar @add="add = true"/>
     </div>
@@ -13,7 +13,6 @@ import QuickAdd from '@/components/QuickAdd.vue';
 import { ref } from 'vue';
 
 const add = ref(false);
-
 </script>
 
 <style scoped>

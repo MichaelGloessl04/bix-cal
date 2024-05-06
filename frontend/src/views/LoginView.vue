@@ -1,7 +1,7 @@
 <template>
     <div class="hover-box">
         <h1>Login</h1>
-        <form>
+        <form @submit.prevent="login">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" id="username" v-model="username">
@@ -11,9 +11,8 @@
                 <input type="password" class="form-control" id="password" v-model="password">
             </div>
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="remember">
-                <label class="form-check
-                -label" for="remember">Remember me</label>
+                <input v-model="remember" type="checkbox" class="form-check-input" id="remember">
+                <label class="form-check-label" for="remember">Remember me</label>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
@@ -22,13 +21,30 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router';
+
+import { useUserStore } from '@/stores/user'
+import { getUser } from '@/scripts/api_calls';
 
 const username = ref('')
 const password = ref('')
 const remember = ref(false)
 
-const login = () => {
+const router = useRouter()
+const userStore = useUserStore()
+
+async function login() {
     console.log('Login clicked')
+    getUser(username.value, password.value)
+        .then((user) => {
+            userStore.setUser(user)
+            router.push('/')
+        })
+        .catch((error) => {
+            console.error(error)
+            alert(`Login failed: ${error.message}`)
+            return
+        })
 }
 </script>
 

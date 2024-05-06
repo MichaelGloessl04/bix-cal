@@ -34,8 +34,11 @@ function goToPerson(person: Person) {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+$border-radius: 1rem;
+
 .search-results {
+    width: 100%;
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -58,7 +61,7 @@ function goToPerson(person: Person) {
 }
 
 .search-results li:last-child {
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
 }
 </style>

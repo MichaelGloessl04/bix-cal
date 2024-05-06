@@ -2,6 +2,7 @@ import axios from 'axios'
 
 import type { Person, PersonNoID } from '@/types/person'
 import type { Scores } from '@/types/scores'
+import type { User } from '@/types/user'
 
 
 export function getPersons(): Promise<Person[]> {
@@ -36,5 +37,16 @@ export function addPerson(person: PersonNoID): Promise<Person> {
   return axios.post('/api/person', person)
     .then(response => response.data)
     .catch((error) => console.log(error))
+    .finally(() => console.log('done'))
+}
+
+
+export function getUser(username: string, password: string): Promise<User> {
+  console.log(`getting user ${username}`)
+  const params: { [key: string]: string } = {}
+  params["username"] = username
+  params["password"] = password
+  return axios.get('/api/user', params)
+    .then(response => response.data)
     .finally(() => console.log('done'))
 }
