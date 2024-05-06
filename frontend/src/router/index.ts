@@ -1,3 +1,4 @@
+import LoginView from '@/views/LoginView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -15,9 +16,24 @@ const router = createRouter({
       props: true
     },
     {
+      path: '/people',
+      name: 'people',
+      component: () => import('../views/PeopleView.vue')
+    },
+    {
       path: '/add',
       name: 'add',
       component: () => import('../views/AddPersonView.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginView
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('../views/NotFoundView.vue')
     }
   ]
 })

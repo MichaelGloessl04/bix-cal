@@ -1,9 +1,14 @@
 {
     "cSpell.words": [
         "axios",
+        "Bixcal",
         "fastapi",
         "ilike",
+        "nullable",
+        "pinia",
+        "Pinia",
         "pydantic",
+        "rushstack",
         "sqlalchemy",
         "uvicorn"
     ]
