@@ -26,7 +26,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],
+    allow_origins=['http://localhost:5000'],
     allow_credentials=True,
     allow_methods=['*'],
     allow_headers=['*'],
@@ -129,6 +129,15 @@ async def get_entry(entry_id: int):
 
 @app.post('/entry/', response_model=ApiTypes.Entry)
 async def create_entry(entry: ApiTypes.EntryNoID):
+    entries = resources['crud'].get_where(
+        Models.Entry,
+        'author_id',
+        str(entry.author_id)
+    )
+    for e in entries:
+        if e.person_id == entry.person_id:
+            raise HTTPException(status_code=409, detail='Entry already exists')
+
     return resources['crud'].create(
         Models.Entry,
         entry.model_dump()
@@ -142,6 +151,88 @@ async def update_entry(entry_id: int, entry: ApiTypes.EntryNoID):
         entry_id,
         entry.model_dump()
     )
+
+
+@app.delete('/entry/{entry_id}')
+async def delete_entry(entry_id: int):
+    return resources['crud'].delete(
+        Models.Entry,
+        entry_id
+    )
+
+
+@app.get('/user/', response_model=List[ApiTypes.User])
+async def get_users(username: str, password: str):
+    _validate_user(username, password)
+    return resources['crud'].search(
+        Models.User,
+        ['username'],
+        username
+    )[0]
+
+
+@app.get('/user/{entries}', response_model=List[ApiTypes.Entry])
+async def get_user_entries(username: str, password: str):
+    _validate_user(username, password)
+    user = resources['crud'].search(
+        Models.User,
+        ['username'],
+        username
+    )[0]
+    return resources['crud'].search(
+        Models.Entry,
+        ['author_id'],
+        str(user.id)
+    )
+
+
+@app.post('/user/', response_model=ApiTypes.User)
+async def create_user(user: ApiTypes.UserNoID):
+    return resources['crud'].create(
+        Models.User,
+        user.model_dump()
+    )
+
+
+@app.delete('/user/{user_id}')
+async def delete_user(username: str, password: str):
+    _validate_user(username, password)
+    user = resources['crud'].search(
+        Models.User,
+        ['username'],
+        username
+    )[0]
+    return resources['crud'].delete(
+        Models.User,
+        user.id
+    )
+
+
+@app.put('/user/{user_id}', response_model=ApiTypes.User)
+async def update_user(username: str, password: str, new_user: ApiTypes.UserNoID):
+    _validate_user(username, password)
+    user = resources['crud'].search(
+        Models.User,
+        ['username'],
+        username
+    )[0]
+    return resources['crud'].update(
+        Models.User,
+        user.id,
+        new_user.model_dump()
+    )
+
+
+def _validate_user(username, password):
+    user = resources['crud'].search(
+        Models.User,
+        ['username'],
+        username
+    )[0]
+    if not user:
+        raise HTTPException(status_code=404, detail='No users found')
+    if password != user.password:
+        raise HTTPException(status_code=401, detail='Invalid password')
 
 
 if __name__ == '__main__':

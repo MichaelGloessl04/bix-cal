@@ -2,6 +2,7 @@ import pydantic
 
 
 class PersonNoID(pydantic.BaseModel):
+    creator_id: int
     name: str
     surname: str
 
@@ -18,9 +19,11 @@ class Person(PersonNoID):
 
 class EntryNoID(pydantic.BaseModel):
     person_id: int
+    author_id: int
     hot: float
     crazy: float
     nice: float
+    comment: str
 
     class Config:
         orm_mode = True
@@ -38,6 +41,22 @@ class Score(pydantic.BaseModel):
     hot: float
     crazy: float
     nice: float
+
+    class Config:
+        orm_mode = True
+
+
+class UserNoID(pydantic.BaseModel):
+    username: str
+    password: str
+    email: str
+
+    class Config:
+        orm_mode = True
+
+
+class User(UserNoID):
+    id: int
 
     class Config:
         orm_mode = True

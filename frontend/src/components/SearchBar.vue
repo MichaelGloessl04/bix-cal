@@ -12,6 +12,7 @@
             :results="results"
             :loading="loading"
             :search_term="search_term"
+            @add="emits('add')"
         />
     </div>
 </template>
@@ -25,6 +26,8 @@ import { ref, watch} from 'vue'
 
 import type { Ref } from 'vue'
 import type { Person } from '@/types/person'
+
+const emits = defineEmits(['add'])
 
 const loading = ref(false)
 const search_term = ref('')
@@ -73,40 +76,38 @@ watch(() => results.value, () => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+$border-radius: 1rem;
+
+.search-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .search-bar {
+    width: 100%;
     display: flex;
     justify-content: center;
-    margin: 1rem;
     margin-bottom: 0;
-    width: 100%;
 }
 
 .search-bar input {
     width: 100%;
     padding: 0.5rem;
+    padding-left: 1rem;
     font-size: 1.4rem;
     border: 0;
-    border-radius: 1rem;
+    border-radius: $border-radius;
 }
 
-.search-bar input:not(:placeholder-shown) {
+.search-bar input:not(:placeholder-shown){
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
 
 .search-bar input:focus {
     outline: none;
-}
-
-.search-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 70%;
-}
-
-.search-container > * {
-    width: 100%;
 }
 </style>

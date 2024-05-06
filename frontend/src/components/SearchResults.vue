@@ -1,7 +1,7 @@
 <template>
     <ul class="search-results" v-if="search_term">
         <li>
-            <div @click="$router.push('/add')">
+            <div @click="emits('add')">
                 <i class="bi bi-person-plus"></i> Add new person
             </div>
         </li>
@@ -20,17 +20,13 @@
 <script setup lang="ts">
 import PersonCard from '@/components/PersonCard.vue'
 
-import { ref } from 'vue'
-
 import { useRouter } from 'vue-router'
 
 import type { Person } from '@/types/person'
 
 const router = useRouter()
-
 const props = defineProps(['results', 'loading', 'search_term'])
-
-const add = ref(false)
+const emits = defineEmits(['add'])
 
 
 function goToPerson(person: Person) {
@@ -38,10 +34,14 @@ function goToPerson(person: Person) {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+$border-radius: 1rem;
+
 .search-results {
+    width: 100%;
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 .search-results li {
@@ -61,7 +61,7 @@ function goToPerson(person: Person) {
 }
 
 .search-results li:last-child {
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
 }
 </style>
