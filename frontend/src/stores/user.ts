@@ -13,5 +13,16 @@ export const useUserStore = defineStore('user', () => {
         user.value = newUser
     }
 
-    return { user, setUser}
+    function clearUser() {
+        user.value = {
+            id: 0,
+            username: '',
+        }
+    }
+
+    function isLoggedIn() {
+        return user.value.id !== 0
+    }
+
+    return { user, setUser, clearUser, isLoggedIn}
 })

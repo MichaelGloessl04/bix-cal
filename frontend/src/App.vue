@@ -15,9 +15,15 @@
               <li class="nav-item">
                 <router-link to="/people" class="nav-link">People</router-link>
               </li>
+              <li class="nav-item">
+                <router-link to="/about" class="nav-link">About</router-link>
+              </li>
               <li class="login">
-                <router-link to="/login" class="nav-link">
+                <router-link v-if="userStore.isLoggedIn()" to="/user" class="nav-link">
                   <i class="bi bi-person-fill"></i>
+                </router-link>
+                <router-link v-else to="/login" class="nav-link">
+                  {{ userStore.user.username }}<i class="bi bi-person-fill"></i>
                 </router-link>
               </li>
             </ul>
@@ -30,6 +36,12 @@
     </body>
   </div>
 </template>
+
+<script setup lang="ts">
+import { useUserStore } from './stores/user';
+
+const userStore = useUserStore();
+</script>
 
 <style>
 .hover-box {

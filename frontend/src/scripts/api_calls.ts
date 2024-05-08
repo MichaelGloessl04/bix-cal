@@ -46,7 +46,7 @@ export function getUser(username: string, password: string): Promise<User> {
   const params: { [key: string]: string } = {}
   params["username"] = username
   params["password"] = password
-  return axios.get('/api/user', params)
+  return axios.get('/api/user', { params: params })
     .then(response => response.data)
     .finally(() => console.log('done'))
 }

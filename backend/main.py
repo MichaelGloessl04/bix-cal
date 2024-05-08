@@ -33,6 +33,12 @@ app.add_middleware(
 )
 
 
+@app.get('/', response_model=str)
+async def root():
+    with open('./assets/about.md', 'r') as f:
+        return f.read()
+
+
 @app.get('/person/', response_model=List[ApiTypes.Person])
 async def get_persons(search_term: str = None):
     try:
@@ -161,7 +167,7 @@ async def delete_entry(entry_id: int):
     )
 
 
-@app.get('/user/', response_model=List[ApiTypes.User])
+@app.get('/user/', response_model=ApiTypes.User)
 async def get_users(username: str, password: str):
     _validate_user(username, password)
     return resources['crud'].search(
