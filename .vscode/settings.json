@@ -3,6 +3,8 @@
         "axios",
         "Bixcal",
         "fastapi",
+        "firestore",
+        "Firestore",
         "ilike",
         "nullable",
         "pinia",
@@ -10,6 +12,8 @@
         "pydantic",
         "rushstack",
         "sqlalchemy",
-        "uvicorn"
+        "todos",
+        "uvicorn",
+        "vuefire"
     ]
 }
