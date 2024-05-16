@@ -38,5 +38,4 @@ class User(Base):
     username = Column(String, index=True)
     email = Column(String, index=True)
 
-    __table_args__ = tuple(UniqueConstraint('username', name='unique_username'),
-                           UniqueConstraint('email', name='unique_email'))
+    __table_args__ = tuple(UniqueConstraint('username', 'email', name='unique_username_email'))

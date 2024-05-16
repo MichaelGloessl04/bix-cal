@@ -3,9 +3,10 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios';
 import { marked } from 'marked';
 import { onMounted, ref } from 'vue';
+
+import { getAbout } from '@/api/about';
 
 const about = ref<string>('');
 
@@ -15,18 +16,10 @@ marked.setOptions({
 });
 
 
-function getAboutContent() {
-    axios.get('/api/')
-        .then(async (response) => {
-            about.value = await marked(response.data);
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-}
-
 onMounted(() => {
-    getAboutContent();
+    getAbout().then(async (data) => {
+        about.value = await marked(data);
+    });
 });
 </script>
 
