@@ -18,13 +18,17 @@
               <li class="nav-item">
                 <router-link to="/about" class="nav-link">About</router-link>
               </li>
-              <li class="login">
-                <router-link v-if="userStore.isLoggedIn()" to="/user" class="nav-link">
-                  <i class="bi bi-person-fill"></i>
-                </router-link>
-                <router-link v-else to="/login" class="nav-link">
-                  {{ userStore.user.username }}<i class="bi bi-person-fill"></i>
-                </router-link>
+              <li class="nav-item">
+                <router-link v-if="!isLoggedIn" to="/login" class="nav-link">Login</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link v-if="!isLoggedIn" to="/register" class="nav-link">Register</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link v-if="isLoggedIn" to="/profile" class="nav-link">Profile</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link v-if="isLoggedIn" to="/logout" class="nav-link" @click="handleSignOut">Logout</router-link>
               </li>
             </ul>
           </div>
@@ -38,9 +42,33 @@
 </template>
 
 <script setup lang="ts">
-import { useUserStore } from './stores/user';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import { onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router';
 
-const userStore = useUserStore();
+const router = useRouter();
+const isLoggedIn = ref(false);
+
+let auth: any
+onMounted(() => {
+  auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      isLoggedIn.value = true;
+    } else {
+      isLoggedIn.value = false;
+    }
+  });
+});
+
+
+function handleSignOut() {
+  signOut(auth)
+    .then(() => {
+      console.log('User signed out');
+      router.push('/');
+    })
+}
 </script>
 
 <style>
@@ -60,13 +88,5 @@ const userStore = useUserStore();
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.61);
   z-index: 9999;
-}
-
-.login {
-  font-size: 160%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 0 1rem;
 }
 </style>
