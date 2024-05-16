@@ -169,10 +169,28 @@ async def delete_entry(entry_id: int):
 
 @app.get('/user/{email}', response_model=ApiTypes.User)
 async def get_user(email: str):
-    return resources['crud'].search(
+    user = resources['crud'].search(
         Models.User,
         ['email'],
         email
+    )
+    if not user:
+        raise HTTPException(status_code=404, detail='User not found')
+    return user[0]
+
+
+@app.post('/user/', response_model=ApiTypes.User)
+async def create_user(user: ApiTypes.UserNoID):
+    user = resources['crud'].search(
+        Models.User,
+        ['email'],
+        user.email
+    )
+    if user:
+        raise HTTPException(status_code=409, detail='User already exists')
+    return resources['crud'].create(
+        Models.User,
+        user.model_dump()
     )
 
 

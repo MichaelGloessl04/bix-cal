@@ -11,11 +11,12 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 
-import { getPerson, getScore } from '@/api/api_calls';
+import { getPerson } from '@/api/person';
+import { getScore } from '@/api/score';
 
 import type { Ref } from 'vue';
-import type { Person } from '@/types/person';
-import type { Scores } from '@/types/scores';
+import type { Person } from '@/api/types/person';
+import type { Scores } from '@/api/types/scores';
 
 const props = defineProps(['person_id'])
 

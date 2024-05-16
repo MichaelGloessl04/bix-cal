@@ -19,9 +19,7 @@
 
 <script setup lang="ts">
 import PersonCard from '@/components/PersonCard.vue'
-
 import { useRouter } from 'vue-router'
-
 import type { Person } from '@/api/types/person'
 
 const router = useRouter()

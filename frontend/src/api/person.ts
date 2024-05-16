@@ -21,6 +21,17 @@ export function getPerson(id: number): Promise<Person> {
 }
 
 
+export function searchPersons(search_term: string): Promise<Person[]> {
+    console.log(`searching persons for ${search_term}`)
+    const params: { [key: string]: string } = {}
+    params['search_term'] = search_term
+    return axios.get(`/api/person/`, { params: params })
+        .then(response => response.data)
+        .catch((error) => console.log(error))
+        .finally(() => console.log('done'))
+}
+
+
 export function addPerson(person: PersonNoID): Promise<Person> {
   console.log(`adding person ${person.name}`)
   return axios.post('/api/person', person)

@@ -1,20 +1,31 @@
 <template>
     <div class="profile-view">
         <h1>Profile</h1>
-        <p>Email: {{  }}</p>
-        <p>Display Name: {{ displayName }}</p>
+        <p>Username: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, type Ref } from 'vue'
 import { getAuth } from 'firebase/auth'
-
-import { getUser } from '@/api/api_calls'
+import { getUser } from '@/api/user'
+import type { User } from '@/api/types/user';
 
 const auth = getAuth()
-const user = ref(auth.currentUser)
+const user: Ref<User> = ref<User>({} as User)
 
-function getUser() {
 
-}
+onMounted(() => {
+    const currentEmail = auth.currentUser?.email
+    if (auth.currentUser && currentEmail) {
+        getUser(currentEmail)
+            .then((response) => {
+                user.value = response
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+    }
+})
+</script>

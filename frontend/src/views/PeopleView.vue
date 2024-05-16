@@ -10,7 +10,7 @@ import PeopleList from '@/components/PeopleList.vue';
 
 import { onMounted, ref } from 'vue';
 
-import { getPersons } from '@/api/api_calls';
+import { getPersons } from '@/api/person';
 import type { Person } from '@/api/types/person';
 
 const people = ref<Person[]>([]);

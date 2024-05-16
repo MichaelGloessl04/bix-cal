@@ -18,10 +18,10 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-import { addPerson } from '@/api/api_calls'
+import { addPerson } from '@/api/person'
 
 import type { Ref } from 'vue'
-import type { PersonNoID } from '@/types/person'
+import type { PersonNoID } from '@/api/types/person'
 
 const emits = defineEmits(['submit'])
 
