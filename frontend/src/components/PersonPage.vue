@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 
-import { getPerson, getScore } from '@/scripts/api_calls';
+import { getPerson, getScore } from '@/api/api_calls';
 
 import type { Ref } from 'vue';
 import type { Person } from '@/types/person';

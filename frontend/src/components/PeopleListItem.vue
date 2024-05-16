@@ -15,7 +15,7 @@
 import { onMounted, ref, type Ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-import { getScore } from '@/scripts/api_calls';
+import { getScore } from '@/api/api_calls';
 import type { Person } from '@/types/person';
 import type { Scores } from '@/types/scores';
 

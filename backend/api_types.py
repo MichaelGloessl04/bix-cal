@@ -44,19 +44,3 @@ class Score(pydantic.BaseModel):
 
     class Config:
         orm_mode = True
-
-
-class UserNoID(pydantic.BaseModel):
-    username: str
-    password: str
-    email: str
-
-    class Config:
-        orm_mode = True
-
-
-class User(UserNoID):
-    id: int
-
-    class Config:
-        orm_mode = True

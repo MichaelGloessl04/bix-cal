@@ -25,7 +25,7 @@ import axios from 'axios'
 import { ref, watch} from 'vue'
 
 import type { Ref } from 'vue'
-import type { Person } from '@/types/person'
+import type { Person } from '@/api/types/person'
 
 const emits = defineEmits(['add'])
 

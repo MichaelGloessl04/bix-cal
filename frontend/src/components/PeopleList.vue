@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import PeopleListItem from './PeopleListItem.vue';
 
-import type { Person } from '@/types/person';
+import type { Person } from '@/api/types/person';
 
 defineProps({
     people: {

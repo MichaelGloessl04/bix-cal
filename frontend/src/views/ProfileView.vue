@@ -10,7 +10,7 @@
 import { ref } from 'vue'
 import { getAuth } from 'firebase/auth'
 
-import { getUser } from '@/scripts/api_calls'
+import { getUser } from '@/api/api_calls'
 
 const auth = getAuth()
 const user = ref(auth.currentUser)

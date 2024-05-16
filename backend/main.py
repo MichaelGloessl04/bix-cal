@@ -165,80 +165,15 @@ async def delete_entry(entry_id: int):
         Models.Entry,
         entry_id
     )
+    
 
-
-@app.get('/user/', response_model=ApiTypes.User)
-async def get_users(username: str, password: str):
-    _validate_user(username, password)
+@app.get('/user/{email}', response_model=ApiTypes.User)
+async def get_user(email: str):
     return resources['crud'].search(
         Models.User,
-        ['username'],
-        username
-    )[0]
-
-
-@app.get('/user/{entries}', response_model=List[ApiTypes.Entry])
-async def get_user_entries(username: str, password: str):
-    _validate_user(username, password)
-    user = resources['crud'].search(
-        Models.User,
-        ['username'],
-        username
-    )[0]
-    return resources['crud'].search(
-        Models.Entry,
-        ['author_id'],
-        str(user.id)
+        ['email'],
+        email
     )
-
-
-@app.post('/user/', response_model=ApiTypes.User)
-async def create_user(user: ApiTypes.UserNoID):
-    return resources['crud'].create(
-        Models.User,
-        user.model_dump()
-    )
-
-
-@app.delete('/user/{user_id}')
-async def delete_user(username: str, password: str):
-    _validate_user(username, password)
-    user = resources['crud'].search(
-        Models.User,
-        ['username'],
-        username
-    )[0]
-    return resources['crud'].delete(
-        Models.User,
-        user.id
-    )
-
-
-@app.put('/user/{user_id}', response_model=ApiTypes.User)
-async def update_user(username: str, password: str, new_user: ApiTypes.UserNoID):
-    _validate_user(username, password)
-    user = resources['crud'].search(
-        Models.User,
-        ['username'],
-        username
-    )[0]
-    return resources['crud'].update(
-        Models.User,
-        user.id,
-        new_user.model_dump()
-    )
-
-
-def _validate_user(username, password):
-    user = resources['crud'].search(
-        Models.User,
-        ['username'],
-        username
-    )[0]
-    if not user:
-        raise HTTPException(status_code=404, detail='No users found')
-    if password != user.password:
-        raise HTTPException(status_code=401, detail='Invalid password')
 
 
 if __name__ == '__main__':

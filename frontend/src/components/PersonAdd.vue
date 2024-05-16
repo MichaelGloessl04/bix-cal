@@ -18,7 +18,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-import { addPerson } from '@/scripts/api_calls'
+import { addPerson } from '@/api/api_calls'
 
 import type { Ref } from 'vue'
 import type { PersonNoID } from '@/types/person'

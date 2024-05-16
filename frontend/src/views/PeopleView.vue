@@ -10,8 +10,8 @@ import PeopleList from '@/components/PeopleList.vue';
 
 import { onMounted, ref } from 'vue';
 
-import { getPersons } from '@/scripts/api_calls';
-import type { Person } from '@/types/person';
+import { getPersons } from '@/api/api_calls';
+import type { Person } from '@/api/types/person';
 
 const people = ref<Person[]>([]);
 

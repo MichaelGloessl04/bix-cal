@@ -22,7 +22,7 @@ import PersonCard from '@/components/PersonCard.vue'
 
 import { useRouter } from 'vue-router'
 
-import type { Person } from '@/types/person'
+import type { Person } from '@/api/types/person'
 
 const router = useRouter()
 const props = defineProps(['results', 'loading', 'search_term'])
