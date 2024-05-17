@@ -1,4 +1,5 @@
 import LoginView from '@/views/LoginView.vue'
+import { getAuth } from 'firebase/auth'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -43,7 +44,10 @@ const router = createRouter({
     {
       path: '/profile',
       name: 'profile',
-      component: () => import('../views/ProfileView.vue')
+      component: () => import('../views/ProfileView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/:pathMatch(.*)*',
@@ -51,6 +55,18 @@ const router = createRouter({
       component: () => import('../views/NotFoundView.vue')
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (getAuth().currentUser) {
+      next()
+    } else {
+      next('/login')
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

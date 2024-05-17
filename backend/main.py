@@ -151,6 +151,15 @@ async def create_user(user: ApiTypes.UserNoID):
     return crud.create(Models.User, user.model_dump())
 
 
+@app.delete('/user/{email}')
+async def delete_user(email: str):
+    crud: Crud = resources['crud']
+    user = crud.get_where(Models.User, 'email', email)
+    if not user:
+        raise HTTPException(status_code=404, detail='User not found')
+    return crud.delete(Models.User, user[0].id)
+
+
 if __name__ == '__main__':
     import uvicorn
     uvicorn.run('main:app', host='0.0.0.0', port=5001, reload=True)
