@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import PersonAdd from '@/components/PersonAdd.vue';
 
-const props = defineProps(['add_window']);
+defineProps(['add_window']);
 const emits = defineEmits(['close-add-window']);
 
 function close_add_window() {

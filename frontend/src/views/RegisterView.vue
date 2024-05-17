@@ -1,30 +1,31 @@
 <template>
     <div class="row hover-box">
-        <h1>Log In</h1>
+        <h1>Create an Account</h1>
+        <p><input type="text" placeholder="Username" v-model="username" /></p>
         <p><input type="email" placeholder="Email" v-model="email" /></p>
         <p><input type="password" placeholder="Password" v-model="password" /></p>
         <p v-if="errorMsg">{{ errorMsg }}</p>
-        <p><button @click="login()">Submit</button></p>
-        <p><router-link to="/register">Create Account</router-link></p>
+        <p><button @click="register()">Register</button></p>
+        <p><router-link to="/login">Already have an account?</router-link></p>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, } from 'firebase/auth'
 import { useRouter } from 'vue-router';
-import type { UserNoID } from '@/api/types/user';
 import { createUser } from '@/api/user';
+import type { UserNoID } from '@/api/types/user';
 
 const router = useRouter()
-
+const username = ref('')
 const email = ref('')
 const password = ref('')
 const errorMsg = ref('')
 
 function addUserToDB() {
     const user: UserNoID = {
-        username: email.value.split('@')[0],
+        username: username.value,
         email: email.value,
     }
     createUser(user)
@@ -39,27 +40,27 @@ function addUserToDB() {
         })
 }
 
-function login() {
-    signInWithEmailAndPassword(getAuth(), email.value, password.value)
+function register() {
+    createUserWithEmailAndPassword(getAuth(), email.value, password.value)
         .then(() => {
-            console.log('User logged in')
+            console.log('User registered')
             addUserToDB()
             router.push('/profile')
         })
         .catch((error) => {
-            console.error('Failed to login', error)
+            console.error('Failed to register', error)
             switch (error.code) {
-                case 'auth/user-disabled':
-                    errorMsg.value = 'User disabled'
+                case 'auth/email-already-in-use':
+                    errorMsg.value = 'Email already in use'
                     break
-                case 'auth/invalid-credential':
-                    errorMsg.value = 'Invalid credential'
+                case 'auth/invalid-email':
+                    errorMsg.value = 'Invalid email'
                     break
-                case 'auth/wrong-password':
-                    errorMsg.value = 'Wrong password'
+                case 'auth/weak-password':
+                    errorMsg.value = 'Weak password'
                     break
                 default:
-                    errorMsg.value = `Failed to login (${error.code})`
+                    errorMsg.value = `Failed to register (${error.code})`
             }
         })
 }

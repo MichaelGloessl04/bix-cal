@@ -62,14 +62,19 @@ class Crud:
             session.commit()
             return instance
 
-    def update(self, model: Base, id: int, data: dict) -> Base:
+    def update_or_create(self, model: Base, id: int, data: dict) -> Base:
         self._check_model(model)
         with Session(self._engine) as session:
             instance = session.query(model).get(id)
-            for key, value in data.items():
-                setattr(instance, key, value)
-            session.commit()
-            session.refresh(instance)
+            if instance:
+                for key, value in data.items():
+                    setattr(instance, key, value)
+                session.commit()
+            else:
+                instance = model(id=id, **data)
+                session.add(instance)
+                session.commit()
+                session.refresh(instance)
             return instance
 
     def _check_model(self, model):
