@@ -6,15 +6,17 @@ class PersonNoID(pydantic.BaseModel):
     name: str
     surname: str
 
-    class Config:
-        orm_mode = True
+    model_config = pydantic.ConfigDict(
+        from_attributes=True
+    )
 
 
 class Person(PersonNoID):
     id: int
 
-    class Config:
-        orm_mode = True
+    model_config = pydantic.ConfigDict(
+        from_attributes=True
+    )
 
 
 class EntryNoID(pydantic.BaseModel):
@@ -25,15 +27,17 @@ class EntryNoID(pydantic.BaseModel):
     nice: float
     comment: str
 
-    class Config:
-        orm_mode = True
+    model_config = pydantic.ConfigDict(
+        from_attributes=True
+    )
 
 
 class Entry(EntryNoID):
     id: int
 
-    class Config:
-        orm_mode = True
+    model_config = pydantic.ConfigDict(
+        from_attributes=True
+    )
 
 
 class Score(pydantic.BaseModel):
@@ -42,20 +46,23 @@ class Score(pydantic.BaseModel):
     crazy: float
     nice: float
 
-    class Config:
-        orm_mode = True
+    model_config = pydantic.ConfigDict(
+        from_attributes=True
+    )
 
 
 class UserNoID(pydantic.BaseModel):
     username: str
     email: str
 
-    class Config:
-        orm_mode = True
+    model_config = pydantic.ConfigDict(
+        from_attributes=True
+    )
 
 
 class User(UserNoID):
     id: int
 
-    class Config:
-        orm_mode = True
+    model_config = pydantic.ConfigDict(
+        from_attributes=True
+    )

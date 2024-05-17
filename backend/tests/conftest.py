@@ -1,0 +1,1 @@
+from .fixtures import client_resources, crud_session_in_memory

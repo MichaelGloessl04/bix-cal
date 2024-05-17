@@ -14,10 +14,17 @@
         "Pinia",
         "pydantic",
         "rushstack",
+        "sessionmaker",
         "sqlalchemy",
         "sqlite",
         "todos",
         "uvicorn",
         "vuefire"
-    ]
+    ],
+    "python.testing.pytestArgs": [
+        "backend/tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.envFile": "${workspaceFolder}/.env"
 }
