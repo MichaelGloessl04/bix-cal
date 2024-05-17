@@ -15,20 +15,23 @@
               <li class="nav-item">
                 <router-link to="/people" class="nav-link">People</router-link>
               </li>
+              <li v-if="isLoggedIn" class="nav-item">
+                <router-link to="/add-person" class="nav-link">Add Person</router-link>
+              </li>
               <li class="nav-item">
                 <router-link to="/about" class="nav-link">About</router-link>
               </li>
-              <li class="nav-item">
-                <router-link v-if="!isLoggedIn" to="/login" class="nav-link">Login</router-link>
+              <li v-if="!isLoggedIn" class="nav-item">
+                <router-link to="/login" class="nav-link">Login</router-link>
               </li>
-              <li class="nav-item">
-                <router-link v-if="!isLoggedIn" to="/register" class="nav-link">Register</router-link>
+              <li v-if="!isLoggedIn" class="nav-item">
+                <router-link to="/register" class="nav-link">Register</router-link>
               </li>
-              <li class="nav-item">
-                <router-link v-if="isLoggedIn" to="/profile" class="nav-link">Profile</router-link>
+              <li v-if="isLoggedIn" class="nav-item">
+                <router-link to="/profile" class="nav-link">Profile</router-link>
               </li>
-              <li class="nav-item">
-                <router-link v-if="isLoggedIn" to="/logout" class="nav-link" @click="handleSignOut">Logout</router-link>
+              <li v-if="isLoggedIn" class="nav-item">
+                <router-link to="/logout" class="nav-link" @click="handleSignOut">Logout</router-link>
               </li>
             </ul>
           </div>

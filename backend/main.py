@@ -64,7 +64,7 @@ async def get_person_entries(person_id: int):
     return crud.search(Models.Entry, ['person_id'], str(person_id))
 
 
-@app.get('/person/{person_id}/score', response_model=ApiTypes.Score)
+@app.get('/person/{person_id}/scores', response_model=ApiTypes.Score)
 async def get_person_score(person_id: int):
     crud: Crud = resources['crud']
     scores = {}
@@ -73,7 +73,7 @@ async def get_person_score(person_id: int):
     entries = crud.search(Models.Entry, ['person_id'], str(person_id))
 
     if not entries:
-        raise HTTPException(status_code=404, detail='No entries found')
+        raise HTTPException(status_code=404, detail='Person has no entries')
 
     for category in categories:
         scores[category] = sum(
@@ -99,6 +99,12 @@ async def update_person(person_id: int, person: ApiTypes.PersonNoID):
     return crud.update(Models.Person, person_id, person.model_dump())
 
 
+@app.delete('/person/{person_id}')
+async def delete_person(person_id: int):
+    crud: Crud = resources['crud']
+    return crud.delete(Models.Person, person_id)
+
+
 @app.get('/entry/', response_model=List[ApiTypes.Entry])
 async def get_entries():
     crud: Crud = resources['crud']
@@ -114,11 +120,6 @@ async def get_entry(entry_id: int):
 @app.post('/entry/', response_model=ApiTypes.Entry)
 async def create_entry(entry: ApiTypes.EntryNoID):
     crud: Crud = resources['crud']
-    entries = crud.get_where(Models.Entry, 'author_id', str(entry.author_id))
-    for e in entries:
-        if e.person_id == entry.person_id:
-            raise HTTPException(status_code=409, detail='Entry already exists')
-
     return crud.create(Models.Entry, entry.model_dump())
 
 
@@ -132,7 +133,29 @@ async def update_entry(entry_id: int, entry: ApiTypes.EntryNoID):
 async def delete_entry(entry_id: int):
     crud: Crud = resources['crud']
     return crud.delete(Models.Entry, entry_id)
-    
+
+
+@app.get('/user/id/{user_id}', response_model=ApiTypes.User)
+async def get_user(user_id: int):
+    crud: Crud = resources['crud']
+    return crud.get_single(Models.User, user_id)
+
+
+@app.get('/user/id/{user_id}/entries', response_model=List[ApiTypes.Entry])
+async def get_user_entries(user_id: int):
+    crud: Crud = resources['crud']
+    return crud.search(Models.Entry, ['author_id'], str(user_id))
+
+
+@app.get('/user/id/{user_id}/entries/{person_id}', response_model=bool)
+async def get_user_entries(user_id: int, person_id: int):
+    crud: Crud = resources['crud']
+    entries = crud.search(Models.Entry, ['author_id'], str(user_id))
+    if person_id in [entry.person_id for entry in entries]:
+        return True
+    else:
+        return False
+
 
 @app.get('/user/{email}', response_model=ApiTypes.User)
 async def get_user(email: str):

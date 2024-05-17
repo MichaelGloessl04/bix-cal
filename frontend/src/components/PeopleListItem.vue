@@ -2,17 +2,17 @@
     <td @click="router.push(`/person/${props.person.id}`)">
         {{ person.name }} {{ person.surname }}
     </td>
-    <td class="vertical-align-middle">
-        {{ score.score.toFixed(2) }}
+    <td>
+        {{ scores.score.toFixed(2) }}
     </td>
     <td>
-        {{ score.hot.toFixed(2) }}
+        {{ scores.hot.toFixed(2) }}
     </td>
     <td>
-        {{ score.nice.toFixed(2) }}
+        {{ scores.nice.toFixed(2) }}
     </td>
     <td>
-        {{ score.crazy.toFixed(2) }}
+        {{ scores.crazy.toFixed(2) }}
     </td>
 </template>
 
@@ -20,7 +20,7 @@
 import { onMounted, ref, type Ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-import { getScore } from '@/api/score';
+import { getScores } from '@/api/person';
 import type { Person } from '@/api/types/person';
 import type { Scores } from '@/api/types/scores';
 
@@ -30,17 +30,28 @@ const props = defineProps<{
     person: Person
 }>()
 
-const score: Ref<Scores> = ref({
+const scores: Ref<Scores> = ref({
     score: 0,
     hot: 0,
     nice: 0,
     crazy: 0
 } as Scores)
 
-onMounted(async () => {
-    getScore(props.person.id)
+onMounted(() => {
+    getScores(props.person.id)
         .then((data: Scores) => {
-            score.value = data
+            scores.value = data
+        })
+        .catch((error) => {
+            if (error.response.status === 404) {
+                console.log('No scores found for person', props.person.id)
+                scores.value = {
+                    score: 0,
+                    hot: 0,
+                    nice: 0,
+                    crazy: 0
+                }
+            }
         })
 })
 </script>
