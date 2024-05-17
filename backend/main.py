@@ -41,15 +41,16 @@ async def root():
 
 @app.get('/person/', response_model=List[ApiTypes.Person])
 async def get_persons(search_term: str = None):
+    crud: Crud = resources['crud']
     try:
         if search_term:
-            return resources['crud'].search(
+            return crud.search(
                 Models.Person,
                 ['name', 'surname'],
                 search_term
             )
         else:
-            return resources['crud'].get(
+            return crud.get(
                 Models.Person
             )
     except Exception as e:
@@ -181,17 +182,9 @@ async def get_user(email: str):
 
 @app.post('/user/', response_model=ApiTypes.User)
 async def create_user(user: ApiTypes.UserNoID):
-    user = resources['crud'].search(
-        Models.User,
-        ['email'],
-        user.email
-    )
-    if user:
+    if resources['crud'].search(Models.User, ['email'], user.email):
         raise HTTPException(status_code=409, detail='User already exists')
-    return resources['crud'].create(
-        Models.User,
-        user.model_dump()
-    )
+    return resources['crud'].create(Models.User, user.model_dump())
 
 
 if __name__ == '__main__':
