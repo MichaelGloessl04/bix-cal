@@ -1,6 +1,6 @@
 <template>
-    <div class="search-container">
-        <div class="search-bar">
+    <div>
+        <div>
             <input
             type="text"
             v-model="search_term"
@@ -65,39 +65,3 @@ watch(() => results.value, () => {
     }
 })
 </script>
-
-<style scoped lang="scss">
-$border-radius: 1rem;
-
-.search-container {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.search-bar {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0;
-}
-
-.search-bar input {
-    width: 100%;
-    padding: 0.5rem;
-    padding-left: 1rem;
-    font-size: 1.4rem;
-    border: 0;
-    border-radius: $border-radius;
-}
-
-.search-bar input:not(:placeholder-shown){
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.search-bar input:focus {
-    outline: none;
-}
-</style>

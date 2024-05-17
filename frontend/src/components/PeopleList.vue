@@ -1,13 +1,13 @@
 <template>
-    <div class="table-box">
-        <table class="table table-dark table-striped table-hover table-borderless rounded-pill">
+    <div>
+        <table>
             <thead>
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Overall Score</th>
-                    <th scope="col">Hot</th>
-                    <th scope="col">Nice</th>
-                    <th scope="col">Crazy</th>
+                    <th>Name</th>
+                    <th>Overall Score</th>
+                    <th>Hot</th>
+                    <th>Nice</th>
+                    <th>Crazy</th>
                 </tr>
             </thead>
             <tbody>
@@ -15,7 +15,7 @@
                     <PeopleListItem :person="person"/>
                 </tr>
                 <tr v-else>
-                    <td class="col">No Results.</td>
+                    <td>No Results.</td>
                 </tr>
             </tbody>
         </table>
@@ -34,36 +34,3 @@ defineProps({
     }
 });
 </script>
-
-<style lang="scss">
-$radius: 1rem;
-
-.table {
-    margin: 0 auto;
-    width: 100%;
-}
-
-.table-box {
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.61);
-    border-radius: $radius;
-}
-
-tr:first-child td:first-child{
-  border-top-left-radius: $radius;
-}
-
-tr:first-child td:last-child{
-  border-top-right-radius: $radius;
-}
-
-tr:last-child td:first-child{
-  border-bottom-left-radius: $radius;
-}
-
-tr:last-child td:last-child{
-  border-bottom-right-radius: $radius;
-}
-</style>

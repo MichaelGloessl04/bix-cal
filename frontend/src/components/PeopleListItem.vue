@@ -1,14 +1,19 @@
 <template>
-    <td
-        class="name-col"
-        @click="router.push(`/person/${props.person.id}`)"
-    >
+    <td @click="router.push(`/person/${props.person.id}`)">
         {{ person.name }} {{ person.surname }}
-</td>
-    <td class="vertical-align-middle">{{ score.score.toFixed(2) }}</td>
-    <td>{{ score.hot.toFixed(2) }}</td>
-    <td>{{ score.nice.toFixed(2) }}</td>
-    <td>{{ score.crazy.toFixed(2) }}</td>
+    </td>
+    <td class="vertical-align-middle">
+        {{ score.score.toFixed(2) }}
+    </td>
+    <td>
+        {{ score.hot.toFixed(2) }}
+    </td>
+    <td>
+        {{ score.nice.toFixed(2) }}
+    </td>
+    <td>
+        {{ score.crazy.toFixed(2) }}
+    </td>
 </template>
 
 <script setup lang="ts">
@@ -39,13 +44,3 @@ onMounted(async () => {
         })
 })
 </script>
-
-<style>
-.name-col {
-    cursor: pointer;
-}
-
-.name-col:hover {
-    text-decoration: underline;
-}
-</style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="people-view">
+    <div>
         <h1>People</h1>
         <PeopleList :people="people" />
     </div>
@@ -21,10 +21,3 @@ async function getPeople() {
 
 onMounted(getPeople);
 </script>
-
-<style>
-.people-view {
-    width: 80%;
-    margin: 0 auto;
-}
-</style>

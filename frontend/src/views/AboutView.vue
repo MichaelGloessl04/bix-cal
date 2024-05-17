@@ -22,10 +22,3 @@ onMounted(() => {
     });
 });
 </script>
-
-<style>
-.about-container {
-    width: 80%;
-    margin: 0 auto;
-}
-</style>

@@ -22,6 +22,14 @@ const router = createRouter({
       props: true
     },
     {
+      path: '/add-person',
+      name: 'add-person',
+      component: () => import('../views/AddPersonView.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/people',
       name: 'people',
       component: () => import('../views/PeopleView.vue')
@@ -62,6 +70,7 @@ router.beforeEach((to, from, next) => {
     if (getAuth().currentUser) {
       next()
     } else {
+      alert('You must be logged in to do that.')
       next('/login')
     }
   } else {

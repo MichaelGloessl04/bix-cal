@@ -70,23 +70,3 @@ function handleSignOut() {
     })
 }
 </script>
-
-<style>
-.hover-box {
-  background-color: rgb(33, 37, 41);
-  min-width: 10rem;
-  width: 20rem;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 1em;
-  border-radius: 1rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.61);
-  z-index: 9999;
-}
-</style>

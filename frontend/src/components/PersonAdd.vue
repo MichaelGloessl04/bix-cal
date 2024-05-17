@@ -1,15 +1,15 @@
 <template>
-    <div class="person-add" @submit.prevent="submit">
+    <div @submit.prevent="submit">
         <form>
-            <div class="form-group">
+            <div>
                 <label for="name">Name</label>
-                <input type="text" v-model="person.name" class="form-control" id="name" placeholder="Name" required/>
+                <input type="text" v-model="person.name" id="name" placeholder="Name" required/>
             </div>
-            <div class="form-group">
+            <div>
                 <label for="surname">Surname</label>
-                <input type="text" v-model="person.surname" class="form-control" id="surname" placeholder="Surname" required/>
+                <input type="text" v-model="person.surname" id="surname" placeholder="Surname" required/>
             </div>
-            <button type="submit" class="btn btn-primary">Add</button>
+            <button type="submit">Add</button>
         </form>
     </div>
 </template>
@@ -42,29 +42,3 @@ function submit() {
     }
 }
 </script>
-
-<style scoped>
-.person-add form {
-    width: 80%;
-}
-
-.person-add .form-group {
-    margin-bottom: 1rem;
-}
-
-.person-add button {
-    width: 100%;
-}
-
-.person-add input {
-    width: 100%;
-}
-
-.person-add label {
-    font-weight: bold;
-}
-
-.person-add button {
-    margin-top: 1rem;
-}
-</style>
