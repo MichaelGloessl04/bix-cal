@@ -32,6 +32,9 @@ dependencies:
   vue-router:
     specifier: ^4.3.0
     version: 4.3.2(vue@3.4.26)
+  vuefire:
+    specifier: ^3.1.23
+    version: 3.1.23(firebase@10.11.1)(vue@3.4.26)
 
 devDependencies:
   '@rushstack/eslint-patch':
@@ -3320,6 +3323,27 @@ packages:
       '@vue/server-renderer': 3.4.26(vue@3.4.26)
       '@vue/shared': 3.4.26
       typescript: 5.4.5
+
+  /vuefire@3.1.23(firebase@10.11.1)(vue@3.4.26):
+    resolution: {integrity: sha512-bCz/3hw50+oilLBrUWQRRQccfhj0VeU8E+NZmFRnUe6D70yAMblRahLrQLmG6KBesJJeXexOEpRElP4pMq6zxA==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@vue/composition-api': '*'
+      consola: ^3.2.3
+      firebase: ^9.0.0 || ^10.0.0
+      vue: ^2.7.0 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      consola:
+        optional: true
+      firebase:
+        optional: true
+    dependencies:
+      firebase: 10.11.1
+      vue: 3.4.26(typescript@5.4.5)
+      vue-demi: 0.14.7(vue@3.4.26)
+    dev: false
 
   /webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}

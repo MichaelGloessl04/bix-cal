@@ -19,13 +19,10 @@
 
 <script setup lang="ts">
 import SearchResults from './SearchResults.vue';
-
-import axios from 'axios'
-
 import { ref, watch} from 'vue'
-
+import { searchPersons } from '@/api/person';
 import type { Ref } from 'vue'
-import type { Person } from '@/types/person'
+import type { Person } from '@/api/types/person'
 
 const emits = defineEmits(['add'])
 
@@ -38,19 +35,12 @@ async function search() {
     if (search_term.value === '') {
         results.value.length = 0
     } else {
-        console.log(`searching for '${search_term.value}'...`)
-        const params: { [key: string]: string } = {}
-        params['search_term'] = search_term.value
-        axios.get(`/api/person/`, { params: params })
+        loading.value = true
+        searchPersons(search_term.value)
             .then(response => {
                 clearResults()
-                loading.value = true
                 console.log(response)
-                results.value = response.data
-            })
-            .catch(error => {
-                loading.value = false
-                console.error(error)
+                results.value = response
             })
             .finally(() => {
                 loading.value = false

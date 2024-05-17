@@ -1,15 +1,30 @@
 {
     "cSpell.words": [
+        "appspot",
         "axios",
+        "bixcal",
         "Bixcal",
         "fastapi",
+        "firebaseapp",
+        "firestore",
+        "Firestore",
         "ilike",
         "nullable",
         "pinia",
         "Pinia",
         "pydantic",
         "rushstack",
+        "sessionmaker",
         "sqlalchemy",
-        "uvicorn"
-    ]
+        "sqlite",
+        "todos",
+        "uvicorn",
+        "vuefire"
+    ],
+    "python.testing.pytestArgs": [
+        "backend/tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.envFile": "${workspaceFolder}/.env"
 }
