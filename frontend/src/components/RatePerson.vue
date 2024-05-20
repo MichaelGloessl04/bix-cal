@@ -20,7 +20,7 @@
             <input id="comment" v-model="comment" type="message" placeholder="Comment" maxlength="20">
             <p id="comment-error">The Comment cant be longer than 20 letters.</p>
         </p>
-        <button v-if="rated" @click="emits('changeRating')">Cancel</button>
+        <button v-if="rated" @click="emits('cancel')">Cancel</button>
         <button @click="submit">Submit</button>
     </div>
 </template>
@@ -30,12 +30,13 @@ import { addEntry } from '@/api/entry';
 import type { EntryNoID } from '@/api/types/entry';
 import { getUser } from '@/api/user';
 import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { getAuth } from 'firebase/auth';
 
 const route = useRoute()
-const emits = defineEmits(['changeRating'])
-defineProps(['rated'])
+const router = useRouter()
+const emits = defineEmits(['changeRating', 'cancel'])
+defineProps(['edit', 'rated'])
 
 const hot = ref(5)
 const crazy = ref(5)

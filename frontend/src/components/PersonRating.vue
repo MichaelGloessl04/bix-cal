@@ -1,8 +1,7 @@
 <template>
-
-<button @click="emits('changeRating')">Change rating</button>
+<button @click="emits('edit')">Change rating</button>
 </template>
 
 <script setup lang="ts">
-const emits = defineEmits(['changeRating'])
+const emits = defineEmits(['edit'])
 </script>

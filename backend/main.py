@@ -147,15 +147,14 @@ async def get_user_entries(user_id: int):
     return crud.search(Models.Entry, ['author_id'], str(user_id))
 
 
-@app.get('/user/id/{user_id}/entries/{person_id}', response_model=bool)
+@app.get('/user/id/{user_id}/entries/{person_id}', response_model=ApiTypes.Entry)
 async def get_user_entries(user_id: int, person_id: int):
     crud: Crud = resources['crud']
     entries = crud.search(Models.Entry, ['author_id'], str(user_id))
     if person_id in [entry.person_id for entry in entries]:
-        return True
+        return [entry for entry in entries if entry.person_id == person_id][0]
     else:
-        return False
-
+        return None
 
 @app.get('/user/{email}', response_model=ApiTypes.User)
 async def get_user(email: str):
