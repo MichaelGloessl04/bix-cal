@@ -78,15 +78,15 @@ def get_person(person_id: int):
 
 @app.post('/person/', response_model=ApiTypes.Person, tags=['person'])
 def post_person(person: ApiTypes.PersonNoID):
-    # post_person(person)
-    # return crud.get_person(person.id)
-    pass
+    crud: Crud = resources['crud']
+    crud.post_person(person)
+    return crud.get_person(person.id)
 
 
 @app.delete('/person/{person_id}', response_model=ApiTypes.Person, tags=['person'])
 def delete_person(person_id: int):
-    # return crud.delete_person(person_id)
-    pass
+    crud: Crud = resources['crud']
+    return crud.delete_person(person_id)
 
 
 if __name__ == '__main__':
