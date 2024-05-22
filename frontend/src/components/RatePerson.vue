@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h2>Rate Person</h2>
         <p>
             <span for="hot">Hot</span>
             <input id="hot" v-model="hot" type="range" min="1" max="10">
@@ -18,9 +17,10 @@
         </p>
         <p>
             <input id="comment" v-model="comment" type="message" placeholder="Comment" maxlength="20">
-            <p id="comment-error">The Comment cant be longer than 20 letters.</p>
+            <span>{{ comment.length }}/20</span>
+            <p>Add an optional Comment</p>
         </p>
-        <button v-if="rated" @click="emits('cancel')">Cancel</button>
+        <button v-if="edit" @click="emits('cancel')">Cancel</button>
         <button @click="submit">Submit</button>
     </div>
 </template>
@@ -29,14 +29,13 @@
 import { addEntry } from '@/api/entry';
 import type { EntryNoID } from '@/api/types/entry';
 import { getUser } from '@/api/user';
-import { ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 import { getAuth } from 'firebase/auth';
 
 const route = useRoute()
-const router = useRouter()
 const emits = defineEmits(['changeRating', 'cancel'])
-defineProps(['edit', 'rated'])
+const props = defineProps(['edit', 'rated', 'entry'])
 
 const hot = ref(5)
 const crazy = ref(5)
@@ -62,14 +61,27 @@ const submit = () => {
                 comment: comment.value
             }
 
-            addEntry(newEntry)
-                .then(() => {
-                    console.log('Entry added')
-                    emits('changeRating')
-                })
-                .catch((error) => {
-                    console.error('Error adding entry:', error)
-                })
+            if (!props.edit) {
+                addEntry(newEntry)
+                    .then(() => {
+                        console.log('Entry added')
+                        emits('changeRating')
+                    })
+                    .catch((error) => {
+                        console.error('Error adding entry:', error)
+                    })
+            } else {
+                
+            }
         })
 }
+
+onMounted(() => {
+    if (props.rated) {
+        hot.value = props.entry.hot
+        crazy.value = props.entry.crazy
+        nice.value = props.entry.nice
+        comment.value = props.entry.comment
+    }
+})
 </script>

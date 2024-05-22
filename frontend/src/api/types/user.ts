@@ -1,9 +1,8 @@
 export type UserNoID = {
-    username: string
-    email: string
+  username: string
+  email: string
 }
 
-
 export type User = UserNoID & {
-    id: number
+  id: number
 }

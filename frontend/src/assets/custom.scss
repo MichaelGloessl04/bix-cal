@@ -1,24 +1,22 @@
 $theme-colors: (
-    "primary": #6e6e6e,
-    "secondary": rgb(82, 82, 82),
-
-
-    "danger": #3a3a3a,
+  'primary': #6e6e6e,
+  'secondary': rgb(82, 82, 82),
+  'danger': #3a3a3a
 );
 
 @import 'bootstrap/scss/bootstrap.scss';
 
 body {
-    background-color: #272c31;
-    color: rgb(245, 245, 245);
+  background-color: #272c31;
+  color: rgb(245, 245, 245);
 }
 
 header {
-    background-color: #272c31;
-    color: rgb(245, 245, 245);
-    background-image: linear-gradient(#161c24, #00000000);
+  background-color: #272c31;
+  color: rgb(245, 245, 245);
+  background-image: linear-gradient(#161c24, #00000000);
 }
 
 h1 {
-    color: rgb(245, 245, 245);
+  color: rgb(245, 245, 245);
 }

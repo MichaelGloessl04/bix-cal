@@ -4,7 +4,15 @@
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
           <router-link to="/" class="navbar-brand">Bixcal</router-link>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
@@ -31,7 +39,9 @@
                 <router-link to="/profile" class="nav-link">Profile</router-link>
               </li>
               <li v-if="isLoggedIn" class="nav-item">
-                <router-link to="/logout" class="nav-link" @click="handleSignOut">Logout</router-link>
+                <router-link to="/logout" class="nav-link" @click="handleSignOut"
+                  >Logout</router-link
+                >
               </li>
             </ul>
           </div>
@@ -45,31 +55,29 @@
 </template>
 
 <script setup lang="ts">
-import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
-import { onMounted, ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
+import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
-const router = useRouter();
-const isLoggedIn = ref(false);
+const router = useRouter()
+const isLoggedIn = ref(false)
 
 let auth: any
 onMounted(() => {
-  auth = getAuth();
+  auth = getAuth()
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      isLoggedIn.value = true;
+      isLoggedIn.value = true
     } else {
-      isLoggedIn.value = false;
+      isLoggedIn.value = false
     }
-  });
-});
-
+  })
+})
 
 function handleSignOut() {
-  signOut(auth)
-    .then(() => {
-      console.log('User signed out');
-      router.push('/');
-    })
+  signOut(auth).then(() => {
+    console.log('User signed out')
+    router.push('/')
+  })
 }
 </script>

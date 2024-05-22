@@ -83,6 +83,9 @@ async def get_person_score(person_id: int):
     scores['score'] = sum(
         [entry.hot + entry.nice + (4 - entry.crazy) for entry in entries]
     ) / len(entries)
+    
+    # map scores.score to 1-10 min is -4 and max is 20
+    scores['score'] = (scores['score'] + 4) * 10 / 24
 
     return scores
 
@@ -124,7 +127,7 @@ async def create_entry(entry: ApiTypes.EntryNoID):
 
 
 @app.put('/entry/{entry_id}', response_model=ApiTypes.Entry)
-async def update_entry(entry_id: int, entry: ApiTypes.EntryNoID):
+async def update_entry(entry_id, entry: ApiTypes.EntryNoID):
     crud: Crud = resources['crud']
     return crud.update_or_create(Models.Entry, entry_id, entry.model_dump())
 
@@ -151,10 +154,10 @@ async def get_user_entries(user_id: int):
 async def get_user_entries(user_id: int, person_id: int):
     crud: Crud = resources['crud']
     entries = crud.search(Models.Entry, ['author_id'], str(user_id))
-    if person_id in [entry.person_id for entry in entries]:
-        return [entry for entry in entries if entry.person_id == person_id][0]
-    else:
-        return None
+    for entry in entries:
+        if entry.person_id == person_id:
+            return entry
+
 
 @app.get('/user/{email}', response_model=ApiTypes.User)
 async def get_user(email: str):
