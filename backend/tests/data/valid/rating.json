@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "person_id": 2,
+        "user_id": 1,
+        "hot": 9,
+        "crazy": 5,
+        "nice": 7,
+        "comment": "I love this person"
+    },
+    {
+        "id": 2,
+        "person_id": 2,
+        "user_id": 2,
+        "hot": 8,
+        "crazy": 6,
+        "nice": 7,
+        "comment": "WOW"
+    },
+    {
+        "id": 3,
+        "person_id": 4,
+        "user_id": 2,
+        "hot": 7,
+        "crazy": 7,
+        "nice": 7,
+        "comment": "Oh no"
+    }
+]
