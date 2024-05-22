@@ -3,17 +3,18 @@ import os
 from typing import List
 from fastapi import FastAPI, HTTPException
 
+from sqlalchemy.orm import sessionmaker
+
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
-
-from sqlalchemy.orm import sessionmaker
 
 from crud import Crud, create_engine
 
 import api_types as ApiTypes
 
+from tests.fixtures import populate
+
 resources = {}
-session = None
 
 
 @asynccontextmanager
@@ -23,11 +24,17 @@ async def lifespan(app: FastAPI):
     if os.getenv('TESTING'):
         print('testing')
         engine = create_engine('sqlite:///:memory:')
+        crud = Crud(engine)
         session = sessionmaker(bind=engine)
+        populate(session)
     else:
         engine = create_engine('sqlite:///database.db')
-    resources['crud'] = Crud(engine)
-    yield
+        crud = Crud(engine)
+        session = sessionmaker(bind=engine)
+    resources['crud'] = crud
+    resources['session'] = session
+    resources['engine'] = engine
+    yield engine
     engine.dispose()
     resources.clear()
     print('lifespan finished')

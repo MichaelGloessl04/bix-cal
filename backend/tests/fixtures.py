@@ -1,14 +1,11 @@
 import pytest
-from fastapi.testclient import TestClient
-from contextlib import asynccontextmanager
 
 
 @pytest.fixture()
 def crud_session_in_memory():
-    from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
 
-    from crud.crud import Crud
+    from crud import Crud, create_engine
 
     engine = create_engine('sqlite:///:memory:')
     crud = Crud(engine)
@@ -21,14 +18,8 @@ def crud_session_in_memory():
 @pytest.fixture()
 def client():
     import os
-    from main import app, session
 
     os.environ['TESTING'] = 'True'
-
-    populate(session)
-
-    with TestClient(app) as client:
-        yield client
 
 
 def populate(session):
@@ -38,15 +29,15 @@ def populate(session):
     from crud import Models
 
     datasets = []
+    paths = [
+        ('data\\valid\\people.json', Models.Person),
+        ('data\\valid\\ratings.json', Models.Rating),
+        ('data\\valid\\users.json', Models.User),
+    ]
 
-    with open(os.path.join(os.path.dirname(__file__), 'data\\valid\\people.json'), 'r') as f:
-        datasets.append([Models.Person(**person) for person in json.load(f)])
-
-    with open(os.path.join(os.path.dirname(__file__), 'data\\valid\\rating.json'), 'r') as f:
-        datasets.append([Models.Rating(**rating) for rating in json.load(f)])
-
-    with open(os.path.join(os.path.dirname(__file__), 'data\\valid\\user.json'), 'r') as f:
-        datasets.append([Models.User(**user) for user in json.load(f)])
+    for path, model in paths:
+        with open(os.path.join(os.path.dirname(__file__), path), 'r') as f:
+            datasets.append([model(**data) for data in json.load(f)])
 
     with session() as s:
         for dataset in datasets:

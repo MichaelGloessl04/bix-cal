@@ -1,6 +1,3 @@
-import json
-import os
-
 from crud import Models
 
 
@@ -24,15 +21,8 @@ def test_get_persons(crud_session_in_memory):
 def test_get_person(crud_session_in_memory):
     crud, session = crud_session_in_memory
 
-    _person = None
-    
-    with open(os.path.join(os.path.dirname(__file__), '..\\data\\valid\\people.json'), 'r') as f:
-        _people = [Models.Person(**person) for person in json.load(f)]
-        _person = _people[0]
-
     with session() as s:
-        s.add(_person)
-        s.commit()
+        _person = s.query(Models.Person).where(Models.Person.id == 1).first()
 
         person = crud.get_person(1)
         assert isinstance(person, Models.Person)
