@@ -10,9 +10,10 @@ class Person(Base):
     __tablename__ = "person"
 
     id = Column(Integer, primary_key=True, index=True)
-    creator_id = Column(Integer, index=True)
+    user_id = Column(Integer, index=True)
     name = Column(String, index=True)
     surname = Column(String, index=True)
+    image_url = Column(String, index=True, nullable=True)
 
     __table_args__ = tuple(UniqueConstraint('name', 'surname', name='unique_name_surname'))
 
@@ -38,7 +39,8 @@ class User(Base):
     __tablename__ = "user"
 
     id = Column(Integer, primary_key=True, index=True)
+    person_id = Column(Integer, index=True, nullable=True)
     username = Column(String, index=True)
     email = Column(String, index=True)
 
-    __table_args__ = tuple(UniqueConstraint('username', 'email', name='unique_username_email'))
+    __table_args__ = tuple(UniqueConstraint('username', 'email', 'person_id', name='unique_username_email'))
