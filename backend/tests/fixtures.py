@@ -18,8 +18,12 @@ def crud_session_in_memory():
 @pytest.fixture()
 def client():
     import os
+    from fastapi.testclient import TestClient
+    
+    from main import app
 
     os.environ['TESTING'] = 'True'
+    yield TestClient(app)
 
 
 def populate(session):
