@@ -81,7 +81,7 @@ def test_delete_person(crud_session_in_memory):
 
     _people = []
     with open(os.path.join(os.path.dirname(__file__), '..','data\\valid\\people.json'), 'r') as f:
-        _people = [Models.Person(**data) for data in json.load(f)][:1]
+        _people = [Models.Person(**data) for data in json.load(f)]
 
     with session() as s:
         person = crud.delete_person(1)
@@ -91,4 +91,4 @@ def test_delete_person(crud_session_in_memory):
         assert person.name == _people[0].name
         assert person.surname == _people[0].surname
         assert person.image_url == _people[0].image_url
-        assert person not in _people
+        assert person not in _people[1:]

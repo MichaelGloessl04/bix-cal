@@ -40,3 +40,32 @@ class Crud:
             session.delete(person)
             session.commit()
             return person
+
+    def get_rating(self, rating_id: int) -> Rating:
+        with Session(self._engine) as session:
+            return session.query(Rating).where(Rating.id == rating_id).one()
+
+    def get_person_ratings(self, person_id: int) -> List[Rating]:
+        with Session(self._engine) as session:
+            return session.query(Rating).where(Rating.person_id == person_id).all()
+
+    def post_rating(self, rating: Rating) -> Rating:
+        with Session(self._engine) as session:
+            session.add(rating)
+            session.commit()
+            session.refresh(rating)
+            return rating
+
+    def put_rating(self, rating_id: int, rating: Rating) -> Rating:
+        with Session(self._engine) as session:
+            rating.id = rating_id
+            session.merge(rating)
+            session.commit()
+            return rating
+
+    def delete_rating(self, rating_id: int) -> Rating:
+        with Session(self._engine) as session:
+            rating = session.query(Rating).where(Rating.id == rating_id).one()
+            session.delete(rating)
+            session.commit()
+            return rating
