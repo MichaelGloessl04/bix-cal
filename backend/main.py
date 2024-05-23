@@ -89,6 +89,38 @@ def delete_person(person_id: int):
     return crud.delete_person(person_id)
 
 
+@app.get('/rating/{rating_id}', response_model=List[ApiTypes.Rating], tags=['rating'])
+def get_rating(rating_id: int):
+    crud: Crud = resources['crud']
+    return crud.get_rating(rating_id)
+
+
+@app.get('/rating/person/{person_id}', response_model=List[ApiTypes.Rating], tags=['rating'])
+def get_person_ratings(person_id: int):
+    crud: Crud = resources['crud']
+    return crud.get_person_ratings(person_id)
+
+
+@app.post('/rating/', response_model=ApiTypes.Rating, tags=['rating'])
+def post_rating(rating: ApiTypes.RatingNoID):
+    crud: Crud = resources['crud']
+    crud.post_rating(rating)
+    return crud.get_rating(rating.id)
+
+
+@app.put('/rating/{rating_id}', response_model=ApiTypes.Rating, tags=['rating'])
+def put_rating(rating_id: int, rating: ApiTypes.RatingNoID):
+    crud: Crud = resources['crud']
+    crud.put_rating(rating_id, rating)
+    return crud.get_rating(rating_id)
+
+
+@app.delete('/rating/{rating_id}', response_model=ApiTypes.Rating, tags=['rating'])
+def delete_rating(rating_id: int):
+    crud: Crud = resources['crud']
+    return crud.delete_rating(rating_id)
+
+
 if __name__ == '__main__':
     import uvicorn
     uvicorn.run('main:app', host='0.0.0.0', port=5001, reload=True)
