@@ -1,8 +1,20 @@
+import os
+import logging
+
 from typing import List
 from sqlalchemy import or_
 from sqlalchemy.orm import Session
 
 from crud.models import Base, Person, Rating, User
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(
+    level=logging.DEBUG,
+    encoding='utf-8',
+    filename=os.path.join(os.path.dirname(__file__), '..', 'logs', 'crud.log'),
+    filemode='w',
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+)
 
 
 class Crud:
@@ -49,6 +61,13 @@ class Crud:
         with Session(self._engine) as session:
             return session.query(Rating).where(Rating.person_id == person_id).all()
 
+    def get_user_person_rating(self, user_id: int, person_id: int) -> Rating:
+        with Session(self._engine) as session:
+            return session.query(Rating).where(
+                Rating.user_id == user_id,
+                Rating.person_id == person_id
+            ).one()
+
     def post_rating(self, rating: Rating) -> Rating:
         with Session(self._engine) as session:
             session.add(rating)
@@ -69,3 +88,18 @@ class Crud:
             session.delete(rating)
             session.commit()
             return rating
+
+    def get_user(self, user_id: int) -> User:
+        with Session(self._engine) as session:
+            return session.query(User).where(User.id == user_id).one()
+
+    def get_user_by_email(self, email: str) -> User:
+        with Session(self._engine) as session:
+            return session.query(User).where(User.email == email).one()
+
+    def post_user(self, user: User) -> User:
+        with Session(self._engine) as session:
+            session.add(user)
+            session.commit()
+            session.refresh(user)
+            return user

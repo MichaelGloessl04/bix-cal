@@ -23,7 +23,8 @@ def client():
     from main import app
 
     os.environ['TESTING'] = 'True'
-    yield TestClient(app)
+    with TestClient(app) as client:
+        yield client
 
 
 def populate(session):

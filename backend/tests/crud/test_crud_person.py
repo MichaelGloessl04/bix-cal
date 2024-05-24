@@ -2,13 +2,13 @@ import os
 import json
 from crud import Models
 
+from ..data.data import get_people
+
 
 def test_get_persons(crud_session_in_memory):
     crud, session = crud_session_in_memory
 
-    _people = []
-    with open(os.path.join(os.path.dirname(__file__), '..','data\\valid\\people.json'), 'r') as f:
-        _people = [Models.Person(**data) for data in json.load(f)][0:1]
+    _people = get_people()[0:1]
 
     with session() as s:
         people = crud.get_persons()
@@ -24,9 +24,7 @@ def test_get_persons(crud_session_in_memory):
 def test_get_person(crud_session_in_memory):
     crud, session = crud_session_in_memory
 
-    _person = []
-    with open(os.path.join(os.path.dirname(__file__), '..','data\\valid\\people.json'), 'r') as f:
-        _person = [Models.Person(**data) for data in json.load(f)][0]
+    _person = get_people()[0]
 
     with session() as s:
         person = crud.get_person(1)
@@ -41,9 +39,7 @@ def test_get_person(crud_session_in_memory):
 def test_search_person(crud_session_in_memory):
     crud, session = crud_session_in_memory
 
-    _people = []
-    with open(os.path.join(os.path.dirname(__file__), '..','data\\valid\\people.json'), 'r') as f:
-        _people = [Models.Person(**data) for data in json.load(f)][0:1]
+    _people = get_people()[0:1]
 
     with session() as s:
         people = crud.search_person('Doe')
@@ -79,9 +75,7 @@ def test_post_person(crud_session_in_memory):
 def test_delete_person(crud_session_in_memory):
     crud, session = crud_session_in_memory
 
-    _people = []
-    with open(os.path.join(os.path.dirname(__file__), '..','data\\valid\\people.json'), 'r') as f:
-        _people = [Models.Person(**data) for data in json.load(f)]
+    _people = get_people()
 
     with session() as s:
         person = crud.delete_person(1)

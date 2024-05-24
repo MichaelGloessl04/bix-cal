@@ -2,13 +2,13 @@ import os
 import json
 from crud import Models
 
+from ..data.data import get_ratings
+
 
 def test_get_rating(crud_session_in_memory):
     crud, session = crud_session_in_memory
 
-    _rating = []
-    with open(os.path.join(os.path.dirname(__file__), '..','data\\valid\\ratings.json'), 'r') as f:
-        _rating = [Models.Rating(**data) for data in json.load(f)][0]
+    _rating = get_ratings()[0]
 
     with session() as s:
         rating = crud.get_rating(1)
@@ -26,9 +26,7 @@ def test_get_rating(crud_session_in_memory):
 def test_get_person_ratings(crud_session_in_memory):
     crud, session = crud_session_in_memory
 
-    _ratings = []
-    with open(os.path.join(os.path.dirname(__file__), '..','data\\valid\\ratings.json'), 'r') as f:
-        _ratings = [Models.Rating(**data) for data in json.load(f)][0:1]
+    _ratings = get_ratings()[0:1]
 
     with session() as s:
         ratings = crud.get_person_ratings(1)
@@ -36,7 +34,30 @@ def test_get_person_ratings(crud_session_in_memory):
             assert isinstance(rating, Models.Rating)
             assert rating.id == _rating.id
             assert rating.person_id == _rating.person_id
-            assert rating.rating == _rating.rating
+            assert rating.user_id == _rating.user_id
+            assert rating.score == _rating.score
+            assert rating.hot == _rating.hot
+            assert rating.crazy == _rating.crazy
+            assert rating.nice == _rating.nice
+            assert rating.comment == _rating.comment
+
+
+def get_user_person_rating(crud_session_in_memory):
+    crud, session = crud_session_in_memory
+
+    _rating = get_ratings()[0]
+
+    with session() as s:
+        ratings = crud.get_user_person_rating(1, 2)
+        for rating, _rating in zip(ratings, _rating):
+            assert isinstance(rating, Models.Rating)
+            assert rating.id == _rating.id
+            assert rating.person_id == _rating.person_id
+            assert rating.user_id == _rating.user_id
+            assert rating.score == _rating.score
+            assert rating.hot == _rating.hot
+            assert rating.crazy == _rating.crazy
+            assert rating.nice == _rating.nice
             assert rating.comment == _rating.comment
 
 
@@ -95,9 +116,7 @@ def test_put_rating(crud_session_in_memory):
 def test_delete_rating(crud_session_in_memory):
     crud, session = crud_session_in_memory
 
-    _ratings = []
-    with open(os.path.join(os.path.dirname(__file__), '..','data\\valid\\ratings.json'), 'r') as f:
-        _ratings = [Models.Rating(**data) for data in json.load(f)]
+    _ratings = get_ratings()
 
     with session() as s:
         rating = crud.delete_rating(1)

@@ -1,37 +1,49 @@
-import os
-import json
 from crud import Models
+
+from ..data.data import get_users
 
 
 def test_get_user(crud_session_in_memory):
     crud, session = crud_session_in_memory
 
-    _user = []
-    with open(os.path.join(os.path.dirname(__file__), '..','data\\valid\\users.json'), 'r') as f:
-        _user = [Models.User(**data) for data in json.load(f)][0]
+    _users = get_users()[0]
 
     with session() as s:
         user = crud.get_user(1)
         assert isinstance(user, Models.User)
-        assert user.id == _user.id
-        assert user.username == _user.username
-        assert user.password == _user.password
-        assert user.email == _user.email
-        assert user.image_url == _user.image_url
+        assert user.id == _users.id
+        assert user.person_id == _users.person_id
+        assert user.username == _users.username
+        assert user.email == _users.email
 
 
-def test_get_user_person_rating(crud_session_in_memory):
+def test_get_user_by_email(crud_session_in_memory):
     crud, session = crud_session_in_memory
 
-    _user = []
-    with open(os.path.join(os.path.dirname(__file__), '..','data\\valid\\users.json'), 'r') as f:
-        _user = [Models.User(**data) for data in json.load(f)][0]
+    _users = get_users()[1]
 
     with session() as s:
-        user = crud.get_user_person_rating(1)
+        user = crud.get_user_by_email('jsmith@example.com')
         assert isinstance(user, Models.User)
-        assert user.id == _user.id
+        assert user.id == _users.id
+        assert user.person_id == _users.person_id
+        assert user.username == _users.username
+        assert user.email == _users.email
+
+
+def test_post_user(crud_session_in_memory):
+    crud, session = crud_session_in_memory
+
+    _user = Models.User(
+        person_id=None,
+        username='j.smith',
+        email='jsmith@example.at'
+    )
+
+    with session() as s:
+        user = crud.post_user(_user)
+        assert isinstance(user, Models.User)
+        assert user.id == 3
+        assert user.person_id == _user.person_id
         assert user.username == _user.username
-        assert user.password == _user.password
         assert user.email == _user.email
-        assert user.image_url == _user.image_url

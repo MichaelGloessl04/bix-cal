@@ -23,7 +23,7 @@ class Person(PersonNoID):
 class RatingNoID(pydantic.BaseModel):
     person_id: int
     user_id: int
-    score: float
+    score: float = None
     hot: float
     crazy: float
     nice: float
@@ -34,6 +34,7 @@ class RatingNoID(pydantic.BaseModel):
     )
 
 
+
 class Rating(RatingNoID):
     id: int
 
@@ -42,7 +43,7 @@ class Rating(RatingNoID):
     )
 
 
-class AvgEntry(pydantic.BaseModel):
+class AvgRating(pydantic.BaseModel):
     score: float
     hot: float
     crazy: float
