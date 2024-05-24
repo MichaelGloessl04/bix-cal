@@ -10,7 +10,7 @@ from sqlalchemy.orm import sessionmaker
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
-from crud import Crud, create_engine
+from crud import Crud, create_engine, Models
 
 import api_types as ApiTypes
 
@@ -235,6 +235,49 @@ def delete_rating(rating_id: int) -> ApiTypes.Rating:
     """
     crud: Crud = resources['crud']
     return crud.delete_rating(rating_id)
+
+
+@app.get('/user/{user_id}', response_model=ApiTypes.User, tags=['user'])
+def get_user(user_id: int) -> ApiTypes.User:
+    """Get a user by their ID
+
+    Args:
+        user_id (int): The ID of the user
+
+    Returns:
+        ApiTypes.User: The user with the given ID
+    """
+    crud: Crud = resources['crud']
+    return crud.get_user(user_id)
+
+
+@app.get('/user/email/{email}', response_model=ApiTypes.User, tags=['user'])
+def get_user_by_email(email: str) -> ApiTypes.User:
+    """Get a user by their email
+
+    Args:
+        email (str): The email of the user
+
+    Returns:
+        ApiTypes.User: The user with the given email
+    """
+    crud: Crud = resources['crud']
+    return crud.get_user_by_email(email)
+
+
+@app.post('/user/', response_model=ApiTypes.User, tags=['user'])
+def post_user(user: ApiTypes.UserNoID) -> ApiTypes.User:
+    """Create a new user
+
+    Args:
+        user (ApiTypes.UserNoID): The new user to create
+
+    Returns:
+        ApiTypes.User: The created user
+    """
+    crud: Crud = resources['crud']
+    crud.post_user(Models.User(**user.model_dump()))
+    return crud.get_user(user.id)
 
 
 if __name__ == '__main__':

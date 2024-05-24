@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(
     level=logging.DEBUG,
     encoding='utf-8',
-    filename=os.path.join(os.path.dirname(__file__), '..', 'logs', 'crud.log'),
+    filename=os.path.join(os.path.dirname(__file__), '..', '..', 'logs', 'crud.log'),
     filemode='w',
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
 )
