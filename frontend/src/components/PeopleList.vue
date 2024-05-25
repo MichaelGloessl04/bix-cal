@@ -12,7 +12,7 @@
       </thead>
       <tbody>
         <div v-if="people.length > 0">
-          <tr v-for="person in people">
+          <tr v-for="person in people" :key="person.id">
             <PeopleListItem :person="person" />
           </tr>
         </div>

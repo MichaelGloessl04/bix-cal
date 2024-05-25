@@ -2,7 +2,8 @@ import os
 
 import logging
 
-from typing import List
+from types import NoneType
+from typing import List, Union
 from fastapi import FastAPI, HTTPException
 
 from sqlalchemy.orm import sessionmaker
@@ -75,7 +76,7 @@ async def about() -> str:
     Returns:
         str: The content of the about section
     """
-    with open('./assets/about.md', 'r') as f:
+    with open(os.path.join(os.path.dirname(__file__), 'assets', 'about.md'), 'r') as f:
         return f.read()
 
 
@@ -121,8 +122,7 @@ def post_person(person: ApiTypes.PersonNoID) -> ApiTypes.Person:
         ApiTypes.Person: The created person
     """
     crud: Crud = resources['crud']
-    crud.post_person(person)
-    return crud.get_person(person.id)
+    return crud.post_person(person.model_dump())
 
 
 @app.delete('/person/{person_id}', response_model=ApiTypes.Person, tags=['person'])
@@ -139,8 +139,8 @@ def delete_person(person_id: int) -> ApiTypes.Person:
     return crud.delete_person(person_id)
 
 
-@app.get('/rating/{rating_id}', response_model=List[ApiTypes.Rating], tags=['rating'])
-def get_rating(rating_id: int) -> ApiTypes.Rating:
+@app.get('/rating/{person_id}', response_model=Union[List[ApiTypes.Rating], NoneType], tags=['rating'])
+def get_rating(person_id: int) -> ApiTypes.Rating:
     """Get a rating by its ID
 
     Args:
@@ -150,7 +150,7 @@ def get_rating(rating_id: int) -> ApiTypes.Rating:
         ApiTypes.Rating: The rating with the given ID
     """
     crud: Crud = resources['crud']
-    return crud.get_rating(rating_id)
+    return crud.get_person_ratings(person_id)
 
 
 @app.get('/rating/person/{person_id}', response_model=List[ApiTypes.Rating], tags=['rating'])
@@ -167,7 +167,7 @@ def get_person_ratings(person_id: int) -> List[ApiTypes.Rating]:
     return crud.get_person_ratings(person_id)
 
 
-@app.get('/rating/average/{person_id}', response_model=ApiTypes.Rating, tags=['rating'])
+@app.get('/rating/average/{person_id}', response_model=ApiTypes.AvgRating, tags=['rating'])
 def get_person_average(person_id: int) -> ApiTypes.AvgRating:
     """Get the average rating for a person
 
@@ -203,8 +203,7 @@ def post_rating(rating: ApiTypes.RatingNoID) -> ApiTypes.Rating:
     crud: Crud = resources['crud']
     rating.score = ((rating.hot + rating.nice + (4 - rating.crazy)) + 4) * 10/24
     rating.score = max(1, min(10, rating.score))
-    crud.post_rating(rating)
-    return crud.get_rating(rating.id)
+    return crud.post_rating(rating.model_dump())
 
 
 @app.put('/rating/{rating_id}', response_model=ApiTypes.Rating, tags=['rating'])
@@ -219,8 +218,9 @@ def put_rating(rating_id: int, rating: ApiTypes.RatingNoID) -> ApiTypes.Rating:
         ApiTypes.Rating: The updated rating
     """
     crud: Crud = resources['crud']
-    crud.put_rating(rating_id, rating)
-    return crud.get_rating(rating_id)
+    rating.score = ((rating.hot + rating.nice + (4 - rating.crazy)) + 4) * 10/24
+    rating.score = max(1, min(10, rating.score))
+    return crud.put_rating(rating_id, rating.model_dump())
 
 
 @app.delete('/rating/{rating_id}', response_model=ApiTypes.Rating, tags=['rating'])
@@ -265,6 +265,21 @@ def get_user_by_email(email: str) -> ApiTypes.User:
     return crud.get_user_by_email(email)
 
 
+@app.get('/user/rating/{user_id}/{person_id}', response_model=Union[ApiTypes.Rating, NoneType], tags=['user'])
+def get_user_person_rating(user_id: int, person_id: int) -> ApiTypes.Rating:
+    """Get a user's rating for a person
+
+    Args:
+        user_id (int): The ID of the user
+        person_id (int): The ID of the person
+
+    Returns:
+        ApiTypes.Rating: The user's rating for the person
+    """
+    crud: Crud = resources['crud']
+    return crud.get_user_person_rating(user_id, person_id)
+
+
 @app.post('/user/', response_model=ApiTypes.User, tags=['user'])
 def post_user(user: ApiTypes.UserNoID) -> ApiTypes.User:
     """Create a new user
@@ -276,8 +291,30 @@ def post_user(user: ApiTypes.UserNoID) -> ApiTypes.User:
         ApiTypes.User: The created user
     """
     crud: Crud = resources['crud']
-    crud.post_user(Models.User(**user.model_dump()))
-    return crud.get_user(user.id)
+    return crud.post_user(user.model_dump())
+
+
+@app.put('/user/define-person/{user_id}/{person_id}', response_model=ApiTypes.User, tags=['user'])
+def define_person(user_id: int, person_id: int) -> ApiTypes.User:
+    """Define a person for a user
+
+    Args:
+        user_id (int): The ID of the user
+        person_id (int): The ID of the person
+
+    Returns:
+        ApiTypes.User: The updated user
+    """
+    crud: Crud = resources['crud']
+    user = crud.get_user(user_id)
+    user.person_id = person_id
+    api_user = ApiTypes.User(
+        id=user.id,
+        person_id=user.person_id,
+        username=user.username,
+        email=user.email
+    )
+    return crud.put_user(user_id, api_user.model_dump())
 
 
 if __name__ == '__main__':

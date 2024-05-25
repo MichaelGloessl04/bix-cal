@@ -24,6 +24,7 @@ const errorMsg = ref('')
 
 function addUserToDB() {
   const user: UserNoID = {
+    person_id: 0,
     username: email.value.split('@')[0],
     email: email.value
   }
@@ -32,8 +33,7 @@ function addUserToDB() {
       console.log('User created in database')
     })
     .catch((error) => {
-      if (error.code === 'User already exists') console.log('User already exists in database')
-      else console.error('Failed to create user in database', error)
+      console.error('Failed to create user in database', error)
     })
 }
 

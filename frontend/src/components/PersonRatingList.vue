@@ -1,10 +1,10 @@
 <template>
   <div>
     <h2>Person Ratings</h2>
-    <div v-if="entries.length > 0">
+    <div v-if="ratings">
       <ul>
-        <li v-for="entry in entries" :key="entry.id">
-          <RatingCard :entry="entry" />
+        <li v-for="rating in ratings" :key="rating.id">
+          <RatingCard :rating="rating" />
         </li>
       </ul>
     </div>
@@ -16,5 +16,5 @@
 
 <script setup lang="ts">
 import RatingCard from '@/components/RatingCard.vue'
-defineProps(['entries'])
+defineProps(['ratings'])
 </script>

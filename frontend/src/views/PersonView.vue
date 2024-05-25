@@ -1,17 +1,17 @@
 <template>
   <div class="row" v-if="!isLoading()">
     <h1>{{ person.name }} {{ person.surname }}</h1>
-    <p>Created by: {{ creator.username }}</p>
+    <p>Created by: {{ user.username }}</p>
     <div class="col">
       <div>
-        <div class="row" v-if="entries.length > 0">
+        <div class="row" v-if="ratings">
           <div class="col">
-            <p>Hot: {{ scores.hot }}</p>
-            <p>Crazy: {{ scores.crazy }}</p>
-            <p>Nice: {{ scores.nice }}</p>
+            <p>Hot: {{ avg_rating.hot }}</p>
+            <p>Crazy: {{ avg_rating.crazy }}</p>
+            <p>Nice: {{ avg_rating.nice }}</p>
           </div>
           <div class="col">
-            <p>Score: {{ scores.score.toFixed(2) }}</p>
+            <p>Score: {{ avg_rating.score.toFixed(2) }}</p>
           </div>
         </div>
         <div v-else>
@@ -21,14 +21,19 @@
       <div>
         <h3>Rating</h3>
         <div v-if="isLoggedIn">
-          <div v-if="rated && !edit">
+          <div v-if="is_rated && !edit">
             <p>Your rating:</p>
-            <PersonRating :rating="entry" @edit="edit = true" />
+            <PersonRating :rating="new_rating" @edit="edit = true" />
           </div>
           <div v-else>
             <p v-if="edit">Change your rating:</p>
             <p v-else>Rate this person:</p>
-            <RatePerson :edit="edit" :rated="rated" :entry="entry" @cancel="edit = false" />
+            <RatePerson
+              :edit="edit"
+              :rated="is_rated"
+              :rating="new_rating"
+              @cancel="edit = false"
+            />
           </div>
         </div>
         <div v-else>
@@ -38,7 +43,7 @@
       </div>
     </div>
     <div class="col">
-      <PersonRatingList :entries="entries" />
+      <PersonRatingList :ratings="ratings" />
     </div>
   </div>
   <div v-else>
@@ -50,42 +55,48 @@
 import PersonRatingList from '@/components/PersonRatingList.vue'
 import RatePerson from '@/components/RatePerson.vue'
 import PersonRating from '@/components/PersonRating.vue'
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { getPerson, getScores, getEntries } from '@/api/person'
-import { getRating, getUserByID, hasRated } from '@/api/user'
+import { getPerson } from '@/api/person'
+import { getUser, getUserPersonRating } from '@/api/user'
 
 import type { Ref } from 'vue'
 import type { Person } from '@/api/types/person'
-import type { Scores } from '@/api/types/scores'
-import type { Entry, EntryNoID } from '@/api/types/entry'
+import type { Rating, RatingNoID } from '@/api/types/rating'
 import type { User } from '@/api/types/user'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { getAverageRating, getPersonRatings } from '@/api/rating'
 
 const loading = ref({
   person: true,
-  entries: true,
-  scores: true,
-  creator: true,
-  rated: true
+  ratings: true,
+  avg_rating: true,
+  user: true,
+  is_rated: true
 })
 
 const route = useRoute()
 const router = useRouter()
 
 const edit = ref(false)
-const rated = ref(false)
+const is_rated = ref(false)
 
 const person: Ref<Person> = ref({} as Person)
-const entries: Ref<Entry[]> = ref([])
-const scores: Ref<Scores> = ref({} as Scores)
-const creator: Ref<User> = ref({} as User)
-const entry: Ref<EntryNoID> = ref({
+const ratings: Ref<Rating[]> = ref([])
+const user: Ref<User> = ref({} as User)
+const avg_rating = ref({
+  score: 0,
+  hot: 0,
+  nice: 0,
+  crazy: 0
+})
+const new_rating: Ref<RatingNoID> = ref({
   person_id: Number(route.params.person_id),
-  author_id: 0,
+  user_id: 0,
+  score: 0,
   hot: 5,
-  crazy: 5,
   nice: 5,
+  crazy: 5,
   comment: ''
 })
 
@@ -93,48 +104,52 @@ const isLoggedIn = ref(false)
 
 let auth: any
 onMounted(() => {
-  getScores(Number(route.params.person_id))
-    .then((response) => {
-      scores.value = response
+  getAverageRating(Number(route.params.person_id))
+    .then((api_rating) => {
+      avg_rating.value.score = api_rating.score
+      avg_rating.value.hot = api_rating.hot
+      avg_rating.value.nice = api_rating.nice
+      avg_rating.value.crazy = api_rating.crazy
     })
     .finally(() => {
-      loading.value.scores = false
+      loading.value.avg_rating = false
     })
-  getEntries(Number(route.params.person_id))
-    .then((response) => {
-      entries.value = response
+
+  getPersonRatings(Number(route.params.person_id))
+    .then((api_ratings) => {
+      ratings.value = api_ratings
     })
     .finally(() => {
-      loading.value.entries = false
+      loading.value.ratings = false
     })
+
   getPerson(Number(route.params.person_id))
-    .then((response) => {
-      person.value = response
-      getUserByID(person.value.creator_id)
-        .then((user) => {
-          creator.value = user
-          hasRated(user.id, person.value.id)
-            .then((response) => {
-              rated.value = response
-              getRating(user.id, person.value.id)
-                .then((response) => {
-                  entry.value = response
-                })
-                .finally(() => {
-                  loading.value.rated = false
-                })
+    .then((api_person) => {
+      person.value = api_person
+
+      getUser(person.value.user_id)
+        .then((api_user) => {
+          user.value = api_user
+
+          getUserPersonRating(user.value.id, person.value.id)
+            .then((user_person_rating) => {
+              if (user_person_rating) {
+                is_rated.value = true
+                new_rating.value = user_person_rating
+              }
             })
             .finally(() => {
-              loading.value.rated = false
+              loading.value.is_rated = false
             })
         })
         .finally(() => {
-          loading.value.creator = false
+          loading.value.user = false
         })
     })
     .finally(() => {
       loading.value.person = false
     })
+
   auth = getAuth()
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -143,13 +158,6 @@ onMounted(() => {
       isLoggedIn.value = false
     }
   })
-})
-
-watch(rated, () => {
-  console.log('rated: ', rated.value)
-})
-watch(edit, () => {
-  console.log('edit: ', edit.value)
 })
 
 function isLoading() {

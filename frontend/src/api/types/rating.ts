@@ -1,12 +1,13 @@
-export type EntryNoID = {
+export type RatingNoID = {
   person_id: number
-  author_id: number
+  user_id: number
+  score: number
   hot: number
   crazy: number
   nice: number
   comment: string
 }
 
-export type Entry = EntryNoID & {
+export type Rating = RatingNoID & {
   id: number
 }

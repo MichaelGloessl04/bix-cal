@@ -15,12 +15,12 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, type Ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-import { getScores } from '@/api/person'
 import type { Person } from '@/api/types/person'
-import type { Scores } from '@/api/types/scores'
+import type { Rating } from '@/api/types/rating'
+import { getAverageRating } from '@/api/rating'
 
 const router = useRouter()
 
@@ -28,28 +28,23 @@ const props = defineProps<{
   person: Person
 }>()
 
-const scores: Ref<Scores> = ref({
+const scores = ref({
   score: 0,
   hot: 0,
   nice: 0,
   crazy: 0
-} as Scores)
+})
 
 onMounted(() => {
-  getScores(props.person.id)
-    .then((data: Scores) => {
-      scores.value = data
+  getAverageRating(props.person.id)
+    .then((rating: Rating) => {
+      scores.value.score = rating.score
+      scores.value.hot = rating.hot
+      scores.value.nice = rating.nice
+      scores.value.crazy = rating.crazy
     })
     .catch((error) => {
-      if (error.response.status === 404) {
-        console.log('No scores found for person', props.person.id)
-        scores.value = {
-          score: 0,
-          hot: 0,
-          nice: 0,
-          crazy: 0
-        }
-      }
+      console.error(error)
     })
 })
 </script>

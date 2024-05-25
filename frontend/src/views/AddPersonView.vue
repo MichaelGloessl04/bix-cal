@@ -4,13 +4,13 @@
     <p><input type="text" v-model="name" placeholder="Name" /></p>
     <p><input type="text" v-model="surname" placeholder="Surname" /></p>
     <p v-if="errorMsg">{{ errorMsg }}</p>
-    <p><button @click="createPerson">Add Person</button></p>
+    <p><button @click="submit">Add Person</button></p>
   </div>
 </template>
 
 <script setup lang="ts">
-import { addPerson } from '@/api/person'
-import { getUser } from '@/api/user'
+import { createPerson } from '@/api/person'
+import { getUserByEmail } from '@/api/user'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { getAuth } from 'firebase/auth'
@@ -22,19 +22,20 @@ const name = ref('')
 const surname = ref('')
 const errorMsg = ref('')
 
-function createPerson() {
+function submit() {
   const currentUser = getAuth().currentUser
   if (!currentUser) {
     errorMsg.value = 'You need to be logged in to add a person'
     return
   }
-  getUser(currentUser.email!).then((user) => {
+  getUserByEmail(currentUser.email!).then((user) => {
     const newPerson: PersonNoID = {
-      creator_id: user.id,
+      user_id: user.id,
       name: name.value,
-      surname: surname.value
+      surname: surname.value,
+      image_url: ''
     }
-    addPerson(newPerson)
+    createPerson(newPerson)
       .then((person) => {
         router.push(`/person/${person.id}`)
       })
