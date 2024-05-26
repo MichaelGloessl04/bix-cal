@@ -35,22 +35,20 @@ async function search() {
     results.value.length = 0
   } else {
     loading.value = true
-    getPersons(search_term.value)
-      .then((persons) => {
-        results.value = persons
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-      .finally(() => {
-        loading.value = false
-      })
+    getPersons(search_term.value).then((persons) => {
+      results.value = persons
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+    .finally(() => {
+      loading.value = false
+    })
   }
 }
 
 function clearResults() {
   results.value.length = 0
-  console.log('cleared results')
 }
 
 watch(search_term, search)
@@ -67,43 +65,38 @@ watch(
 </script>
 
 <style scoped lang="scss">
-$border-radius: 2rem;
+$border-radius: 1rem;
 
 .search-bar {
-  display: flex;
-  justify-content: center;
-  margin: 1rem;
+  width: 100%;
   margin-bottom: 0;
   margin-left: 0;
-  width: 100%;
 }
 
 .search-bar input {
   width: 100%;
   padding: 0.5rem;
+  padding-left: 1rem;
   font-size: 1.4rem;
   border: 0;
   border-radius: $border-radius;
-  padding-left: 1.5rem;
 }
 
 .search-bar input:not(:placeholder-shown){
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .search-bar input:focus {
-    outline: none;
+  outline: none;
 }
 
 .search-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 70%;
-}
-
-.search-container > * {
-    width: 100%;
+  padding: 0;
+  width: 90%;
+  max-width: 40rem;
+  border-radius: $border-radius;
+  box-shadow:  11px 11px 18px #191c1f,
+             -11px -11px 18px #353c43
 }
 </style>

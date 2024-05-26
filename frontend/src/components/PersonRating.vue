@@ -5,7 +5,7 @@
     <p>Nice: {{ rating.nice }}</p>
     <p>Comment: {{ rating.comment }}</p>
   </div>
-  <button @click="emits('edit')">Change rating</button>
+  <button class="btn btn-primary btn-sm" @click="emits('edit')">Change rating</button>
 </template>
 
 <script setup lang="ts">

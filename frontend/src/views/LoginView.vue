@@ -1,11 +1,11 @@
 <template>
-  <div class="row hover-box">
+  <div class="row login-container">
     <h1>Log In</h1>
-    <p><input type="email" placeholder="Email" v-model="email" /></p>
-    <p><input type="password" placeholder="Password" v-model="password" /></p>
+    <p><input class="inp" type="email" placeholder="Email" v-model="email" /></p>
+    <p><input class="inp" type="password" placeholder="Password" v-model="password" /></p>
     <p v-if="errorMsg">{{ errorMsg }}</p>
-    <p><button @click="login()">Submit</button></p>
-    <p><router-link to="/register">Create Account</router-link></p>
+    <p><button class="btn btn-primary" @click="login()">Submit</button></p>
+    <p><router-link class="btn btn-link" to="/register">Create Account</router-link></p>
   </div>
 </template>
 
@@ -62,3 +62,15 @@ function login() {
     })
 }
 </script>
+
+<style scoped lang="scss">
+.login-container {
+  margin: 0 auto;
+  margin-top: 10%;
+  width: 300px;
+  padding: 20px;
+  box-shadow:  11px 11px 18px #202428,
+             -11px -11px 18px #2e343a;
+  border-radius: 1rem;
+}
+</style>

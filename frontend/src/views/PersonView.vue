@@ -38,7 +38,7 @@
         </div>
         <div v-else>
           <p>You need to be logged in to rate people</p>
-          <button @click="router.push('/login')">Login</button>
+          <button class="btn btn-primary" @click="router.push('/login')">Login</button>
         </div>
       </div>
     </div>

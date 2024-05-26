@@ -4,7 +4,7 @@
     <p><input type="text" v-model="name" placeholder="Name" /></p>
     <p><input type="text" v-model="surname" placeholder="Surname" /></p>
     <p v-if="errorMsg">{{ errorMsg }}</p>
-    <p><button @click="submit">Add Person</button></p>
+    <p><button class="btn btn-primary" @click="submit">Add Person</button></p>
   </div>
 </template>
 

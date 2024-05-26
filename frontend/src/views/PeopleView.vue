@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import PeopleList from '@/components/PeopleList.vue'
+import PeopleList from '@/components/PeopleTable.vue'
 
 import { onMounted, ref } from 'vue'
 

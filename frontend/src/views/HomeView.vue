@@ -17,14 +17,12 @@ const add = ref(false)
 h1 {
   font-size: 4rem;
   margin-bottom: 1rem;
-  text-align: center;
 }
 
 .home-container {
   display: flex; 
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 40vh;
+  margin-top: 10%;
 }
 </style>

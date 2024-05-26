@@ -1,11 +1,11 @@
 <template>
-  <div class="row hover-box">
+  <div class="row register-container">
     <h1>Create an Account</h1>
     <p><input type="text" placeholder="Username" v-model="username" /></p>
     <p><input type="email" placeholder="Email" v-model="email" /></p>
     <p><input type="password" placeholder="Password" v-model="password" /></p>
     <p v-if="errorMsg">{{ errorMsg }}</p>
-    <p><button @click="register()">Register</button></p>
+    <p><button class="btn btn-primary" @click="register()">Register</button></p>
     <p><router-link to="/login">Already have an account?</router-link></p>
   </div>
 </template>
@@ -63,3 +63,15 @@ function register() {
     })
 }
 </script>
+
+<style scoped>
+.register-container {
+  margin: 0 auto;
+  margin-top: 10%;
+  width: 300px;
+  padding: 20px;
+  box-shadow:  11px 11px 18px #202428,
+             -11px -11px 18px #2e343a;
+  border-radius: 1rem;
+}
+</style>

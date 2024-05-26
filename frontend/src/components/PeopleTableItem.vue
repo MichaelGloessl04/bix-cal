@@ -1,5 +1,7 @@
 <template>
-  <td @click="router.push(`/person/${props.person.id}`)">{{ person.name }} {{ person.surname }}</td>
+  <td class="person-name" @click="router.push(`/person/${props.person.id}`)">
+    {{ person.name }} {{ person.surname }}
+  </td>
   <td>
     {{ scores.score.toFixed(2) }}
   </td>
@@ -48,3 +50,9 @@ onMounted(() => {
     })
 })
 </script>
+
+<style scoped>
+.person-name {
+  cursor: pointer;
+}
+</style>

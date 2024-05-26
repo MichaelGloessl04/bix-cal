@@ -19,8 +19,8 @@
       <input id="comment" v-model="comment" type="message" placeholder="Comment" maxlength="20" />
       <span>{{ comment.length }}/20</span>
     </p>
-    <button v-if="edit" @click="emits('cancel')">Cancel</button>
-    <button @click="submit">Submit</button>
+    <button class="btn btn-secondary btn-sm" v-if="edit" @click="emits('cancel')">Cancel</button>
+    <button class="btn btn-primary btn-sm" @click="submit">Submit</button>
   </div>
 </template>
 
