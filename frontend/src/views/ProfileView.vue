@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!loading" class="profile-view">
+  <div v-if="!loading" class="login-container">
     <h1>Profile</h1>
     <p>Username: {{ user.username }}</p>
     <p>Email: {{ user.email }}</p>
@@ -36,3 +36,10 @@ onMounted(() => {
   }
 })
 </script>
+
+<style scoped>
+.login-container p {
+  margin: 0;
+  padding: 3px;
+}
+</style>

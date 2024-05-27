@@ -78,11 +78,16 @@ $border-radius: 1rem;
   background-color: white;
   color: black;
   width: 100%;
+  height: auto;
   padding: 0.5rem;
   padding-left: 1rem;
   font-size: 1.4rem;
   border: 0;
   border-radius: $border-radius;
+}
+
+.search-bar input::placeholder {
+  color: #aaa;
 }
 
 .search-bar input:not(:placeholder-shown) {

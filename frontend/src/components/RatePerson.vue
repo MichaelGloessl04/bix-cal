@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <form>
     <p>
       <span for="hot">Hot</span>
       <input id="hot" v-model="hot" type="range" min="1" max="10" />
@@ -21,7 +21,7 @@
     </p>
     <button class="btn btn-secondary btn-sm" v-if="edit" @click="emits('cancel')">Cancel</button>
     <button class="btn btn-primary btn-sm" @click="submit">Submit</button>
-  </div>
+  </form>
 </template>
 
 <script setup lang="ts">

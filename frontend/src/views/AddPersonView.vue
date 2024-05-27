@@ -1,6 +1,7 @@
 <template>
   <div class="add-container">
-    <h1>Add new Person to the Database</h1>
+    <h1>Add Person</h1>
+    <p class="sub-title">Add a new Person to the Database.</p>
     <p><input type="text" v-model="name" placeholder="Name" /></p>
     <p><input type="text" v-model="surname" placeholder="Surname" /></p>
     <p v-if="errorMsg">{{ errorMsg }}</p>
@@ -53,6 +54,16 @@ function submit() {
 </script>
 
 <style>
+h1 {
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.sub-title {
+  padding: 0%;
+  margin-top: 0;
+}
+
 .add-container {
   margin: 0 auto;
   margin-top: 10%;

@@ -1,16 +1,18 @@
 <template>
   <div class="row" v-if="!isLoading()">
-    <h1>{{ person.name }} {{ person.surname }}</h1>
-    <p>Created by: {{ user.username }}</p>
+    <div class="title-container">
+      <h1>{{ person.name }} {{ person.surname }}</h1>
+      <p>Created by: {{ user.username }}</p>
+    </div>
     <div class="col">
-      <div>
+      <div class="average-container">
         <div class="row" v-if="ratings">
-          <div class="col">
+          <div class="col avg-parts">
             <p>Hot: {{ avg_rating.hot }}</p>
             <p>Crazy: {{ avg_rating.crazy }}</p>
             <p>Nice: {{ avg_rating.nice }}</p>
           </div>
-          <div class="col">
+          <div class="col avg-score">
             <p>Score: {{ avg_rating.score.toFixed(1) }}</p>
           </div>
         </div>
@@ -18,7 +20,7 @@
           <p>Be the first to rate this person!</p>
         </div>
       </div>
-      <div>
+      <div class="rating-container">
         <h3>Rating</h3>
         <div v-if="isLoggedIn">
           <div v-if="is_rated && !edit">

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="ratings-container">
     <h2>Person Ratings</h2>
     <div v-if="ratings">
       <ul>
@@ -18,3 +18,31 @@
 import RatingCard from '@/components/RatingCard.vue'
 defineProps(['ratings'])
 </script>
+
+<style scoped>
+.ratings-container {
+  margin-top: 20px;
+}
+
+.ratings-container h2 {
+  margin-bottom: 10px;
+}
+
+.ratings-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.ratings-container li {
+  margin-bottom: 10px;
+}
+
+.ratings-container p {
+  margin: 0;
+}
+
+.ratings-container .rating {
+  display: flex;
+  justify-content: space-between;
+}
+</style>
