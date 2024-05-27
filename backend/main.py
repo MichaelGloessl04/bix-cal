@@ -4,14 +4,14 @@ import logging
 
 from types import NoneType
 from typing import List, Union
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 
 from sqlalchemy.orm import sessionmaker
 
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
-from crud import Crud, create_engine, Models
+from crud import Crud, create_engine
 
 import api_types as ApiTypes
 
@@ -19,23 +19,26 @@ from tests.fixtures import populate
 
 resources = {}
 
+# Ensure the log directory exists
+log_dir = os.path.join(os.path.dirname(__file__), '..', 'logs')
+os.makedirs(log_dir, exist_ok=True)
+
+# Set up the logger
 logger = logging.getLogger(__name__)
-logging.basicConfig(
-    level=logging.DEBUG,
-    encoding='utf-8',
-    filename=os.path.join(os.path.dirname(__file__), '..', 'logs', 'api.log'),
-    filemode='w',
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-)
+logger.setLevel(logging.DEBUG)
+fh = logging.FileHandler(os.path.join(log_dir, 'api.log'), encoding='utf-8')
+fh.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+fh.setFormatter(formatter)
+logger.addHandler(fh)
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """start the character device reader"""
-    print('lifespan started')
     logger.debug('lifespan started')
     if os.getenv('TESTING'):
-        print('testing')
+        logger.debug('Testing mode')
         engine = create_engine('sqlite:///:memory:')
         crud = Crud(engine)
         populate(sessionmaker(bind=engine))
@@ -46,7 +49,7 @@ async def lifespan(app: FastAPI):
     yield
     engine.dispose()
     resources.clear()
-    print('lifespan finished')
+    logger.debug('lifespan ended')
 
 
 app = FastAPI(lifespan=lifespan)
@@ -315,6 +318,20 @@ def define_person(user_id: int, person_id: int) -> ApiTypes.User:
         email=user.email
     )
     return crud.put_user(user_id, api_user.model_dump())
+
+
+@app.delete('/user/{user_id}', response_model=ApiTypes.User, tags=['user'])
+def delete_user(user_id: int) -> ApiTypes.User:
+    """Delete a user by their ID
+
+    Args:
+        user_id (int): The ID of the user to delete
+
+    Returns:
+        ApiTypes.User: The deleted user
+    """
+    crud: Crud = resources['crud']
+    return crud.delete_user(user_id)
 
 
 if __name__ == '__main__':

@@ -3,7 +3,7 @@
     <p>Hot: {{ rating.hot }}</p>
     <p>Crazy: {{ rating.crazy }}</p>
     <p>Nice: {{ rating.nice }}</p>
-    <p>Comment: {{ rating.comment }}</p>
+    <p v-if="rating.comment">Comment: {{ rating.comment }}</p>
   </div>
   <button class="btn btn-primary btn-sm" @click="emits('edit')">Change rating</button>
 </template>

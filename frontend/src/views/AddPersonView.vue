@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="add-container">
     <h1>Add new Person to the Database</h1>
     <p><input type="text" v-model="name" placeholder="Name" /></p>
     <p><input type="text" v-model="surname" placeholder="Surname" /></p>
@@ -51,3 +51,16 @@ function submit() {
   })
 }
 </script>
+
+<style>
+.add-container {
+  margin: 0 auto;
+  margin-top: 10%;
+  width: 300px;
+  padding: 20px;
+  box-shadow:
+    11px 11px 18px #202428,
+    -11px -11px 18px #2e343a;
+  border-radius: 1rem;
+}
+</style>

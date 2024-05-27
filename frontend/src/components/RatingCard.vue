@@ -4,12 +4,12 @@
       <span>{{ user.username }}</span>
     </div>
     <div class="row">
-      <span>{{ rating.score }}</span>
+      <span>{{ rating.score.toFixed(1) }}</span>
     </div>
     <div class="row">
       <span class="col">{{ rating.hot }}</span>
-      <span class="col">{{ rating.nice }}</span>
       <span class="col">{{ rating.crazy }}</span>
+      <span class="col">{{ rating.nice }}</span>
     </div>
     <div class="row">
       <span>{{ rating.comment }}</span>

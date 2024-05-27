@@ -20,7 +20,7 @@ h1 {
 }
 
 .home-container {
-  display: flex; 
+  display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 10%;

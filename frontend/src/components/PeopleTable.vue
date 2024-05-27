@@ -11,9 +11,9 @@
         </tr>
       </thead>
       <tbody v-if="people.length > 0">
-          <tr v-for="person in people" :key="person.id">
-            <PeopleListItem :person="person" />
-          </tr>
+        <tr v-for="person in people" :key="person.id">
+          <PeopleListItem :person="person" />
+        </tr>
       </tbody>
       <tbody v-else>
         <tr>
@@ -40,7 +40,8 @@ defineProps({
 <style scoped>
 .table-container {
   border-radius: 5px;
-  box-shadow:  11px 11px 18px #202428,
-             -11px -11px 18px #2e343a;
+  box-shadow:
+    11px 11px 18px #202428,
+    -11px -11px 18px #2e343a;
 }
 </style>

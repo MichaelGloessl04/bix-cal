@@ -35,7 +35,7 @@ import { getAuth } from 'firebase/auth'
 const route = useRoute()
 const router = useRouter()
 
-const emits = defineEmits(['changeRating', 'cancel'])
+const emits = defineEmits(['update', 'cancel'])
 const props = defineProps(['edit', 'rated', 'rating'])
 
 const score = ref(0)
@@ -64,7 +64,7 @@ const submit = () => {
         comment: comment.value
       }
       createRating(newRating).then(() => {
-        router.go(0)
+        emits('update')
       })
     } else {
       const updatedRating = {
@@ -75,7 +75,7 @@ const submit = () => {
         comment: comment.value
       }
       updateRating(props.rating.id, updatedRating).then(() => {
-        router.go(0)
+        emits('update')
       })
     }
   })

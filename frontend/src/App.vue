@@ -30,10 +30,10 @@
                 <router-link to="/about" class="nav-link">About</router-link>
               </li>
               <li v-if="!isLoggedIn" class="nav-item">
-                <router-link to="/login" class="nav-link">Login</router-link>
+                <router-link to="/login" class="nav-link">Sign In</router-link>
               </li>
               <li v-if="!isLoggedIn" class="nav-item">
-                <router-link to="/register" class="nav-link">Register</router-link>
+                <router-link to="/register" class="nav-link">Sign Up</router-link>
               </li>
               <li v-if="isLoggedIn" class="nav-item">
                 <router-link to="/profile" class="nav-link">Profile</router-link>
