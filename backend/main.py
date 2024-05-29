@@ -84,7 +84,7 @@ async def about() -> str:
 
 
 @app.get('/person/', response_model=List[ApiTypes.Person], tags=['person'])
-def get_person(search_term: str = None) -> List[ApiTypes.Person]:
+def get_persons(search_term: str = None, sort_column: str = None, order: str = None) -> List[ApiTypes.Person]:
     """Get all people in the database
 
     Args:
@@ -95,9 +95,9 @@ def get_person(search_term: str = None) -> List[ApiTypes.Person]:
     """
     crud: Crud = resources['crud']
     if search_term:
-        return crud.search_person(search_term)
+        return crud.search_person(search_term, sort_column, order)
     else:
-        return crud.get_persons()
+        return crud.get_persons(sort_column, order)
 
 
 @app.get('/person/{person_id}', response_model=ApiTypes.Person, tags=['person'])

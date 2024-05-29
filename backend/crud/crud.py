@@ -27,11 +27,14 @@ class Crud:
         Base.metadata.create_all(self._engine)
         self._logger.debug('Crud initialized')
 
-    def get_persons(self) -> List[Person]:
+    def get_persons(self, sort_column: str = None, order: str = None) -> List[Person]:
         self._logger.debug('Getting all persons')
         with Session(self._engine) as session:
             try:
-                return session.query(Person).all()
+                if sort_column and order:
+                    return session.query(Person).order_by(f'{sort_column} {order}').all()
+                else:
+                    return session.query(Person).all()
             except Exception as e:
                 self._logger.warning(e)
                 return []
@@ -45,16 +48,24 @@ class Crud:
                 self._logger.warning(f'Person with ID {person_id} not found')
                 return None
 
-    def search_person(self, search_term: str) -> List[Person]:
+    def search_person(self, search_term: str, sort_column: str = None, order: str = None) -> List[Person]:
         self._logger.debug(f'Searching for persons with term: {search_term}')
         with Session(self._engine) as session:
             try:
-                return session.query(Person).filter(
-                    or_(
-                        Person.name.like(f'%{search_term}%'),
-                        Person.surname.like(f'%{search_term}%')
-                    )
-                ).all()
+                if sort_column and order:
+                    return session.query(Person).filter(
+                        or_(
+                            Person.name.like(f'%{search_term}%'),
+                            Person.surname.like(f'%{search_term}%')
+                        )
+                    ).order_by(f'{sort_column} {order}').all()
+                else:
+                    return session.query(Person).filter(
+                        or_(
+                            Person.name.like(f'%{search_term}%'),
+                            Person.surname.like(f'%{search_term}%')
+                        )
+                    ).all()
             except Exception as e:
                 self._logger.warning(e)
                 return []

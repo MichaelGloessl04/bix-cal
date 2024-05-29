@@ -27,14 +27,7 @@
 <script setup lang="ts">
 import PeopleListItem from './PeopleTableItem.vue'
 
-import type { Person } from '@/api/types/person'
-
-defineProps({
-  people: {
-    type: Array<Person>,
-    required: true
-  }
-})
+defineProps(['people'])
 </script>
 
 <style scoped>
