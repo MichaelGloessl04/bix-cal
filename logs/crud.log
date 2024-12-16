@@ -6351,3 +6351,604 @@ FROM user
 WHERE user.id = ?
 2024-05-29 15:09:41,449 - sqlalchemy.engine.Engine - INFO - [cached since 158.6s ago] (1,)
 2024-05-29 15:09:41,449 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:28:20,346 - asyncio - DEBUG - Using selector: SelectSelector
+2024-12-16 14:28:20,388 - main - DEBUG - lifespan started
+2024-12-16 14:28:20,405 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:28:20,406 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("person")
+2024-12-16 14:28:20,406 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-16 14:28:20,407 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("rating")
+2024-12-16 14:28:20,407 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-16 14:28:20,407 - sqlalchemy.engine.Engine - INFO - PRAGMA temp.table_info("rating")
+2024-12-16 14:28:20,407 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-16 14:28:20,407 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2024-12-16 14:28:20,407 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-16 14:28:20,408 - sqlalchemy.engine.Engine - INFO - 
+CREATE TABLE rating (
+	id INTEGER NOT NULL, 
+	person_id INTEGER, 
+	user_id INTEGER, 
+	score FLOAT, 
+	hot FLOAT, 
+	crazy FLOAT, 
+	nice FLOAT, 
+	comment VARCHAR(20), 
+	PRIMARY KEY (id), 
+	CONSTRAINT uq_person_user UNIQUE (person_id, user_id)
+)
+
+
+2024-12-16 14:28:20,408 - sqlalchemy.engine.Engine - INFO - [no key 0.00015s] ()
+2024-12-16 14:28:20,411 - sqlalchemy.engine.Engine - INFO - CREATE INDEX ix_rating_comment ON rating (comment)
+2024-12-16 14:28:20,411 - sqlalchemy.engine.Engine - INFO - [no key 0.00019s] ()
+2024-12-16 14:28:20,414 - sqlalchemy.engine.Engine - INFO - CREATE INDEX ix_rating_hot ON rating (hot)
+2024-12-16 14:28:20,415 - sqlalchemy.engine.Engine - INFO - [no key 0.00025s] ()
+2024-12-16 14:28:20,418 - sqlalchemy.engine.Engine - INFO - CREATE INDEX ix_rating_nice ON rating (nice)
+2024-12-16 14:28:20,418 - sqlalchemy.engine.Engine - INFO - [no key 0.00030s] ()
+2024-12-16 14:28:20,421 - sqlalchemy.engine.Engine - INFO - CREATE INDEX ix_rating_user_id ON rating (user_id)
+2024-12-16 14:28:20,421 - sqlalchemy.engine.Engine - INFO - [no key 0.00018s] ()
+2024-12-16 14:28:20,423 - sqlalchemy.engine.Engine - INFO - CREATE INDEX ix_rating_score ON rating (score)
+2024-12-16 14:28:20,423 - sqlalchemy.engine.Engine - INFO - [no key 0.00020s] ()
+2024-12-16 14:28:20,426 - sqlalchemy.engine.Engine - INFO - CREATE INDEX ix_rating_crazy ON rating (crazy)
+2024-12-16 14:28:20,426 - sqlalchemy.engine.Engine - INFO - [no key 0.00021s] ()
+2024-12-16 14:28:20,429 - sqlalchemy.engine.Engine - INFO - CREATE INDEX ix_rating_person_id ON rating (person_id)
+2024-12-16 14:28:20,429 - sqlalchemy.engine.Engine - INFO - [no key 0.00024s] ()
+2024-12-16 14:28:20,432 - sqlalchemy.engine.Engine - INFO - CREATE INDEX ix_rating_id ON rating (id)
+2024-12-16 14:28:20,432 - sqlalchemy.engine.Engine - INFO - [no key 0.00037s] ()
+2024-12-16 14:28:20,435 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-16 14:28:20,435 - root - DEBUG - Crud initialized
+2024-12-16 14:28:23,309 - root - DEBUG - Getting all persons
+2024-12-16 14:28:23,311 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:28:23,312 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-16 14:28:23,312 - sqlalchemy.engine.Engine - INFO - [generated in 0.00020s] ()
+2024-12-16 14:28:23,313 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:28:23,313 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:28:36,203 - root - DEBUG - Getting all persons
+2024-12-16 14:28:36,204 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:28:36,204 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-16 14:28:36,204 - sqlalchemy.engine.Engine - INFO - [cached since 12.89s ago] ()
+2024-12-16 14:28:36,205 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:28:36,205 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:29:51,236 - root - DEBUG - Searching for persons with term: S
+2024-12-16 14:29:51,236 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:29:51,238 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:29:51,238 - sqlalchemy.engine.Engine - INFO - [generated in 0.00026s] ('%S%', '%S%')
+2024-12-16 14:29:51,239 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%S%', '%S%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:29:51,239 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:29:53,852 - root - DEBUG - Searching for persons with term: S
+2024-12-16 14:29:53,853 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:29:53,853 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:29:53,853 - sqlalchemy.engine.Engine - INFO - [cached since 2.615s ago] ('%S%', '%S%')
+2024-12-16 14:29:53,854 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%S%', '%S%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:29:53,854 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:29:53,855 - root - DEBUG - Searching for persons with term: Si
+2024-12-16 14:29:53,856 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:29:53,856 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:29:53,856 - sqlalchemy.engine.Engine - INFO - [cached since 2.618s ago] ('%Si%', '%Si%')
+2024-12-16 14:29:53,857 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Si%', '%Si%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:29:53,857 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:29:54,463 - root - DEBUG - Searching for persons with term: Si
+2024-12-16 14:29:54,463 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:29:54,464 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:29:54,464 - sqlalchemy.engine.Engine - INFO - [cached since 3.226s ago] ('%Si%', '%Si%')
+2024-12-16 14:29:54,464 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Si%', '%Si%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:29:54,465 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:29:54,465 - root - DEBUG - Searching for persons with term: Sim
+2024-12-16 14:29:54,466 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:29:54,466 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:29:54,466 - sqlalchemy.engine.Engine - INFO - [cached since 3.228s ago] ('%Sim%', '%Sim%')
+2024-12-16 14:29:54,467 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Sim%', '%Sim%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:29:54,467 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:29:58,810 - root - DEBUG - Searching for persons with term: Sim
+2024-12-16 14:29:58,810 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:29:58,811 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:29:58,811 - sqlalchemy.engine.Engine - INFO - [cached since 7.573s ago] ('%Sim%', '%Sim%')
+2024-12-16 14:29:58,811 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Sim%', '%Sim%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:29:58,811 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:29:59,125 - root - DEBUG - Searching for persons with term: Si
+2024-12-16 14:29:59,125 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:29:59,126 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:29:59,126 - sqlalchemy.engine.Engine - INFO - [cached since 7.888s ago] ('%Si%', '%Si%')
+2024-12-16 14:29:59,126 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Si%', '%Si%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:29:59,126 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:29:59,281 - root - DEBUG - Searching for persons with term: S
+2024-12-16 14:29:59,281 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:29:59,282 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:29:59,282 - sqlalchemy.engine.Engine - INFO - [cached since 8.044s ago] ('%S%', '%S%')
+2024-12-16 14:29:59,282 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%S%', '%S%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:29:59,282 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:29:59,389 - root - DEBUG - Searching for persons with term: Si
+2024-12-16 14:29:59,389 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:29:59,389 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:29:59,389 - sqlalchemy.engine.Engine - INFO - [cached since 8.151s ago] ('%Si%', '%Si%')
+2024-12-16 14:29:59,390 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Si%', '%Si%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:29:59,390 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:29:59,435 - root - DEBUG - Searching for persons with term: S
+2024-12-16 14:29:59,435 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:29:59,436 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:29:59,436 - sqlalchemy.engine.Engine - INFO - [cached since 8.198s ago] ('%S%', '%S%')
+2024-12-16 14:29:59,436 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%S%', '%S%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:29:59,436 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:33:56,995 - root - DEBUG - Getting person with ID 1
+2024-12-16 14:33:56,995 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:33:56,996 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-16 14:33:56,996 - sqlalchemy.engine.Engine - INFO - [generated in 0.00021s] (1,)
+2024-12-16 14:33:56,996 - root - WARNING - Person with ID 1 not found
+2024-12-16 14:33:56,996 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:40,857 - root - DEBUG - Getting all persons
+2024-12-16 14:35:40,858 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:40,858 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-16 14:35:40,858 - sqlalchemy.engine.Engine - INFO - [cached since 437.5s ago] ()
+2024-12-16 14:35:40,859 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:40,859 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:44,085 - root - DEBUG - Searching for persons with term: S
+2024-12-16 14:35:44,085 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:44,085 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:44,085 - sqlalchemy.engine.Engine - INFO - [cached since 352.8s ago] ('%S%', '%S%')
+2024-12-16 14:35:44,086 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%S%', '%S%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:44,086 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:44,257 - root - DEBUG - Searching for persons with term: S
+2024-12-16 14:35:44,258 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:44,258 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:44,258 - sqlalchemy.engine.Engine - INFO - [cached since 353s ago] ('%S%', '%S%')
+2024-12-16 14:35:44,258 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%S%', '%S%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:44,259 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:44,571 - root - DEBUG - Searching for persons with term: Si
+2024-12-16 14:35:44,571 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:44,571 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:44,572 - sqlalchemy.engine.Engine - INFO - [cached since 353.3s ago] ('%Si%', '%Si%')
+2024-12-16 14:35:44,572 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Si%', '%Si%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:44,572 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:44,758 - root - DEBUG - Searching for persons with term: Sim
+2024-12-16 14:35:44,759 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:44,759 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:44,759 - sqlalchemy.engine.Engine - INFO - [cached since 353.5s ago] ('%Sim%', '%Sim%')
+2024-12-16 14:35:44,759 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Sim%', '%Sim%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:44,759 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:44,835 - root - DEBUG - Searching for persons with term: Si
+2024-12-16 14:35:44,836 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:44,836 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:44,836 - sqlalchemy.engine.Engine - INFO - [cached since 353.6s ago] ('%Si%', '%Si%')
+2024-12-16 14:35:44,836 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Si%', '%Si%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:44,837 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:44,882 - root - DEBUG - Searching for persons with term: Simo
+2024-12-16 14:35:44,882 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:44,882 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:44,883 - sqlalchemy.engine.Engine - INFO - [cached since 353.6s ago] ('%Simo%', '%Simo%')
+2024-12-16 14:35:44,883 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Simo%', '%Simo%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:44,883 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:44,975 - root - DEBUG - Searching for persons with term: Sim
+2024-12-16 14:35:44,975 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:44,975 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:44,976 - sqlalchemy.engine.Engine - INFO - [cached since 353.7s ago] ('%Sim%', '%Sim%')
+2024-12-16 14:35:44,976 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Sim%', '%Sim%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:44,976 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:45,069 - root - DEBUG - Searching for persons with term: Simon
+2024-12-16 14:35:45,070 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:45,070 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:45,070 - sqlalchemy.engine.Engine - INFO - [cached since 353.8s ago] ('%Simon%', '%Simon%')
+2024-12-16 14:35:45,071 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Simon%', '%Simon%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:45,071 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:45,099 - root - DEBUG - Searching for persons with term: Simo
+2024-12-16 14:35:45,099 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:45,099 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:45,100 - sqlalchemy.engine.Engine - INFO - [cached since 353.9s ago] ('%Simo%', '%Simo%')
+2024-12-16 14:35:45,100 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Simo%', '%Simo%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:45,100 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:45,262 - root - DEBUG - Searching for persons with term: Simon
+2024-12-16 14:35:45,262 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:45,262 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:45,263 - sqlalchemy.engine.Engine - INFO - [cached since 354s ago] ('%Simon%', '%Simon%')
+2024-12-16 14:35:45,263 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Simon%', '%Simon%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:45,263 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:45,569 - root - DEBUG - Searching for persons with term: Simo
+2024-12-16 14:35:45,569 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:45,570 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:45,570 - sqlalchemy.engine.Engine - INFO - [cached since 354.3s ago] ('%Simo%', '%Simo%')
+2024-12-16 14:35:45,570 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Simo%', '%Simo%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:45,570 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:45,718 - root - DEBUG - Searching for persons with term: Sim
+2024-12-16 14:35:45,718 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:45,719 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:45,719 - sqlalchemy.engine.Engine - INFO - [cached since 354.5s ago] ('%Sim%', '%Sim%')
+2024-12-16 14:35:45,719 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Sim%', '%Sim%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:45,719 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:45,876 - root - DEBUG - Searching for persons with term: Simo
+2024-12-16 14:35:45,876 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:45,877 - root - DEBUG - Searching for persons with term: Si
+2024-12-16 14:35:45,877 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:45,877 - sqlalchemy.engine.Engine - INFO - [cached since 354.6s ago] ('%Simo%', '%Simo%')
+2024-12-16 14:35:45,877 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:45,878 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Simo%', '%Simo%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:45,878 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:45,878 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:45,878 - sqlalchemy.engine.Engine - INFO - [cached since 354.6s ago] ('%Si%', '%Si%')
+2024-12-16 14:35:45,878 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Si%', '%Si%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:45,879 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:46,031 - root - DEBUG - Searching for persons with term: Sim
+2024-12-16 14:35:46,032 - root - DEBUG - Searching for persons with term: S
+2024-12-16 14:35:46,032 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:46,033 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:46,033 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:46,033 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:46,033 - sqlalchemy.engine.Engine - INFO - [cached since 354.8s ago] ('%Sim%', '%Sim%')
+2024-12-16 14:35:46,033 - sqlalchemy.engine.Engine - INFO - [cached since 354.8s ago] ('%S%', '%S%')
+2024-12-16 14:35:46,034 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Sim%', '%Sim%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:46,037 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%S%', '%S%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:46,037 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:46,037 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:46,184 - root - DEBUG - Searching for persons with term: Si
+2024-12-16 14:35:46,185 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:46,185 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:46,185 - sqlalchemy.engine.Engine - INFO - [cached since 354.9s ago] ('%Si%', '%Si%')
+2024-12-16 14:35:46,185 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%Si%', '%Si%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:46,185 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:46,339 - root - DEBUG - Searching for persons with term: S
+2024-12-16 14:35:46,340 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:46,340 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:46,340 - sqlalchemy.engine.Engine - INFO - [cached since 355.1s ago] ('%S%', '%S%')
+2024-12-16 14:35:46,341 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%S%', '%S%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:46,341 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:47,505 - root - DEBUG - Searching for persons with term: S
+2024-12-16 14:35:47,506 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:47,506 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:47,506 - sqlalchemy.engine.Engine - INFO - [cached since 356.3s ago] ('%S%', '%S%')
+2024-12-16 14:35:47,507 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%S%', '%S%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:47,507 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:35:47,826 - root - DEBUG - Searching for persons with term: S
+2024-12-16 14:35:47,826 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:35:47,827 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:35:47,827 - sqlalchemy.engine.Engine - INFO - [cached since 356.6s ago] ('%S%', '%S%')
+2024-12-16 14:35:47,827 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%S%', '%S%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:35:47,827 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:38:21,854 - root - DEBUG - Getting person with ID 1
+2024-12-16 14:38:21,855 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:38:21,855 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-16 14:38:21,855 - sqlalchemy.engine.Engine - INFO - [cached since 264.9s ago] (1,)
+2024-12-16 14:38:21,856 - root - WARNING - Person with ID 1 not found
+2024-12-16 14:38:21,856 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:40:11,172 - root - DEBUG - Searching for persons with term: a
+2024-12-16 14:40:11,173 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:40:11,173 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:40:11,173 - sqlalchemy.engine.Engine - INFO - [cached since 619.9s ago] ('%a%', '%a%')
+2024-12-16 14:40:11,174 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%a%', '%a%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:40:11,174 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:40:11,177 - root - DEBUG - Searching for persons with term: as
+2024-12-16 14:40:11,177 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:40:11,178 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:40:11,178 - sqlalchemy.engine.Engine - INFO - [cached since 619.9s ago] ('%as%', '%as%')
+2024-12-16 14:40:11,178 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%as%', '%as%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:40:11,178 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:40:11,311 - root - DEBUG - Searching for persons with term: asd
+2024-12-16 14:40:11,312 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:40:11,312 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:40:11,313 - sqlalchemy.engine.Engine - INFO - [cached since 620.1s ago] ('%asd%', '%asd%')
+2024-12-16 14:40:11,313 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%asd%', '%asd%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:40:11,313 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:40:11,376 - root - DEBUG - Searching for persons with term: asdf
+2024-12-16 14:40:11,377 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:40:11,377 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:40:11,377 - sqlalchemy.engine.Engine - INFO - [cached since 620.1s ago] ('%asdf%', '%asdf%')
+2024-12-16 14:40:11,378 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%asdf%', '%asdf%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:40:11,378 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:40:11,438 - root - DEBUG - Searching for persons with term: a
+2024-12-16 14:40:11,438 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:40:11,438 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:40:11,439 - sqlalchemy.engine.Engine - INFO - [cached since 620.2s ago] ('%a%', '%a%')
+2024-12-16 14:40:11,439 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%a%', '%a%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:40:11,439 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:40:11,482 - root - DEBUG - Searching for persons with term: as
+2024-12-16 14:40:11,482 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:40:11,482 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:40:11,483 - sqlalchemy.engine.Engine - INFO - [cached since 620.2s ago] ('%as%', '%as%')
+2024-12-16 14:40:11,483 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%as%', '%as%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:40:11,484 - root - DEBUG - Searching for persons with term: asd
+2024-12-16 14:40:11,484 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:40:11,484 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:40:11,484 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-16 14:40:11,485 - sqlalchemy.engine.Engine - INFO - [cached since 620.2s ago] ('%asd%', '%asd%')
+2024-12-16 14:40:11,485 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?]
+[parameters: ('%asd%', '%asd%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:40:11,485 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:40:12,501 - root - DEBUG - Getting all persons
+2024-12-16 14:40:12,501 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:40:12,501 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-16 14:40:12,502 - sqlalchemy.engine.Engine - INFO - [cached since 709.2s ago] ()
+2024-12-16 14:40:12,502 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:40:12,502 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:40:16,292 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-16 14:40:16,293 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-16 14:40:16,293 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:40:16,294 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.email = ?
+2024-12-16 14:40:16,294 - sqlalchemy.engine.Engine - INFO - [generated in 0.00026s] ('mgloessl04@gmail.com',)
+2024-12-16 14:40:16,295 - root - WARNING - User with email mgloessl04@gmail.com not found
+2024-12-16 14:40:16,295 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:40:29,413 - root - DEBUG - Getting all persons
+2024-12-16 14:40:29,413 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:40:29,413 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-16 14:40:29,414 - sqlalchemy.engine.Engine - INFO - [cached since 726.1s ago] ()
+2024-12-16 14:40:29,414 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:40:29,414 - sqlalchemy.engine.Engine - INFO - ROLLBACK
