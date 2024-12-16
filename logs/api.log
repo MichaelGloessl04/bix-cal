@@ -1,0 +1,46 @@
+2024-05-27 12:15:11,119 - main - DEBUG - lifespan ended
+2024-05-27 12:15:12,250 - main - DEBUG - lifespan started
+2024-05-27 12:18:27,702 - main - DEBUG - lifespan ended
+2024-05-27 12:18:29,789 - main - DEBUG - lifespan started
+2024-05-27 12:21:11,996 - main - DEBUG - lifespan ended
+2024-05-27 12:21:13,999 - main - DEBUG - lifespan started
+2024-05-27 12:21:15,720 - main - DEBUG - Getting all persons
+2024-05-27 12:21:15,735 - main - DEBUG - Getting average ratings for person with ID 1
+2024-05-27 12:21:15,735 - main - DEBUG - Getting average ratings for person with ID 2
+2024-05-27 12:21:15,748 - main - DEBUG - Getting average ratings for person with ID 4
+2024-05-27 12:21:15,748 - main - DEBUG - Getting average ratings for person with ID 3
+2024-05-27 12:21:15,748 - main - DEBUG - Getting average ratings for person with ID 5
+2024-05-27 12:21:16,049 - main - DEBUG - Getting average ratings for person with ID 8
+2024-05-27 12:21:16,049 - main - DEBUG - Getting average ratings for person with ID 7
+2024-05-27 12:21:16,049 - main - DEBUG - Getting average ratings for person with ID 6
+2024-05-27 12:21:16,058 - main - DEBUG - Getting average ratings for person with ID 9
+2024-05-27 12:26:13,721 - main - DEBUG - lifespan ended
+2024-05-27 12:26:15,719 - main - DEBUG - lifespan started
+2024-05-27 12:28:18,988 - main - DEBUG - lifespan ended
+2024-05-27 12:28:20,838 - main - DEBUG - lifespan started
+2024-05-27 12:28:22,715 - main - DEBUG - Getting all persons
+2024-05-27 12:28:22,732 - main - DEBUG - Getting average ratings for person with ID 1
+2024-05-27 12:28:22,733 - main - DEBUG - Getting average ratings for person with ID 2
+2024-05-27 12:28:22,736 - main - DEBUG - Getting average ratings for person with ID 3
+2024-05-27 12:28:22,738 - main - DEBUG - Getting average ratings for person with ID 4
+2024-05-27 12:28:22,740 - main - DEBUG - Getting average ratings for person with ID 5
+2024-05-27 12:28:23,040 - main - DEBUG - Getting average ratings for person with ID 6
+2024-05-27 12:28:23,055 - main - DEBUG - Getting average ratings for person with ID 7
+2024-05-27 12:28:23,133 - main - DEBUG - Getting average ratings for person with ID 9
+2024-05-27 12:28:23,133 - main - DEBUG - Getting average ratings for person with ID 8
+2024-05-27 12:29:43,156 - main - DEBUG - lifespan ended
+2024-05-27 12:29:44,324 - main - DEBUG - lifespan started
+2024-05-27 12:36:29,722 - main - DEBUG - lifespan ended
+2024-05-27 12:36:31,516 - main - DEBUG - lifespan started
+2024-05-29 10:08:53,753 - main - DEBUG - lifespan started
+2024-05-29 10:13:50,210 - main - DEBUG - lifespan ended
+2024-05-29 10:13:51,401 - main - DEBUG - lifespan started
+2024-05-29 10:16:49,970 - main - DEBUG - lifespan ended
+2024-05-29 10:16:51,869 - main - DEBUG - lifespan started
+2024-05-29 10:18:50,183 - main - DEBUG - lifespan ended
+2024-05-29 10:18:51,931 - main - DEBUG - lifespan started
+2024-05-29 10:43:50,300 - main - DEBUG - lifespan ended
+2024-05-29 10:43:52,128 - main - DEBUG - lifespan started
+2024-05-29 15:06:28,814 - main - DEBUG - lifespan started
+2024-12-16 14:28:20,388 - main - DEBUG - lifespan started
+2024-12-16 14:41:54,619 - main - DEBUG - lifespan ended
