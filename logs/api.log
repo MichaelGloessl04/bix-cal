@@ -44,3 +44,12 @@
 2024-05-29 15:06:28,814 - main - DEBUG - lifespan started
 2024-12-16 14:28:20,388 - main - DEBUG - lifespan started
 2024-12-16 14:44:29,427 - main - DEBUG - lifespan started
+2024-12-25 20:25:31,754 - backend.main - DEBUG - lifespan started
+2024-12-25 20:25:31,754 - backend.main - DEBUG - Testing mode
+2024-12-25 20:25:31,785 - backend.main - DEBUG - lifespan ended
+2024-12-25 20:36:10,380 - backend.main - DEBUG - lifespan started
+2024-12-25 20:36:10,380 - backend.main - DEBUG - Testing mode
+2024-12-25 20:36:10,413 - backend.main - DEBUG - lifespan ended
+2024-12-25 20:46:20,686 - main - DEBUG - lifespan started
+2024-12-25 20:46:23,086 - main - DEBUG - lifespan ended
+2024-12-25 20:46:37,235 - main - DEBUG - lifespan started

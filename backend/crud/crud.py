@@ -5,7 +5,7 @@ from typing import List
 from sqlalchemy import or_
 from sqlalchemy.orm import Session
 
-from ..crud.models import Base, Person, Rating, User
+from crud.models import Base, Person, Rating, User
 
 log_dir = os.path.join(os.path.dirname(__file__), '..', '..', 'logs')
 os.makedirs(log_dir, exist_ok=True)
@@ -74,7 +74,7 @@ class Crud:
         self._logger.debug(f'Creating person with data: {data}')
         with Session(self._engine) as session:
             try:
-                person = Person(**data)
+                person = data
                 session.add(person)
                 session.commit()
                 session.refresh(person)
@@ -129,7 +129,7 @@ class Crud:
         self._logger.debug(f'Creating rating with data: {data}')
         with Session(self._engine) as session:
             try:
-                rating = Rating(**data)
+                rating = data
                 session.add(rating)
                 session.commit()
                 session.refresh(rating)
@@ -142,7 +142,7 @@ class Crud:
         self._logger.debug(f'Updating rating with ID {rating_id} with data: {data}')
         with Session(self._engine) as session:
             try:
-                rating = Rating(**data)
+                rating = data
                 rating.id = rating_id
                 session.merge(rating)
                 session.commit()
@@ -186,7 +186,7 @@ class Crud:
         self._logger.debug(f'Creating user with data: {data}')
         with Session(self._engine) as session:
             try:
-                user = User(**data)
+                user = data
                 session.add(user)
                 session.commit()
                 session.refresh(user)
@@ -199,7 +199,7 @@ class Crud:
         self._logger.debug(f'Updating user with ID {user_id} with data: {data}')
         with Session(self._engine) as session:
             try:
-                user = User(**data)
+                user = data
                 user.id = user_id
                 session.merge(user)
                 session.commit()
