@@ -1,7 +1,7 @@
 import os
 import json
 
-from crud import Models
+from ...crud import Models
 
 
 def get_people():

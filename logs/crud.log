@@ -6952,3 +6952,54 @@ FROM person
 FROM person]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
 2024-12-16 14:40:29,414 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:44:29,392 - asyncio - DEBUG - Using selector: SelectSelector
+2024-12-16 14:44:29,427 - main - DEBUG - lifespan started
+2024-12-16 14:44:29,440 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:44:29,440 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("person")
+2024-12-16 14:44:29,440 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-16 14:44:29,441 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("rating")
+2024-12-16 14:44:29,441 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-16 14:44:29,441 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2024-12-16 14:44:29,441 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-16 14:44:29,441 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-16 14:44:29,442 - root - DEBUG - Crud initialized
+2024-12-16 14:48:54,156 - root - DEBUG - Getting all persons
+2024-12-16 14:48:54,158 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:48:54,159 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-16 14:48:54,159 - sqlalchemy.engine.Engine - INFO - [generated in 0.00020s] ()
+2024-12-16 14:48:54,160 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:48:54,160 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:48:55,720 - root - DEBUG - Getting all persons
+2024-12-16 14:48:55,720 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:48:55,720 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-16 14:48:55,721 - sqlalchemy.engine.Engine - INFO - [cached since 1.562s ago] ()
+2024-12-16 14:48:55,721 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:48:55,721 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:48:58,534 - root - DEBUG - Getting all persons
+2024-12-16 14:48:58,534 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:48:58,535 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-16 14:48:58,535 - sqlalchemy.engine.Engine - INFO - [cached since 4.376s ago] ()
+2024-12-16 14:48:58,535 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:48:58,535 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-16 14:49:04,592 - root - DEBUG - Getting all persons
+2024-12-16 14:49:04,593 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-16 14:49:04,593 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-16 14:49:04,593 - sqlalchemy.engine.Engine - INFO - [cached since 10.43s ago] ()
+2024-12-16 14:49:04,593 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-16 14:49:04,593 - sqlalchemy.engine.Engine - INFO - ROLLBACK

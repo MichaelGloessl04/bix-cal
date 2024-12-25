@@ -1,4 +1,4 @@
-from crud import Models
+from ...crud import Models
 
 from ..data.data import get_users
 

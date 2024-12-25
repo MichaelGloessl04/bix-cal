@@ -5,7 +5,7 @@ from typing import List
 from sqlalchemy import or_
 from sqlalchemy.orm import Session
 
-from crud.models import Base, Person, Rating, User
+from ..crud.models import Base, Person, Rating, User
 
 log_dir = os.path.join(os.path.dirname(__file__), '..', '..', 'logs')
 os.makedirs(log_dir, exist_ok=True)
