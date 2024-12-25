@@ -13212,3 +13212,24 @@ FROM person
 FROM person]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
 2024-12-25 20:46:48,543 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-25 20:47:13,996 - asyncio - DEBUG - Using selector: SelectSelector
+2024-12-25 20:47:14,033 - main - DEBUG - lifespan started
+2024-12-25 20:47:14,047 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-25 20:47:14,047 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("person")
+2024-12-25 20:47:14,047 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-25 20:47:14,048 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("rating")
+2024-12-25 20:47:14,048 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-25 20:47:14,048 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2024-12-25 20:47:14,048 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-25 20:47:14,049 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-25 20:47:14,049 - root - DEBUG - Crud initialized
+2024-12-25 20:47:15,885 - root - DEBUG - Getting all persons
+2024-12-25 20:47:15,887 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-25 20:47:15,889 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-25 20:47:15,889 - sqlalchemy.engine.Engine - INFO - [generated in 0.00030s] ()
+2024-12-25 20:47:15,890 - root - WARNING - (sqlite3.OperationalError) no such column: person.user_id
+[SQL: SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-12-25 20:47:15,890 - sqlalchemy.engine.Engine - INFO - ROLLBACK
