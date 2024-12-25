@@ -25,7 +25,7 @@
         <div v-if="isLoggedIn">
           <div v-if="is_rated && !edit">
             <p>Your rating:</p>
-            <PersonRating :rating="new_rating" @edit="edit = true" />
+            <PersonRating :rating="new_rating" @edit="edit = true" @delete="deleteRating(new_rating.id); updateView()"/>
           </div>
           <div v-else>
             <p v-if="edit">Change your rating:</p>
@@ -68,7 +68,7 @@ import type { Person } from '@/api/types/person'
 import type { Rating, RatingNoID } from '@/api/types/rating'
 import type { User } from '@/api/types/user'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
-import { getAverageRating, getPersonRatings } from '@/api/rating'
+import { getAverageRating, getPersonRatings, deleteRating } from '@/api/rating'
 
 const loading = ref({
   person: true,
@@ -155,6 +155,7 @@ onMounted(() => {
     })
     .finally(() => {
       loading.value.avg_rating = false
+      console.log(avg_rating.value)
     })
 
   getPersonRatings(Number(route.params.person_id))

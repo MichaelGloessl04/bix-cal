@@ -74,7 +74,7 @@ class Crud:
         self._logger.debug(f'Creating person with data: {data}')
         with Session(self._engine) as session:
             try:
-                person = data
+                person = Person(**data)
                 session.add(person)
                 session.commit()
                 session.refresh(person)
@@ -129,7 +129,7 @@ class Crud:
         self._logger.debug(f'Creating rating with data: {data}')
         with Session(self._engine) as session:
             try:
-                rating = data
+                rating = Rating(**data)
                 session.add(rating)
                 session.commit()
                 session.refresh(rating)
@@ -142,7 +142,7 @@ class Crud:
         self._logger.debug(f'Updating rating with ID {rating_id} with data: {data}')
         with Session(self._engine) as session:
             try:
-                rating = data
+                rating = Rating(**data)
                 rating.id = rating_id
                 session.merge(rating)
                 session.commit()
@@ -186,7 +186,7 @@ class Crud:
         self._logger.debug(f'Creating user with data: {data}')
         with Session(self._engine) as session:
             try:
-                user = data
+                user = User(**data)
                 session.add(user)
                 session.commit()
                 session.refresh(user)
@@ -199,7 +199,7 @@ class Crud:
         self._logger.debug(f'Updating user with ID {user_id} with data: {data}')
         with Session(self._engine) as session:
             try:
-                user = data
+                user = User(**data)
                 user.id = user_id
                 session.merge(user)
                 session.commit()

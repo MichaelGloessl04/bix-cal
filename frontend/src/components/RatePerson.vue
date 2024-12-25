@@ -63,9 +63,8 @@ const submit = () => {
         nice: nice.value,
         comment: comment.value
       }
-      createRating(newRating).then(() => {
-        emits('update')
-      })
+      console.log(newRating);
+      createRating(newRating)
     } else {
       const updatedRating = {
         ...props.rating,
@@ -74,9 +73,7 @@ const submit = () => {
         nice: nice.value,
         comment: comment.value
       }
-      updateRating(props.rating.id, updatedRating).then(() => {
-        emits('update')
-      })
+      updateRating(props.rating.id, updatedRating)
     }
   })
 }

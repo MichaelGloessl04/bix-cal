@@ -25,3 +25,7 @@ export async function updateRating(rating_id: number, rating: Rating): Promise<R
   const response = await axios.put(`/api/rating/${rating_id}`, rating)
   return response.data
 }
+
+export async function deleteRating(rating_id: number): Promis<Rating> {
+  const response = await axios.delete(`/api/rating/${rating_id}`)
+}
