@@ -5,7 +5,7 @@ import pytest
 def crud_session_in_memory():
     from sqlalchemy.orm import sessionmaker
 
-    from crud import Crud, create_engine
+    from ..crud import Crud, create_engine
 
     engine = create_engine('sqlite:///:memory:')
     crud = Crud(engine)
@@ -20,7 +20,7 @@ def client():
     import os
     from fastapi.testclient import TestClient
     
-    from main import app
+    from ..main import app
 
     os.environ['TESTING'] = 'True'
     with TestClient(app) as client:
@@ -31,7 +31,7 @@ def populate(session):
     import json
     import os
 
-    from crud import Models
+    from ..crud import Models
 
     datasets = []
     paths = [
