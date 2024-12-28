@@ -24,7 +24,7 @@
         <h3>Rating</h3>
         <div v-if="isLoggedIn">
           <div v-if="is_rated && !edit">
-            <PersonRating :rating="new_rating" @edit="edit = true" @delete="deleteRating(new_rating.id); refresh()"/>
+            <PersonRating :rating="new_rating" @edit="edit = true" @delete="deleteRating(rating_id); refresh()"/>
           </div>
           <div v-else>
             <RatePerson
@@ -84,6 +84,7 @@ const is_rated = ref(false)
 const person: Ref<Person> = ref({} as Person)
 const ratings: Ref<Rating[]> = ref([])
 const user: Ref<User> = ref({} as User)
+const rating_id: Ref<number> = ref(0);
 const avg_rating = ref({
   score: 0,
   hot: 0,
@@ -140,6 +141,7 @@ onMounted(() => {
             .then((user_person_rating) => {
               if (user_person_rating) {
                 is_rated.value = true
+                rating_id.value = user_person_rating.id
                 new_rating.value = user_person_rating
               }
             })
