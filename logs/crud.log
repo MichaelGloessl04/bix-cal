@@ -8962,3 +8962,16 @@ FROM rating
 WHERE rating.person_id = ?
 2024-12-28 15:54:52,206 - sqlalchemy.engine.Engine - INFO - [cached since 46.14s ago] (2,)
 2024-12-28 15:54:52,206 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:59:05,298 - main - DEBUG - lifespan ended
+2024-12-28 15:59:06,229 - asyncio - DEBUG - Using selector: SelectSelector
+2024-12-28 15:59:06,263 - main - DEBUG - lifespan started
+2024-12-28 15:59:06,276 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:59:06,277 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("person")
+2024-12-28 15:59:06,277 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:59:06,277 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("rating")
+2024-12-28 15:59:06,278 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:59:06,278 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2024-12-28 15:59:06,278 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:59:06,278 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:59:06,278 - root - DEBUG - Crud initialized
+2024-12-28 16:09:05,612 - main - DEBUG - lifespan ended
