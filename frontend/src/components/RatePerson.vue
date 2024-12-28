@@ -1,5 +1,5 @@
 <template>
-  <form v-on:submit.prevent="onSubmit()">
+  <form @submit.prevent>
     <p>
       <span for="hot">Hot</span>
       <input id="hot" v-model="hot" type="range" min="1" max="10" />
@@ -20,7 +20,7 @@
       <span>{{ comment.length }}/20</span>
     </p>
     <button class="btn btn-secondary btn-sm" v-if="edit" @click="emits('cancel')">Cancel</button>
-    <button id="submit" class="btn btn-primary btn-sm">Submit</button>
+    <button id="submit" class="btn btn-primary btn-sm" @click="submit">Submit</button>
   </form>
 </template>
 
@@ -44,11 +44,6 @@ const crazy = ref(5)
 const nice = ref(5)
 const comment = ref('')
 
-const onSubmit = () => {
-  submit()
-  emits('refresh')
-}
-
 const submit = () => {
   console.log(hot.value, crazy.value, nice.value, comment.value)
   const currentUser = getAuth().currentUser
@@ -69,6 +64,9 @@ const submit = () => {
         comment: comment.value
       }
       createRating(newRating)
+        .then(() => {
+          emits('refresh')
+        })
     } else {
       const updatedRating = {
         ...props.rating,
@@ -78,6 +76,9 @@ const submit = () => {
         comment: comment.value
       }
       editRating(props.rating.id, updatedRating)
+        .then(() => {
+          emits('refresh')
+        })
     }
   })
 }
