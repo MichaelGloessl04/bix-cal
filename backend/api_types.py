@@ -2,9 +2,10 @@ import pydantic
 
 
 class PersonNoID(pydantic.BaseModel):
-    creator_id: int
+    user_id: int
     name: str
     surname: str
+    image_url: str
 
     model_config = pydantic.ConfigDict(
         from_attributes=True
@@ -19,9 +20,10 @@ class Person(PersonNoID):
     )
 
 
-class EntryNoID(pydantic.BaseModel):
+class RatingNoID(pydantic.BaseModel):
     person_id: int
-    author_id: int
+    user_id: int
+    score: float = None
     hot: float
     crazy: float
     nice: float
@@ -32,7 +34,8 @@ class EntryNoID(pydantic.BaseModel):
     )
 
 
-class Entry(EntryNoID):
+
+class Rating(RatingNoID):
     id: int
 
     model_config = pydantic.ConfigDict(
@@ -40,7 +43,7 @@ class Entry(EntryNoID):
     )
 
 
-class Score(pydantic.BaseModel):
+class AvgRating(pydantic.BaseModel):
     score: float
     hot: float
     crazy: float
@@ -52,6 +55,7 @@ class Score(pydantic.BaseModel):
 
 
 class UserNoID(pydantic.BaseModel):
+    person_id: int
     username: str
     email: str
 

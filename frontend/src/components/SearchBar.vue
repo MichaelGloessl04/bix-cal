@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div>
+  <div class="search-container">
+    <div class="search-bar">
       <input
         type="text"
         v-model="search_term"
@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import SearchResults from './SearchResults.vue'
 import { ref, watch } from 'vue'
-import { searchPersons } from '@/api/person'
+import { getPersons } from '@/api/person'
 import type { Ref } from 'vue'
 import type { Person } from '@/api/types/person'
 
@@ -35,22 +35,21 @@ async function search() {
     results.value.length = 0
   } else {
     loading.value = true
-    searchPersons(search_term.value)
-      .then((response) => {
-        clearResults()
-        console.log(response)
-        results.value = response
+    getPersons(search_term.value)
+      .then((persons) => {
+        results.value = persons
+      })
+      .catch((error) => {
+        console.error(error)
       })
       .finally(() => {
         loading.value = false
-        console.log('search completed')
       })
   }
 }
 
 function clearResults() {
   results.value.length = 0
-  console.log('cleared results')
 }
 
 watch(search_term, search)
@@ -65,3 +64,48 @@ watch(
   }
 )
 </script>
+
+<style scoped lang="scss">
+$border-radius: 1rem;
+
+.search-bar {
+  width: 100%;
+  margin-bottom: 0;
+  margin-left: 0;
+}
+
+.search-bar input {
+  background-color: white;
+  color: black;
+  width: 100%;
+  height: auto;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  font-size: 1.4rem;
+  border: 0;
+  border-radius: $border-radius;
+}
+
+.search-bar input::placeholder {
+  color: #aaa;
+}
+
+.search-bar input:not(:placeholder-shown) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.search-bar input:focus {
+  outline: none;
+}
+
+.search-container {
+  padding: 0;
+  width: 90%;
+  max-width: 40rem;
+  border-radius: $border-radius;
+  box-shadow:
+    11px 11px 18px #191c1f,
+    -11px -11px 18px #353c43;
+}
+</style>

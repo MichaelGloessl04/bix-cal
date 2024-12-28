@@ -43,4 +43,34 @@
 2024-05-29 10:43:52,128 - main - DEBUG - lifespan started
 2024-05-29 15:06:28,814 - main - DEBUG - lifespan started
 2024-12-16 14:28:20,388 - main - DEBUG - lifespan started
-2024-12-16 14:41:54,619 - main - DEBUG - lifespan ended
+2024-12-16 14:44:29,427 - main - DEBUG - lifespan started
+2024-12-25 20:25:31,754 - backend.main - DEBUG - lifespan started
+2024-12-25 20:25:31,754 - backend.main - DEBUG - Testing mode
+2024-12-25 20:25:31,785 - backend.main - DEBUG - lifespan ended
+2024-12-25 20:36:10,380 - backend.main - DEBUG - lifespan started
+2024-12-25 20:36:10,380 - backend.main - DEBUG - Testing mode
+2024-12-25 20:36:10,413 - backend.main - DEBUG - lifespan ended
+2024-12-25 20:46:20,686 - main - DEBUG - lifespan started
+2024-12-25 20:46:23,086 - main - DEBUG - lifespan ended
+2024-12-25 20:46:37,235 - main - DEBUG - lifespan started
+2024-12-25 20:47:14,033 - main - DEBUG - lifespan started
+2024-12-25 20:49:48,686 - main - DEBUG - lifespan ended
+2024-12-25 20:49:51,212 - main - DEBUG - lifespan started
+2024-12-25 20:58:19,306 - main - DEBUG - lifespan started
+2024-12-25 21:04:06,679 - main - DEBUG - lifespan ended
+2024-12-25 21:04:07,705 - main - DEBUG - lifespan started
+2024-12-25 21:09:53,576 - main - DEBUG - lifespan ended
+2024-12-25 21:09:54,561 - main - DEBUG - lifespan started
+2024-12-25 21:11:38,234 - main - DEBUG - lifespan ended
+2024-12-25 21:11:39,222 - main - DEBUG - lifespan started
+2024-12-25 21:12:48,170 - main - DEBUG - lifespan ended
+2024-12-25 21:12:49,180 - main - DEBUG - lifespan started
+2024-12-28 12:54:26,887 - main - DEBUG - lifespan started
+2024-12-28 13:10:05,088 - main - DEBUG - lifespan ended
+2024-12-28 13:10:06,249 - main - DEBUG - lifespan started
+2024-12-28 13:10:33,838 - main - DEBUG - POSTING NEW RATING
+2024-12-28 13:10:33,838 - main - DEBUG - <bound method BaseModel.model_dump_json of RatingNoID(person_id=1, user_id=1, score=5.0, hot=5.0, crazy=5.0, nice=5.0, comment='')>
+2024-12-28 13:11:52,248 - main - DEBUG - POSTING NEW RATING
+2024-12-28 13:11:52,249 - main - DEBUG - <bound method BaseModel.model_dump_json of RatingNoID(person_id=1, user_id=1, score=5.0, hot=5.0, crazy=5.0, nice=5.0, comment='')>
+2024-12-28 13:13:11,116 - main - DEBUG - lifespan ended
+2024-12-28 13:13:12,081 - main - DEBUG - lifespan started

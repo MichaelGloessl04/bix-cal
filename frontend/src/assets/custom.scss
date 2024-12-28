@@ -1,7 +1,7 @@
 $theme-colors: (
   'primary': #6e6e6e,
-  'secondary': rgb(82, 82, 82),
-  'danger': #3a3a3a
+  'secondary': #525252,
+  'danger': #611a1a
 );
 
 @import 'bootstrap/scss/bootstrap.scss';
@@ -19,4 +19,44 @@ header {
 
 h1 {
   color: rgb(245, 245, 245);
+}
+
+input {
+  width: 100%;
+  height: 40px;
+  padding-left: 7px;
+  background-color: #525252;
+  color: rgb(245, 245, 245);
+  border: 1px solid #525252;
+  border-radius: 7px;
+}
+
+input:focus {
+  background-color: #6e6e6e;
+  color: rgb(245, 245, 245);
+  border: 1px solid #6e6e6e;
+}
+
+input::placeholder {
+  color: rgb(156, 156, 156);
+}
+
+.link {
+  color: #3a8fff;
+}
+
+.link:hover {
+  color: #6faeff;
+}
+
+.login-container {
+  margin: 0 auto;
+  margin-top: 10%;
+  width: 300px;
+  padding: 20px;
+  padding-bottom: 10px;
+  box-shadow:
+    11px 11px 18px #202428,
+    -11px -11px 18px #2e343a;
+  border-radius: 1rem;
 }

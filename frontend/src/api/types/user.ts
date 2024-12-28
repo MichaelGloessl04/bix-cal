@@ -1,4 +1,5 @@
 export type UserNoID = {
+  person_id: number
   username: string
   email: string
 }

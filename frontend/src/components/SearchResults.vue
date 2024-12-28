@@ -1,5 +1,5 @@
 <template>
-  <ul class="search-results" v-if="search_term">
+  <ul class="row search-results" v-if="search_term">
     <li>
       <div @click="router.push('/add-person')">
         <i class="bi bi-person-plus"></i> Add new person
@@ -29,3 +29,34 @@ function goToPerson(person: Person) {
   router.push(`/person/${person.id}`)
 }
 </script>
+
+<style scoped lang="scss">
+$border-radius: 1rem;
+
+.search-results {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-results li {
+  background-color: white;
+  color: black;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.search-results li:hover,
+.search-results li:nth-child(odd):hover {
+  background-color: rgb(220, 220, 220);
+}
+
+.search-results li:nth-child(odd) {
+  background-color: rgb(245, 245, 245);
+}
+
+.search-results li:last-child {
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
+</style>

@@ -30,10 +30,10 @@
                 <router-link to="/about" class="nav-link">About</router-link>
               </li>
               <li v-if="!isLoggedIn" class="nav-item">
-                <router-link to="/login" class="nav-link">Login</router-link>
+                <router-link to="/login" class="nav-link">Sign In</router-link>
               </li>
               <li v-if="!isLoggedIn" class="nav-item">
-                <router-link to="/register" class="nav-link">Register</router-link>
+                <router-link to="/register" class="nav-link">Sign Up</router-link>
               </li>
               <li v-if="isLoggedIn" class="nav-item">
                 <router-link to="/profile" class="nav-link">Profile</router-link>
@@ -49,7 +49,7 @@
       </nav>
     </header>
     <body>
-      <RouterView />
+      <div class="app"><RouterView /></div>
     </body>
   </div>
 </template>
@@ -81,3 +81,11 @@ function handleSignOut() {
   })
 }
 </script>
+
+<style>
+.app {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+</style>

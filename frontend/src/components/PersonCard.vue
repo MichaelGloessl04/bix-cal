@@ -1,9 +1,6 @@
 <template>
-  <div>
-    <div>{{ props.person.name }} {{ props.person.surname }}</div>
-    <div @click="open_quick_view">
-      <i class="bi bi-eye-fill"></i>
-    </div>
+  <div class="row">
+    <div class="col">{{ props.person.name }} {{ props.person.surname }}</div>
   </div>
 </template>
 

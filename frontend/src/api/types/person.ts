@@ -1,7 +1,8 @@
 export type PersonNoID = {
-  creator_id: number
+  user_id: number
   name: string
   surname: string
+  image_url: string
 }
 
 export type Person = PersonNoID & {

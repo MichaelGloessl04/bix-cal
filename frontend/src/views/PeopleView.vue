@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import PeopleList from '@/components/PeopleList.vue'
+import PeopleList from '@/components/PeopleTable.vue'
 
 import { onMounted, ref } from 'vue'
 
@@ -15,9 +15,13 @@ import type { Person } from '@/api/types/person'
 
 const people = ref<Person[]>([])
 
-async function getPeople() {
-  people.value = await getPersons()
-}
-
-onMounted(getPeople)
+onMounted(() => {
+  getPersons()
+    .then((persons) => {
+      people.value = persons
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+})
 </script>

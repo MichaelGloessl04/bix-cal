@@ -1,87 +1,95 @@
 <template>
-    <div>
-        <p>
-            <span for="hot">Hot</span>
-            <input id="hot" v-model="hot" type="range" min="1" max="10">
-            <span>{{ hot }}</span>
-        </p>
-        <p>
-            <span for="crazy">Crazy</span>
-            <input id="crazy" v-model="crazy" type="range" min="1" max="10">
-            <span>{{ crazy }}</span>
-        </p>
-        <p>
-            <span for="nice">Nice</span>
-            <input id="nice" v-model="nice" type="range" min="1" max="10">
-            <span>{{ nice }}</span>
-        </p>
-        <p>
-            <input id="comment" v-model="comment" type="message" placeholder="Comment" maxlength="20">
-            <span>{{ comment.length }}/20</span>
-            <p>Add an optional Comment</p>
-        </p>
-        <button v-if="edit" @click="emits('cancel')">Cancel</button>
-        <button @click="submit">Submit</button>
-    </div>
+  <form @submit.prevent>
+    <p>
+      <span for="hot">Hot</span>
+      <input id="hot" v-model="hot" type="range" min="1" max="10" />
+      <span>{{ hot }}</span>
+    </p>
+    <p>
+      <span for="crazy">Crazy</span>
+      <input id="crazy" v-model="crazy" type="range" min="1" max="10" />
+      <span>{{ crazy }}</span>
+    </p>
+    <p>
+      <span for="nice">Nice</span>
+      <input id="nice" v-model="nice" type="range" min="1" max="10" />
+      <span>{{ nice }}</span>
+    </p>
+    <p>
+      <input id="comment" v-model="comment" type="message" placeholder="Comment" maxlength="20" />
+      <span>{{ comment.length }}/20</span>
+    </p>
+    <button class="btn btn-secondary btn-sm" v-if="edit" @click="emits('cancel')">Cancel</button>
+    <button id="submit" class="btn btn-primary btn-sm" @click="submit">Submit</button>
+  </form>
 </template>
 
 <script setup lang="ts">
-import { addEntry } from '@/api/entry';
-import type { EntryNoID } from '@/api/types/entry';
-import { getUser } from '@/api/user';
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import { getAuth } from 'firebase/auth';
+import { createRating, editRating } from '@/api/rating'
+import type { RatingNoID } from '@/api/types/rating'
+import { getUserByEmail } from '@/api/user'
+import { ref, onMounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { getAuth } from 'firebase/auth'
 
 const route = useRoute()
-const emits = defineEmits(['changeRating', 'cancel'])
-const props = defineProps(['edit', 'rated', 'entry'])
+const router = useRouter()
 
+const emits = defineEmits(['update', 'cancel', 'refresh'])
+const props = defineProps(['edit', 'rated', 'rating'])
+
+const score = ref(0)
 const hot = ref(5)
 const crazy = ref(5)
 const nice = ref(5)
 const comment = ref('')
 
 const submit = () => {
-    console.log(hot.value, crazy.value, nice.value, comment.value)
-    const currentUser = getAuth().currentUser
-    if (!currentUser) {
-        console.error('No user logged in')
-        return
-    }
+  console.log(hot.value, crazy.value, nice.value, comment.value)
+  const currentUser = getAuth().currentUser
+  if (!currentUser) {
+    router.push('/login')
+    return
+  }
 
-    getUser(currentUser.email!)
-        .then((user) => {
-            const newEntry: EntryNoID = {
-                person_id: Number(route.params.person_id),
-                author_id: user.id,
-                hot: hot.value,
-                crazy: crazy.value,
-                nice: nice.value,
-                comment: comment.value
-            }
-
-            if (!props.edit) {
-                addEntry(newEntry)
-                    .then(() => {
-                        console.log('Entry added')
-                        emits('changeRating')
-                    })
-                    .catch((error) => {
-                        console.error('Error adding entry:', error)
-                    })
-            } else {
-                
-            }
+  getUserByEmail(currentUser.email!).then((user) => {
+    if (!props.edit) {
+      const newRating: RatingNoID = {
+        person_id: Number(route.params.person_id),
+        user_id: user.id,
+        score: (hot.value + crazy.value + nice.value) / 3,
+        hot: hot.value,
+        crazy: crazy.value,
+        nice: nice.value,
+        comment: comment.value
+      }
+      createRating(newRating)
+        .then(() => {
+          emits('refresh')
         })
+    } else {
+      const updatedRating = {
+        ...props.rating,
+        hot: hot.value,
+        crazy: crazy.value,
+        nice: nice.value,
+        comment: comment.value
+      }
+      editRating(props.rating.id, updatedRating)
+        .then(() => {
+          emits('refresh')
+        })
+    }
+  })
 }
 
 onMounted(() => {
-    if (props.rated) {
-        hot.value = props.entry.hot
-        crazy.value = props.entry.crazy
-        nice.value = props.entry.nice
-        comment.value = props.entry.comment
-    }
+  if (props.rated) {
+    score.value = props.rating.score
+    hot.value = props.rating.hot
+    crazy.value = props.rating.crazy
+    nice.value = props.rating.nice
+    comment.value = props.rating.comment
+  }
 })
 </script>
