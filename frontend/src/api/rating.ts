@@ -21,11 +21,12 @@ export async function createRating(rating: RatingNoID): Promise<Rating> {
   return response.data
 }
 
-export async function updateRating(rating_id: number, rating: Rating): Promise<Rating> {
+export async function editRating(rating_id: number, rating: Rating): Promise<Rating> {
   const response = await axios.put(`/api/rating/${rating_id}`, rating)
   return response.data
 }
 
-export async function deleteRating(rating_id: number): Promis<Rating> {
+export async function deleteRating(rating_id: number): Promise<Rating> {
   const response = await axios.delete(`/api/rating/${rating_id}`)
+  return response.data
 }

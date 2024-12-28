@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form v-on:submit.prevent="onSubmit()">
     <p>
       <span for="hot">Hot</span>
       <input id="hot" v-model="hot" type="range" min="1" max="10" />
@@ -20,12 +20,12 @@
       <span>{{ comment.length }}/20</span>
     </p>
     <button class="btn btn-secondary btn-sm" v-if="edit" @click="emits('cancel')">Cancel</button>
-    <button class="btn btn-primary btn-sm" @click="submit">Submit</button>
+    <button id="submit" class="btn btn-primary btn-sm">Submit</button>
   </form>
 </template>
 
 <script setup lang="ts">
-import { createRating, updateRating } from '@/api/rating'
+import { createRating, editRating } from '@/api/rating'
 import type { RatingNoID } from '@/api/types/rating'
 import { getUserByEmail } from '@/api/user'
 import { ref, onMounted } from 'vue'
@@ -35,7 +35,7 @@ import { getAuth } from 'firebase/auth'
 const route = useRoute()
 const router = useRouter()
 
-const emits = defineEmits(['update', 'cancel'])
+const emits = defineEmits(['update', 'cancel', 'refresh'])
 const props = defineProps(['edit', 'rated', 'rating'])
 
 const score = ref(0)
@@ -43,6 +43,11 @@ const hot = ref(5)
 const crazy = ref(5)
 const nice = ref(5)
 const comment = ref('')
+
+const onSubmit = () => {
+  submit()
+  emits('refresh')
+}
 
 const submit = () => {
   console.log(hot.value, crazy.value, nice.value, comment.value)
@@ -63,7 +68,6 @@ const submit = () => {
         nice: nice.value,
         comment: comment.value
       }
-      console.log(newRating);
       createRating(newRating)
     } else {
       const updatedRating = {
@@ -73,7 +77,7 @@ const submit = () => {
         nice: nice.value,
         comment: comment.value
       }
-      updateRating(props.rating.id, updatedRating)
+      editRating(props.rating.id, updatedRating)
     }
   })
 }

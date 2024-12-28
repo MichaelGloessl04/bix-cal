@@ -24,18 +24,15 @@
         <h3>Rating</h3>
         <div v-if="isLoggedIn">
           <div v-if="is_rated && !edit">
-            <p>Your rating:</p>
-            <PersonRating :rating="new_rating" @edit="edit = true" @delete="deleteRating(new_rating.id); updateView()"/>
+            <PersonRating :rating="new_rating" @edit="edit = true" @delete="deleteRating(new_rating.id); refresh()"/>
           </div>
           <div v-else>
-            <p v-if="edit">Change your rating:</p>
-            <p v-else>Rate this person:</p>
             <RatePerson
               :edit="edit"
               :rated="is_rated"
               :rating="new_rating"
-              @update="updateView"
               @cancel="edit = false"
+              @refresh="refresh"
             />
           </div>
         </div>
@@ -103,46 +100,11 @@ const new_rating: Ref<RatingNoID> = ref({
   comment: ''
 })
 
-const isLoggedIn = ref(false)
-
-function updateView() {
-  edit.value = false
-  is_rated.value = true
-
-  loading.value.avg_rating = true
-  loading.value.ratings = true
-  loading.value.is_rated = true
-
-  getAverageRating(Number(route.params.person_id))
-    .then((api_rating) => {
-      avg_rating.value.score = api_rating.score
-      avg_rating.value.hot = api_rating.hot
-      avg_rating.value.nice = api_rating.nice
-      avg_rating.value.crazy = api_rating.crazy
-    })
-    .finally(() => {
-      loading.value.avg_rating = false
-    })
-
-  getPersonRatings(Number(route.params.person_id))
-    .then((api_ratings) => {
-      ratings.value = api_ratings
-    })
-    .finally(() => {
-      loading.value.ratings = false
-    })
-
-  getUserPersonRating(user.value.id, person.value.id)
-    .then((user_person_rating) => {
-      if (user_person_rating) {
-        is_rated.value = true
-        new_rating.value = user_person_rating
-      }
-    })
-    .finally(() => {
-      loading.value.is_rated = false
-    })
+const refresh = () => {
+  window.location.reload();
 }
+
+const isLoggedIn = ref(false)
 
 let auth: any
 onMounted(() => {
