@@ -8975,3 +8975,14 @@ WHERE rating.person_id = ?
 2024-12-28 15:59:06,278 - sqlalchemy.engine.Engine - INFO - COMMIT
 2024-12-28 15:59:06,278 - root - DEBUG - Crud initialized
 2024-12-28 16:09:05,612 - main - DEBUG - lifespan ended
+2024-12-28 16:09:06,516 - asyncio - DEBUG - Using selector: SelectSelector
+2024-12-28 16:09:06,545 - main - DEBUG - lifespan started
+2024-12-28 16:09:06,557 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 16:09:06,557 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("person")
+2024-12-28 16:09:06,557 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 16:09:06,558 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("rating")
+2024-12-28 16:09:06,558 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 16:09:06,558 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2024-12-28 16:09:06,558 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 16:09:06,558 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 16:09:06,558 - root - DEBUG - Crud initialized
