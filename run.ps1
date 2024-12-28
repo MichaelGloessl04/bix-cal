@@ -5,7 +5,7 @@ $backendPath = "backend"
 # Define the commands to run Vue script and activate virtual environment
 $vueCommand = "pnpm run dev"
 $activateVenvCommand = "& venv\Scripts\Activate"
-$pythonCommand = "py .\main.py"
+$pythonCommand = "py .\src\main.py"
 
 # Create a new process for running the Vue script
 $vueProcessInfo = New-Object System.Diagnostics.ProcessStartInfo

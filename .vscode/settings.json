@@ -16,6 +16,7 @@
         "Pinia",
         "Posch",
         "pydantic",
+        "PYTHONPATH",
         "rushstack",
         "sessionmaker",
         "sqlalchemy",
