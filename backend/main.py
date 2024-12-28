@@ -1,6 +1,6 @@
 import os
-
 import logging
+import math
 
 from types import NoneType
 from typing import List, Union
@@ -193,6 +193,14 @@ def get_person_average(person_id: int) -> ApiTypes.AvgRating:
         )
 
 
+def calculate_score(rating: ApiTypes.RatingNoID) -> ApiTypes.Rating:
+    score = rating.hot + rating.nice - abs(rating.crazy - 4)
+    
+    mapped_score = 1 + 9 * (score + 4) / 24
+    rating.score = mapped_score
+    return rating
+
+
 @app.post('/rating/', response_model=ApiTypes.Rating, tags=['rating'])
 def post_rating(rating: ApiTypes.RatingNoID) -> ApiTypes.Rating:
     """Create a new rating
@@ -204,8 +212,7 @@ def post_rating(rating: ApiTypes.RatingNoID) -> ApiTypes.Rating:
         ApiTypes.Rating: The created rating
     """
     crud: Crud = resources['crud']
-    rating.score = ((rating.hot + rating.nice + (4 - rating.crazy)) + 4) * 10/24
-    rating.score = max(1, min(10, rating.score))
+    rating = calculate_score(rating)
     return crud.post_rating(rating.model_dump())
 
 
@@ -221,8 +228,7 @@ def put_rating(rating_id: int, rating: ApiTypes.RatingNoID) -> ApiTypes.Rating:
         ApiTypes.Rating: The updated rating
     """
     crud: Crud = resources['crud']
-    rating.score = ((rating.hot + rating.nice + (4 - rating.crazy)) + 4) * 10/24
-    rating.score = max(1, min(10, rating.score))
+    rating = calculate_score(rating)
     return crud.put_rating(rating_id, rating.model_dump())
 
 

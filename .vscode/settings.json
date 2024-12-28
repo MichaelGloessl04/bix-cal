@@ -4,6 +4,7 @@
         "axios",
         "bixcal",
         "Bixcal",
+        "Bixn",
         "fastapi",
         "firebaseapp",
         "firestore",

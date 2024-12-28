@@ -7816,3 +7816,1149 @@ FROM rating
 WHERE rating.person_id = ?
 2024-12-28 15:17:12,063 - sqlalchemy.engine.Engine - INFO - [cached since 914s ago] (2,)
 2024-12-28 15:17:12,064 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:21:48,647 - asyncio - DEBUG - Using selector: SelectSelector
+2024-12-28 15:21:48,685 - main - DEBUG - lifespan started
+2024-12-28 15:21:48,702 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:21:48,702 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("person")
+2024-12-28 15:21:48,702 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:21:48,703 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("rating")
+2024-12-28 15:21:48,703 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:21:48,703 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2024-12-28 15:21:48,704 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:21:48,704 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:21:48,704 - root - DEBUG - Crud initialized
+2024-12-28 15:21:56,636 - root - DEBUG - Searching for persons with term: S
+2024-12-28 15:21:56,638 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:21:56,640 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-28 15:21:56,641 - sqlalchemy.engine.Engine - INFO - [generated in 0.00030s] ('%S%', '%S%')
+2024-12-28 15:21:56,641 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:21:56,960 - root - DEBUG - Searching for persons with term: S
+2024-12-28 15:21:56,961 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:21:56,961 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-28 15:21:56,961 - sqlalchemy.engine.Engine - INFO - [cached since 0.3209s ago] ('%S%', '%S%')
+2024-12-28 15:21:56,962 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:21:56,963 - root - DEBUG - Searching for persons with term: Si
+2024-12-28 15:21:56,963 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:21:56,964 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.name LIKE ? OR person.surname LIKE ?
+2024-12-28 15:21:56,964 - sqlalchemy.engine.Engine - INFO - [cached since 0.3235s ago] ('%Si%', '%Si%')
+2024-12-28 15:21:56,964 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:21:59,036 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:21:59,037 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:21:59,038 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:21:59,038 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:21:59,039 - sqlalchemy.engine.Engine - INFO - [generated in 0.00103s] (1,)
+2024-12-28 15:21:59,039 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:21:59,039 - root - DEBUG - Getting person with ID 1
+2024-12-28 15:21:59,040 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:21:59,040 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:21:59,040 - sqlalchemy.engine.Engine - INFO - [cached since 0.002046s ago] (1,)
+2024-12-28 15:21:59,040 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:21:59,041 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-28 15:21:59,041 - sqlalchemy.engine.Engine - INFO - [generated in 0.00021s] (1,)
+2024-12-28 15:21:59,041 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:21:59,042 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:21:59,279 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:21:59,280 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:21:59,281 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:21:59,281 - sqlalchemy.engine.Engine - INFO - [generated in 0.00026s] (1,)
+2024-12-28 15:21:59,282 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:21:59,288 - root - DEBUG - Getting rating for user with ID 1 and person with ID 1
+2024-12-28 15:21:59,288 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:21:59,289 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.user_id = ? AND rating.person_id = ?
+2024-12-28 15:21:59,289 - sqlalchemy.engine.Engine - INFO - [generated in 0.00019s] (1, 1)
+2024-12-28 15:21:59,289 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:21:59,354 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:21:59,354 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:21:59,354 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:21:59,354 - sqlalchemy.engine.Engine - INFO - [cached since 0.07378s ago] (1,)
+2024-12-28 15:21:59,355 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:22:02,075 - root - DEBUG - Getting all persons
+2024-12-28 15:22:02,075 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:22:02,075 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-28 15:22:02,075 - sqlalchemy.engine.Engine - INFO - [generated in 0.00016s] ()
+2024-12-28 15:22:02,076 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:22:02,134 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:22:02,134 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:22:02,135 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:22:02,135 - sqlalchemy.engine.Engine - INFO - [cached since 3.097s ago] (1,)
+2024-12-28 15:22:02,135 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:22:02,385 - root - DEBUG - Getting ratings for person with ID 2
+2024-12-28 15:22:02,385 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:22:02,386 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:22:02,386 - sqlalchemy.engine.Engine - INFO - [cached since 3.348s ago] (2,)
+2024-12-28 15:22:02,386 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:31:53,447 - asyncio - DEBUG - Using selector: SelectSelector
+2024-12-28 15:31:53,485 - main - DEBUG - lifespan started
+2024-12-28 15:31:53,499 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:31:53,499 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("person")
+2024-12-28 15:31:53,499 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:31:53,500 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("rating")
+2024-12-28 15:31:53,500 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:31:53,500 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2024-12-28 15:31:53,500 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:31:53,501 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:31:53,501 - root - DEBUG - Crud initialized
+2024-12-28 15:31:59,385 - root - DEBUG - Getting all persons
+2024-12-28 15:31:59,387 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:31:59,388 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-28 15:31:59,389 - sqlalchemy.engine.Engine - INFO - [generated in 0.00026s] ()
+2024-12-28 15:31:59,390 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:31:59,401 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:31:59,403 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:31:59,403 - root - DEBUG - Getting ratings for person with ID 2
+2024-12-28 15:31:59,404 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:31:59,405 - sqlalchemy.engine.Engine - INFO - [generated in 0.00065s] (1,)
+2024-12-28 15:31:59,405 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:31:59,406 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:31:59,406 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:31:59,406 - sqlalchemy.engine.Engine - INFO - [cached since 0.002283s ago] (2,)
+2024-12-28 15:31:59,408 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:32:00,541 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:32:00,541 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:32:00,541 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:32:00,542 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:32:00,542 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:32:00,542 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:32:00,542 - sqlalchemy.engine.Engine - INFO - [cached since 1.138s ago] (1,)
+2024-12-28 15:32:00,543 - sqlalchemy.engine.Engine - INFO - [cached since 1.138s ago] (1,)
+2024-12-28 15:32:00,543 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:32:00,543 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:32:00,785 - root - DEBUG - Getting person with ID 1
+2024-12-28 15:32:00,786 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:32:00,786 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-28 15:32:00,786 - sqlalchemy.engine.Engine - INFO - [generated in 0.00019s] (1,)
+2024-12-28 15:32:00,787 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:32:00,794 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:32:00,794 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:32:00,795 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:32:00,795 - sqlalchemy.engine.Engine - INFO - [generated in 0.00017s] (1,)
+2024-12-28 15:32:00,795 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:32:00,801 - root - DEBUG - Getting rating for user with ID 1 and person with ID 1
+2024-12-28 15:32:00,801 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:32:00,802 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.user_id = ? AND rating.person_id = ?
+2024-12-28 15:32:00,802 - sqlalchemy.engine.Engine - INFO - [generated in 0.00027s] (1, 1)
+2024-12-28 15:32:00,803 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:32:00,809 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:32:00,809 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:32:00,810 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:32:00,810 - sqlalchemy.engine.Engine - INFO - [cached since 0.01515s ago] (1,)
+2024-12-28 15:32:00,810 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:33:32,702 - root - DEBUG - Getting all persons
+2024-12-28 15:33:32,702 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:33:32,702 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-28 15:33:32,703 - sqlalchemy.engine.Engine - INFO - [cached since 93.31s ago] ()
+2024-12-28 15:33:32,703 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:33:32,945 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:33:32,945 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:33:32,945 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:33:32,946 - sqlalchemy.engine.Engine - INFO - [cached since 93.54s ago] (1,)
+2024-12-28 15:33:32,946 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:33:33,023 - root - DEBUG - Getting ratings for person with ID 2
+2024-12-28 15:33:33,023 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:33:33,024 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:33:33,024 - sqlalchemy.engine.Engine - INFO - [cached since 93.62s ago] (2,)
+2024-12-28 15:33:33,024 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:46:12,701 - root - DEBUG - Getting all persons
+2024-12-28 15:46:12,701 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:46:12,702 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-28 15:46:12,702 - sqlalchemy.engine.Engine - INFO - [cached since 853.3s ago] ()
+2024-12-28 15:46:12,702 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:46:12,709 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:46:12,710 - root - DEBUG - Getting ratings for person with ID 2
+2024-12-28 15:46:12,709 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:46:12,710 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:46:12,710 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:46:12,710 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:46:12,710 - sqlalchemy.engine.Engine - INFO - [cached since 853.3s ago] (1,)
+2024-12-28 15:46:12,710 - sqlalchemy.engine.Engine - INFO - [cached since 853.3s ago] (2,)
+2024-12-28 15:46:12,711 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:46:12,711 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:46:12,812 - main - DEBUG - lifespan ended
+2024-12-28 15:46:13,776 - asyncio - DEBUG - Using selector: SelectSelector
+2024-12-28 15:46:13,807 - main - DEBUG - lifespan started
+2024-12-28 15:46:13,819 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:46:13,819 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("person")
+2024-12-28 15:46:13,819 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:46:13,820 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("rating")
+2024-12-28 15:46:13,820 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:46:13,820 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2024-12-28 15:46:13,820 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:46:13,821 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:46:13,821 - root - DEBUG - Crud initialized
+2024-12-28 15:46:15,629 - root - DEBUG - Getting all persons
+2024-12-28 15:46:15,630 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:46:15,632 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-28 15:46:15,632 - sqlalchemy.engine.Engine - INFO - [generated in 0.00018s] ()
+2024-12-28 15:46:15,632 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:46:15,639 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:46:15,640 - root - DEBUG - Getting ratings for person with ID 2
+2024-12-28 15:46:15,640 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:46:15,641 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:46:15,641 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:46:15,641 - sqlalchemy.engine.Engine - INFO - [generated in 0.00026s] (1,)
+2024-12-28 15:46:15,642 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:46:15,642 - sqlalchemy.engine.Engine - INFO - [cached since 0.0008667s ago] (2,)
+2024-12-28 15:46:15,643 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:46:15,643 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:46:16,912 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:46:16,913 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:46:16,913 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:46:16,913 - sqlalchemy.engine.Engine - INFO - [cached since 1.272s ago] (1,)
+2024-12-28 15:46:16,914 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:46:17,111 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:46:17,111 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:46:17,111 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:46:17,112 - sqlalchemy.engine.Engine - INFO - [cached since 1.47s ago] (1,)
+2024-12-28 15:46:17,112 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:46:17,172 - root - DEBUG - Getting person with ID 1
+2024-12-28 15:46:17,173 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:46:17,174 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-28 15:46:17,174 - sqlalchemy.engine.Engine - INFO - [generated in 0.00022s] (1,)
+2024-12-28 15:46:17,175 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:46:17,180 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:46:17,180 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:46:17,181 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:46:17,181 - sqlalchemy.engine.Engine - INFO - [generated in 0.00021s] (1,)
+2024-12-28 15:46:17,181 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:46:17,187 - root - DEBUG - Getting rating for user with ID 1 and person with ID 1
+2024-12-28 15:46:17,187 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:46:17,188 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.user_id = ? AND rating.person_id = ?
+2024-12-28 15:46:17,188 - sqlalchemy.engine.Engine - INFO - [generated in 0.00023s] (1, 1)
+2024-12-28 15:46:17,188 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:46:17,194 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:46:17,195 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:46:17,195 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:46:17,195 - sqlalchemy.engine.Engine - INFO - [cached since 0.01425s ago] (1,)
+2024-12-28 15:46:17,196 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:10,895 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:48:10,895 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:48:10,896 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:10,896 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.email = ?
+2024-12-28 15:48:10,897 - sqlalchemy.engine.Engine - INFO - [generated in 0.00029s] ('mgloessl04@gmail.com',)
+2024-12-28 15:48:10,897 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:11,017 - main - DEBUG - lifespan ended
+2024-12-28 15:48:11,908 - asyncio - DEBUG - Using selector: SelectSelector
+2024-12-28 15:48:11,943 - main - DEBUG - lifespan started
+2024-12-28 15:48:11,957 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:11,957 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("person")
+2024-12-28 15:48:11,957 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:48:11,958 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("rating")
+2024-12-28 15:48:11,958 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:48:11,958 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2024-12-28 15:48:11,958 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:48:11,959 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:48:11,959 - root - DEBUG - Crud initialized
+2024-12-28 15:48:11,966 - root - DEBUG - Updating rating with ID 3 with data: {'person_id': 1, 'user_id': 1, 'score': 10, 'hot': 9.0, 'crazy': 3.0, 'nice': 5.0, 'comment': 'ein prachtvoller boy'}
+2024-12-28 15:48:11,968 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:11,970 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.id = ?
+2024-12-28 15:48:11,971 - sqlalchemy.engine.Engine - INFO - [generated in 0.00033s] (3,)
+2024-12-28 15:48:11,972 - sqlalchemy.engine.Engine - INFO - UPDATE rating SET score=? WHERE rating.id = ?
+2024-12-28 15:48:11,972 - sqlalchemy.engine.Engine - INFO - [generated in 0.00019s] (10.0, 3)
+2024-12-28 15:48:11,974 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:48:12,128 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:48:12,128 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:12,130 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:48:12,130 - sqlalchemy.engine.Engine - INFO - [generated in 0.00039s] (1,)
+2024-12-28 15:48:12,131 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:12,333 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:48:12,333 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:12,334 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:48:12,334 - sqlalchemy.engine.Engine - INFO - [cached since 0.2042s ago] (1,)
+2024-12-28 15:48:12,334 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:12,337 - root - DEBUG - Getting person with ID 1
+2024-12-28 15:48:12,338 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:12,338 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-28 15:48:12,339 - sqlalchemy.engine.Engine - INFO - [generated in 0.00018s] (1,)
+2024-12-28 15:48:12,339 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:12,343 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:48:12,344 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:12,345 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:48:12,345 - sqlalchemy.engine.Engine - INFO - [generated in 0.00018s] (1,)
+2024-12-28 15:48:12,345 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:12,350 - root - DEBUG - Getting rating for user with ID 1 and person with ID 1
+2024-12-28 15:48:12,351 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:12,351 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.user_id = ? AND rating.person_id = ?
+2024-12-28 15:48:12,352 - sqlalchemy.engine.Engine - INFO - [generated in 0.00019s] (1, 1)
+2024-12-28 15:48:12,352 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:12,358 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:48:12,358 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:12,358 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:48:12,359 - sqlalchemy.engine.Engine - INFO - [cached since 0.01398s ago] (1,)
+2024-12-28 15:48:12,359 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:18,680 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:48:18,681 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:48:18,681 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:18,682 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.email = ?
+2024-12-28 15:48:18,682 - sqlalchemy.engine.Engine - INFO - [generated in 0.00021s] ('mgloessl04@gmail.com',)
+2024-12-28 15:48:18,682 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:18,943 - root - DEBUG - Updating rating with ID 3 with data: {'person_id': 1, 'user_id': 1, 'score': 9.0, 'hot': 5.0, 'crazy': 3.0, 'nice': 5.0, 'comment': 'ein prachtvoller boy'}
+2024-12-28 15:48:18,943 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:18,944 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.id = ?
+2024-12-28 15:48:18,944 - sqlalchemy.engine.Engine - INFO - [cached since 6.973s ago] (3,)
+2024-12-28 15:48:18,945 - sqlalchemy.engine.Engine - INFO - UPDATE rating SET score=?, hot=? WHERE rating.id = ?
+2024-12-28 15:48:18,945 - sqlalchemy.engine.Engine - INFO - [generated in 0.00015s] (9.0, 5.0, 3)
+2024-12-28 15:48:18,946 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:48:19,076 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:48:19,077 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:19,077 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:48:19,077 - sqlalchemy.engine.Engine - INFO - [cached since 6.948s ago] (1,)
+2024-12-28 15:48:19,078 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:19,283 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:48:19,284 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:19,284 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:48:19,284 - sqlalchemy.engine.Engine - INFO - [cached since 7.155s ago] (1,)
+2024-12-28 15:48:19,285 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:19,315 - root - DEBUG - Getting person with ID 1
+2024-12-28 15:48:19,315 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:19,315 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-28 15:48:19,315 - sqlalchemy.engine.Engine - INFO - [cached since 6.977s ago] (1,)
+2024-12-28 15:48:19,316 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:19,321 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:48:19,321 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:19,321 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:48:19,321 - sqlalchemy.engine.Engine - INFO - [cached since 6.977s ago] (1,)
+2024-12-28 15:48:19,322 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:19,326 - root - DEBUG - Getting rating for user with ID 1 and person with ID 1
+2024-12-28 15:48:19,326 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:19,326 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.user_id = ? AND rating.person_id = ?
+2024-12-28 15:48:19,326 - sqlalchemy.engine.Engine - INFO - [cached since 6.975s ago] (1, 1)
+2024-12-28 15:48:19,327 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:19,332 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:48:19,332 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:19,333 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:48:19,333 - sqlalchemy.engine.Engine - INFO - [cached since 6.988s ago] (1,)
+2024-12-28 15:48:19,333 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:27,582 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:48:27,582 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:48:27,583 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:27,583 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.email = ?
+2024-12-28 15:48:27,583 - sqlalchemy.engine.Engine - INFO - [cached since 8.902s ago] ('mgloessl04@gmail.com',)
+2024-12-28 15:48:27,584 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:27,846 - root - DEBUG - Updating rating with ID 3 with data: {'person_id': 1, 'user_id': 1, 'score': 10, 'hot': 9.0, 'crazy': 3.0, 'nice': 5.0, 'comment': 'ein prachtvoller boy'}
+2024-12-28 15:48:27,846 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:27,847 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.id = ?
+2024-12-28 15:48:27,847 - sqlalchemy.engine.Engine - INFO - [cached since 15.88s ago] (3,)
+2024-12-28 15:48:27,847 - sqlalchemy.engine.Engine - INFO - UPDATE rating SET score=?, hot=? WHERE rating.id = ?
+2024-12-28 15:48:27,848 - sqlalchemy.engine.Engine - INFO - [cached since 8.903s ago] (10.0, 9.0, 3)
+2024-12-28 15:48:27,848 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:48:27,980 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:48:27,980 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:27,981 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:48:27,981 - sqlalchemy.engine.Engine - INFO - [cached since 15.85s ago] (1,)
+2024-12-28 15:48:27,981 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:28,174 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:48:28,174 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:28,175 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:48:28,175 - sqlalchemy.engine.Engine - INFO - [cached since 16.05s ago] (1,)
+2024-12-28 15:48:28,175 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:28,220 - root - DEBUG - Getting person with ID 1
+2024-12-28 15:48:28,221 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:28,221 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-28 15:48:28,221 - sqlalchemy.engine.Engine - INFO - [cached since 15.88s ago] (1,)
+2024-12-28 15:48:28,222 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:28,227 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:48:28,227 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:28,227 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:48:28,228 - sqlalchemy.engine.Engine - INFO - [cached since 15.88s ago] (1,)
+2024-12-28 15:48:28,228 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:28,233 - root - DEBUG - Getting rating for user with ID 1 and person with ID 1
+2024-12-28 15:48:28,234 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:28,234 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.user_id = ? AND rating.person_id = ?
+2024-12-28 15:48:28,234 - sqlalchemy.engine.Engine - INFO - [cached since 15.88s ago] (1, 1)
+2024-12-28 15:48:28,235 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:28,241 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:48:28,242 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:28,242 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:48:28,242 - sqlalchemy.engine.Engine - INFO - [cached since 15.9s ago] (1,)
+2024-12-28 15:48:28,243 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:51,933 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:48:51,934 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:48:51,934 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:51,934 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.email = ?
+2024-12-28 15:48:51,935 - sqlalchemy.engine.Engine - INFO - [cached since 33.25s ago] ('mgloessl04@gmail.com',)
+2024-12-28 15:48:51,935 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:52,117 - main - DEBUG - lifespan ended
+2024-12-28 15:48:53,118 - asyncio - DEBUG - Using selector: SelectSelector
+2024-12-28 15:48:53,149 - main - DEBUG - lifespan started
+2024-12-28 15:48:53,163 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:53,163 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("person")
+2024-12-28 15:48:53,163 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:48:53,164 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("rating")
+2024-12-28 15:48:53,164 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:48:53,164 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2024-12-28 15:48:53,164 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:48:53,165 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:48:53,165 - root - DEBUG - Crud initialized
+2024-12-28 15:48:53,172 - root - DEBUG - Updating rating with ID 3 with data: {'person_id': 1, 'user_id': 1, 'score': 13.0, 'hot': 9.0, 'crazy': 3.0, 'nice': 5.0, 'comment': 'ein prachtvoller boy'}
+2024-12-28 15:48:53,173 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:53,175 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.id = ?
+2024-12-28 15:48:53,175 - sqlalchemy.engine.Engine - INFO - [generated in 0.00020s] (3,)
+2024-12-28 15:48:53,177 - sqlalchemy.engine.Engine - INFO - UPDATE rating SET score=? WHERE rating.id = ?
+2024-12-28 15:48:53,177 - sqlalchemy.engine.Engine - INFO - [generated in 0.00015s] (13.0, 3)
+2024-12-28 15:48:53,178 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:48:53,280 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:48:53,281 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:53,282 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:48:53,283 - sqlalchemy.engine.Engine - INFO - [generated in 0.00033s] (1,)
+2024-12-28 15:48:53,283 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:53,520 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:48:53,521 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:53,521 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:48:53,521 - sqlalchemy.engine.Engine - INFO - [cached since 0.2391s ago] (1,)
+2024-12-28 15:48:53,522 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:53,525 - root - DEBUG - Getting person with ID 1
+2024-12-28 15:48:53,525 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:53,526 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-28 15:48:53,526 - sqlalchemy.engine.Engine - INFO - [generated in 0.00017s] (1,)
+2024-12-28 15:48:53,527 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:53,532 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:48:53,533 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:53,533 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:48:53,534 - sqlalchemy.engine.Engine - INFO - [generated in 0.00019s] (1,)
+2024-12-28 15:48:53,534 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:53,540 - root - DEBUG - Getting rating for user with ID 1 and person with ID 1
+2024-12-28 15:48:53,540 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:53,541 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.user_id = ? AND rating.person_id = ?
+2024-12-28 15:48:53,541 - sqlalchemy.engine.Engine - INFO - [generated in 0.00019s] (1, 1)
+2024-12-28 15:48:53,541 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:48:53,547 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:48:53,547 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:48:53,548 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:48:53,548 - sqlalchemy.engine.Engine - INFO - [cached since 0.01434s ago] (1,)
+2024-12-28 15:48:53,548 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:50:46,931 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:50:46,931 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:50:46,932 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:50:46,933 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.email = ?
+2024-12-28 15:50:46,933 - sqlalchemy.engine.Engine - INFO - [generated in 0.00021s] ('mgloessl04@gmail.com',)
+2024-12-28 15:50:46,933 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:50:47,086 - main - DEBUG - lifespan ended
+2024-12-28 15:50:47,982 - asyncio - DEBUG - Using selector: SelectSelector
+2024-12-28 15:50:48,014 - main - DEBUG - lifespan started
+2024-12-28 15:50:48,027 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:50:48,027 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("person")
+2024-12-28 15:50:48,027 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:50:48,028 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("rating")
+2024-12-28 15:50:48,028 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:50:48,028 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2024-12-28 15:50:48,028 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:50:48,028 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:50:48,028 - root - DEBUG - Crud initialized
+2024-12-28 15:50:49,747 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:50:49,748 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:50:49,749 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:50:49,751 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.email = ?
+2024-12-28 15:50:49,751 - sqlalchemy.engine.Engine - INFO - [generated in 0.00020s] ('mgloessl04@gmail.com',)
+2024-12-28 15:50:49,752 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:51:24,666 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:51:24,667 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:51:24,667 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:24,667 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.email = ?
+2024-12-28 15:51:24,667 - sqlalchemy.engine.Engine - INFO - [cached since 34.92s ago] ('mgloessl04@gmail.com',)
+2024-12-28 15:51:24,668 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:51:24,813 - main - DEBUG - lifespan ended
+2024-12-28 15:51:25,831 - asyncio - DEBUG - Using selector: SelectSelector
+2024-12-28 15:51:25,865 - main - DEBUG - lifespan started
+2024-12-28 15:51:25,879 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:25,879 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("person")
+2024-12-28 15:51:25,879 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:51:25,880 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("rating")
+2024-12-28 15:51:25,880 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:51:25,880 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2024-12-28 15:51:25,881 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:51:25,881 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:51:25,881 - root - DEBUG - Crud initialized
+2024-12-28 15:51:25,888 - root - DEBUG - Updating rating with ID 3 with data: {'person_id': 1, 'user_id': 1, 'score': 13.0, 'hot': 9.0, 'crazy': 3.0, 'nice': 5.0, 'comment': 'ein prachtvoller boy'}
+2024-12-28 15:51:25,890 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:25,892 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.id = ?
+2024-12-28 15:51:25,892 - sqlalchemy.engine.Engine - INFO - [generated in 0.00023s] (3,)
+2024-12-28 15:51:25,893 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:51:26,023 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:51:26,023 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:26,024 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:51:26,025 - sqlalchemy.engine.Engine - INFO - [generated in 0.00027s] (1,)
+2024-12-28 15:51:26,025 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:51:26,239 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:51:26,239 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:26,240 - root - DEBUG - Getting person with ID 1
+2024-12-28 15:51:26,240 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:51:26,240 - sqlalchemy.engine.Engine - INFO - [cached since 0.2159s ago] (1,)
+2024-12-28 15:51:26,241 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:26,241 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:51:26,242 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-28 15:51:26,242 - sqlalchemy.engine.Engine - INFO - [generated in 0.00027s] (1,)
+2024-12-28 15:51:26,243 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:51:26,248 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:51:26,248 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:26,249 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:51:26,249 - sqlalchemy.engine.Engine - INFO - [generated in 0.00018s] (1,)
+2024-12-28 15:51:26,250 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:51:26,256 - root - DEBUG - Getting rating for user with ID 1 and person with ID 1
+2024-12-28 15:51:26,256 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:26,257 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.user_id = ? AND rating.person_id = ?
+2024-12-28 15:51:26,257 - sqlalchemy.engine.Engine - INFO - [generated in 0.00024s] (1, 1)
+2024-12-28 15:51:26,257 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:51:26,264 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:51:26,264 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:26,265 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:51:26,265 - sqlalchemy.engine.Engine - INFO - [cached since 0.01576s ago] (1,)
+2024-12-28 15:51:26,265 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:51:30,842 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:51:30,842 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:51:30,843 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:30,843 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.email = ?
+2024-12-28 15:51:30,843 - sqlalchemy.engine.Engine - INFO - [generated in 0.00021s] ('mgloessl04@gmail.com',)
+2024-12-28 15:51:30,844 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:51:31,102 - root - DEBUG - Updating rating with ID 3 with data: {'person_id': 1, 'user_id': 1, 'score': 13.0, 'hot': 9.0, 'crazy': 3.0, 'nice': 5.0, 'comment': 'ein prachtvoller boy'}
+2024-12-28 15:51:31,102 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:31,103 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.id = ?
+2024-12-28 15:51:31,103 - sqlalchemy.engine.Engine - INFO - [cached since 5.211s ago] (3,)
+2024-12-28 15:51:31,104 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:51:31,260 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:51:31,260 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:31,261 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:51:31,261 - sqlalchemy.engine.Engine - INFO - [cached since 5.237s ago] (1,)
+2024-12-28 15:51:31,261 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:51:31,425 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:51:31,425 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:31,426 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:51:31,426 - sqlalchemy.engine.Engine - INFO - [cached since 5.402s ago] (1,)
+2024-12-28 15:51:31,426 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:51:31,481 - root - DEBUG - Getting person with ID 1
+2024-12-28 15:51:31,482 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:31,482 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-28 15:51:31,482 - sqlalchemy.engine.Engine - INFO - [cached since 5.24s ago] (1,)
+2024-12-28 15:51:31,483 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:51:31,488 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:51:31,488 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:31,488 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:51:31,489 - sqlalchemy.engine.Engine - INFO - [cached since 5.239s ago] (1,)
+2024-12-28 15:51:31,489 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:51:31,494 - root - DEBUG - Getting rating for user with ID 1 and person with ID 1
+2024-12-28 15:51:31,495 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:31,495 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.user_id = ? AND rating.person_id = ?
+2024-12-28 15:51:31,495 - sqlalchemy.engine.Engine - INFO - [cached since 5.238s ago] (1, 1)
+2024-12-28 15:51:31,495 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:51:31,501 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:51:31,501 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:51:31,502 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:51:31,502 - sqlalchemy.engine.Engine - INFO - [cached since 5.253s ago] (1,)
+2024-12-28 15:51:31,502 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:04,839 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:54:04,839 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:54:04,840 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:04,840 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.email = ?
+2024-12-28 15:54:04,840 - sqlalchemy.engine.Engine - INFO - [cached since 154s ago] ('mgloessl04@gmail.com',)
+2024-12-28 15:54:04,841 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:04,961 - main - DEBUG - lifespan ended
+2024-12-28 15:54:05,875 - asyncio - DEBUG - Using selector: SelectSelector
+2024-12-28 15:54:05,907 - main - DEBUG - lifespan started
+2024-12-28 15:54:05,919 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:05,919 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("person")
+2024-12-28 15:54:05,920 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:54:05,920 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("rating")
+2024-12-28 15:54:05,920 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:54:05,920 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2024-12-28 15:54:05,920 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2024-12-28 15:54:05,921 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:54:05,921 - root - DEBUG - Crud initialized
+2024-12-28 15:54:05,928 - root - DEBUG - Updating rating with ID 3 with data: {'person_id': 1, 'user_id': 1, 'score': 7.375, 'hot': 9.0, 'crazy': 3.0, 'nice': 5.0, 'comment': 'ein prachtvoller boy'}
+2024-12-28 15:54:05,930 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:05,931 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.id = ?
+2024-12-28 15:54:05,932 - sqlalchemy.engine.Engine - INFO - [generated in 0.00020s] (3,)
+2024-12-28 15:54:05,933 - sqlalchemy.engine.Engine - INFO - UPDATE rating SET score=? WHERE rating.id = ?
+2024-12-28 15:54:05,933 - sqlalchemy.engine.Engine - INFO - [generated in 0.00015s] (7.375, 3)
+2024-12-28 15:54:05,934 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:54:06,061 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:54:06,061 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:06,063 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:06,063 - sqlalchemy.engine.Engine - INFO - [generated in 0.00026s] (1,)
+2024-12-28 15:54:06,063 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:06,296 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:54:06,296 - root - DEBUG - Getting person with ID 1
+2024-12-28 15:54:06,296 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:06,297 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:06,297 - sqlalchemy.engine.Engine - INFO - [cached since 0.2346s ago] (1,)
+2024-12-28 15:54:06,298 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:06,298 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:06,299 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-28 15:54:06,299 - sqlalchemy.engine.Engine - INFO - [generated in 0.00022s] (1,)
+2024-12-28 15:54:06,300 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:06,304 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:54:06,304 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:06,305 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:54:06,305 - sqlalchemy.engine.Engine - INFO - [generated in 0.00019s] (1,)
+2024-12-28 15:54:06,306 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:06,311 - root - DEBUG - Getting rating for user with ID 1 and person with ID 1
+2024-12-28 15:54:06,311 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:06,312 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.user_id = ? AND rating.person_id = ?
+2024-12-28 15:54:06,312 - sqlalchemy.engine.Engine - INFO - [generated in 0.00018s] (1, 1)
+2024-12-28 15:54:06,312 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:06,317 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:54:06,318 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:06,318 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:54:06,318 - sqlalchemy.engine.Engine - INFO - [cached since 0.01311s ago] (1,)
+2024-12-28 15:54:06,319 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:12,809 - root - DEBUG - Getting all persons
+2024-12-28 15:54:12,810 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:12,810 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-28 15:54:12,810 - sqlalchemy.engine.Engine - INFO - [generated in 0.00016s] ()
+2024-12-28 15:54:12,811 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:13,016 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:54:13,017 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:13,017 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:13,017 - sqlalchemy.engine.Engine - INFO - [cached since 6.955s ago] (1,)
+2024-12-28 15:54:13,018 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:13,079 - root - DEBUG - Getting ratings for person with ID 2
+2024-12-28 15:54:13,079 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:13,079 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:13,080 - sqlalchemy.engine.Engine - INFO - [cached since 7.017s ago] (2,)
+2024-12-28 15:54:13,080 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:13,976 - root - DEBUG - Getting ratings for person with ID 2
+2024-12-28 15:54:13,977 - root - DEBUG - Getting ratings for person with ID 2
+2024-12-28 15:54:13,977 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:13,977 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:13,977 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:13,977 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:13,977 - sqlalchemy.engine.Engine - INFO - [cached since 7.915s ago] (2,)
+2024-12-28 15:54:13,977 - sqlalchemy.engine.Engine - INFO - [cached since 7.915s ago] (2,)
+2024-12-28 15:54:13,978 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:13,978 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:14,286 - root - DEBUG - Getting person with ID 2
+2024-12-28 15:54:14,286 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:14,287 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-28 15:54:14,287 - sqlalchemy.engine.Engine - INFO - [cached since 7.988s ago] (2,)
+2024-12-28 15:54:14,288 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:14,595 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:54:14,596 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:14,596 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:54:14,596 - sqlalchemy.engine.Engine - INFO - [cached since 8.291s ago] (1,)
+2024-12-28 15:54:14,596 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:14,859 - root - DEBUG - Getting rating for user with ID 1 and person with ID 2
+2024-12-28 15:54:14,860 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:14,860 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.user_id = ? AND rating.person_id = ?
+2024-12-28 15:54:14,860 - sqlalchemy.engine.Engine - INFO - [cached since 8.549s ago] (1, 2)
+2024-12-28 15:54:14,861 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:14,906 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:54:14,906 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:14,907 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:54:14,907 - sqlalchemy.engine.Engine - INFO - [cached since 8.602s ago] (1,)
+2024-12-28 15:54:14,907 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:17,660 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:54:17,660 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:54:17,660 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:17,661 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.email = ?
+2024-12-28 15:54:17,661 - sqlalchemy.engine.Engine - INFO - [generated in 0.00019s] ('mgloessl04@gmail.com',)
+2024-12-28 15:54:17,662 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:17,979 - root - DEBUG - Updating rating with ID 2 with data: {'person_id': 2, 'user_id': 1, 'score': 7.0, 'hot': 7.0, 'crazy': 1.0, 'nice': 8.0, 'comment': 'So ein lieber bube'}
+2024-12-28 15:54:17,979 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:17,980 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.id = ?
+2024-12-28 15:54:17,980 - sqlalchemy.engine.Engine - INFO - [cached since 12.05s ago] (2,)
+2024-12-28 15:54:17,980 - sqlalchemy.engine.Engine - INFO - UPDATE rating SET score=? WHERE rating.id = ?
+2024-12-28 15:54:17,980 - sqlalchemy.engine.Engine - INFO - [cached since 12.05s ago] (7.0, 2)
+2024-12-28 15:54:17,982 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:54:18,332 - root - DEBUG - Getting ratings for person with ID 2
+2024-12-28 15:54:18,332 - root - DEBUG - Getting ratings for person with ID 2
+2024-12-28 15:54:18,332 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:18,332 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:18,333 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:18,333 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:18,333 - sqlalchemy.engine.Engine - INFO - [cached since 12.27s ago] (2,)
+2024-12-28 15:54:18,333 - sqlalchemy.engine.Engine - INFO - [cached since 12.27s ago] (2,)
+2024-12-28 15:54:18,334 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:18,334 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:18,558 - root - DEBUG - Getting person with ID 2
+2024-12-28 15:54:18,558 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:18,559 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-28 15:54:18,559 - sqlalchemy.engine.Engine - INFO - [cached since 12.26s ago] (2,)
+2024-12-28 15:54:18,560 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:18,567 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:54:18,567 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:18,568 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:54:18,568 - sqlalchemy.engine.Engine - INFO - [cached since 12.26s ago] (1,)
+2024-12-28 15:54:18,568 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:18,573 - root - DEBUG - Getting rating for user with ID 1 and person with ID 2
+2024-12-28 15:54:18,573 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:18,574 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.user_id = ? AND rating.person_id = ?
+2024-12-28 15:54:18,574 - sqlalchemy.engine.Engine - INFO - [cached since 12.26s ago] (1, 2)
+2024-12-28 15:54:18,574 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:18,580 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:54:18,580 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:18,581 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:54:18,581 - sqlalchemy.engine.Engine - INFO - [cached since 12.28s ago] (1,)
+2024-12-28 15:54:18,581 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:25,520 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:54:25,520 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:54:25,520 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:25,520 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.email = ?
+2024-12-28 15:54:25,520 - sqlalchemy.engine.Engine - INFO - [cached since 7.859s ago] ('mgloessl04@gmail.com',)
+2024-12-28 15:54:25,521 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:25,827 - root - DEBUG - Updating rating with ID 2 with data: {'person_id': 2, 'user_id': 1, 'score': 8.125, 'hot': 7.0, 'crazy': 4.0, 'nice': 8.0, 'comment': 'So ein lieber bube'}
+2024-12-28 15:54:25,828 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:25,828 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.id = ?
+2024-12-28 15:54:25,828 - sqlalchemy.engine.Engine - INFO - [cached since 19.9s ago] (2,)
+2024-12-28 15:54:25,829 - sqlalchemy.engine.Engine - INFO - UPDATE rating SET score=?, crazy=? WHERE rating.id = ?
+2024-12-28 15:54:25,829 - sqlalchemy.engine.Engine - INFO - [generated in 0.00017s] (8.125, 4.0, 2)
+2024-12-28 15:54:25,830 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:54:26,174 - root - DEBUG - Getting ratings for person with ID 2
+2024-12-28 15:54:26,175 - root - DEBUG - Getting ratings for person with ID 2
+2024-12-28 15:54:26,175 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:26,175 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:26,175 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:26,175 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:26,175 - sqlalchemy.engine.Engine - INFO - [cached since 20.11s ago] (2,)
+2024-12-28 15:54:26,176 - sqlalchemy.engine.Engine - INFO - [cached since 20.11s ago] (2,)
+2024-12-28 15:54:26,176 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:26,176 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:26,413 - root - DEBUG - Getting person with ID 2
+2024-12-28 15:54:26,413 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:26,414 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-28 15:54:26,414 - sqlalchemy.engine.Engine - INFO - [cached since 20.12s ago] (2,)
+2024-12-28 15:54:26,414 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:26,419 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:54:26,419 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:26,420 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:54:26,420 - sqlalchemy.engine.Engine - INFO - [cached since 20.11s ago] (1,)
+2024-12-28 15:54:26,420 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:26,425 - root - DEBUG - Getting rating for user with ID 1 and person with ID 2
+2024-12-28 15:54:26,425 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:26,426 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.user_id = ? AND rating.person_id = ?
+2024-12-28 15:54:26,426 - sqlalchemy.engine.Engine - INFO - [cached since 20.11s ago] (1, 2)
+2024-12-28 15:54:26,426 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:26,432 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:54:26,432 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:26,432 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:54:26,433 - sqlalchemy.engine.Engine - INFO - [cached since 20.13s ago] (1,)
+2024-12-28 15:54:26,433 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:29,819 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:54:29,819 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:54:29,820 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:29,820 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.email = ?
+2024-12-28 15:54:29,820 - sqlalchemy.engine.Engine - INFO - [cached since 12.16s ago] ('mgloessl04@gmail.com',)
+2024-12-28 15:54:29,820 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:30,083 - root - DEBUG - Updating rating with ID 2 with data: {'person_id': 2, 'user_id': 1, 'score': 7.375, 'hot': 7.0, 'crazy': 2.0, 'nice': 8.0, 'comment': 'So ein lieber bube'}
+2024-12-28 15:54:30,084 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:30,084 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.id = ?
+2024-12-28 15:54:30,084 - sqlalchemy.engine.Engine - INFO - [cached since 24.15s ago] (2,)
+2024-12-28 15:54:30,085 - sqlalchemy.engine.Engine - INFO - UPDATE rating SET score=?, crazy=? WHERE rating.id = ?
+2024-12-28 15:54:30,085 - sqlalchemy.engine.Engine - INFO - [cached since 4.256s ago] (7.375, 2.0, 2)
+2024-12-28 15:54:30,086 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:54:30,249 - root - DEBUG - Getting ratings for person with ID 2
+2024-12-28 15:54:30,249 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:30,249 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:30,249 - sqlalchemy.engine.Engine - INFO - [cached since 24.19s ago] (2,)
+2024-12-28 15:54:30,250 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:30,425 - root - DEBUG - Getting ratings for person with ID 2
+2024-12-28 15:54:30,426 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:30,426 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:30,426 - sqlalchemy.engine.Engine - INFO - [cached since 24.36s ago] (2,)
+2024-12-28 15:54:30,427 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:30,468 - root - DEBUG - Getting person with ID 2
+2024-12-28 15:54:30,468 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:30,469 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-28 15:54:30,469 - sqlalchemy.engine.Engine - INFO - [cached since 24.17s ago] (2,)
+2024-12-28 15:54:30,470 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:30,477 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:54:30,478 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:30,478 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:54:30,478 - sqlalchemy.engine.Engine - INFO - [cached since 24.17s ago] (1,)
+2024-12-28 15:54:30,479 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:30,487 - root - DEBUG - Getting rating for user with ID 1 and person with ID 2
+2024-12-28 15:54:30,488 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:30,488 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.user_id = ? AND rating.person_id = ?
+2024-12-28 15:54:30,488 - sqlalchemy.engine.Engine - INFO - [cached since 24.18s ago] (1, 2)
+2024-12-28 15:54:30,489 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:30,497 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:54:30,497 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:30,498 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:54:30,498 - sqlalchemy.engine.Engine - INFO - [cached since 24.19s ago] (1,)
+2024-12-28 15:54:30,498 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:31,693 - root - DEBUG - Getting all persons
+2024-12-28 15:54:31,693 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:31,694 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-28 15:54:31,694 - sqlalchemy.engine.Engine - INFO - [cached since 18.88s ago] ()
+2024-12-28 15:54:31,694 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:31,885 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:54:31,886 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:31,886 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:31,886 - sqlalchemy.engine.Engine - INFO - [cached since 25.82s ago] (1,)
+2024-12-28 15:54:31,886 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:32,008 - root - DEBUG - Getting ratings for person with ID 2
+2024-12-28 15:54:32,008 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:32,008 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:32,009 - sqlalchemy.engine.Engine - INFO - [cached since 25.95s ago] (2,)
+2024-12-28 15:54:32,009 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:32,678 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:54:32,679 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:32,679 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:32,679 - sqlalchemy.engine.Engine - INFO - [cached since 26.62s ago] (1,)
+2024-12-28 15:54:32,680 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:32,987 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:54:32,988 - root - DEBUG - Getting person with ID 1
+2024-12-28 15:54:32,988 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:32,988 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:32,988 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:32,988 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-28 15:54:32,989 - sqlalchemy.engine.Engine - INFO - [cached since 26.93s ago] (1,)
+2024-12-28 15:54:32,989 - sqlalchemy.engine.Engine - INFO - [cached since 26.69s ago] (1,)
+2024-12-28 15:54:32,989 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:32,989 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:33,310 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:54:33,311 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:33,311 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:54:33,311 - sqlalchemy.engine.Engine - INFO - [cached since 27.01s ago] (1,)
+2024-12-28 15:54:33,311 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:33,558 - root - DEBUG - Getting rating for user with ID 1 and person with ID 1
+2024-12-28 15:54:33,559 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:33,559 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.user_id = ? AND rating.person_id = ?
+2024-12-28 15:54:33,559 - sqlalchemy.engine.Engine - INFO - [cached since 27.25s ago] (1, 1)
+2024-12-28 15:54:33,559 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:33,620 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:54:33,620 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:33,621 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:54:33,621 - sqlalchemy.engine.Engine - INFO - [cached since 27.32s ago] (1,)
+2024-12-28 15:54:33,621 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:48,877 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:54:48,878 - root - DEBUG - Getting user by email: mgloessl04@gmail.com
+2024-12-28 15:54:48,878 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:48,878 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.email = ?
+2024-12-28 15:54:48,878 - sqlalchemy.engine.Engine - INFO - [cached since 31.22s ago] ('mgloessl04@gmail.com',)
+2024-12-28 15:54:48,879 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:49,189 - root - DEBUG - Updating rating with ID 3 with data: {'person_id': 1, 'user_id': 1, 'score': 8.125, 'hot': 9.0, 'crazy': 4.0, 'nice': 6.0, 'comment': 'ein prachtvoller boy'}
+2024-12-28 15:54:49,189 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:49,189 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.id = ?
+2024-12-28 15:54:49,190 - sqlalchemy.engine.Engine - INFO - [cached since 43.26s ago] (3,)
+2024-12-28 15:54:49,190 - sqlalchemy.engine.Engine - INFO - UPDATE rating SET score=?, crazy=?, nice=? WHERE rating.id = ?
+2024-12-28 15:54:49,191 - sqlalchemy.engine.Engine - INFO - [generated in 0.00017s] (8.125, 4.0, 6.0, 3)
+2024-12-28 15:54:49,192 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-12-28 15:54:49,522 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:54:49,523 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:54:49,522 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:49,523 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:49,523 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:49,524 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:49,524 - sqlalchemy.engine.Engine - INFO - [cached since 43.46s ago] (1,)
+2024-12-28 15:54:49,524 - sqlalchemy.engine.Engine - INFO - [cached since 43.46s ago] (1,)
+2024-12-28 15:54:49,524 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:49,524 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:49,770 - root - DEBUG - Getting person with ID 1
+2024-12-28 15:54:49,770 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:49,770 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person 
+WHERE person.id = ?
+2024-12-28 15:54:49,771 - sqlalchemy.engine.Engine - INFO - [cached since 43.47s ago] (1,)
+2024-12-28 15:54:49,771 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:49,776 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:54:49,777 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:49,777 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:54:49,777 - sqlalchemy.engine.Engine - INFO - [cached since 43.47s ago] (1,)
+2024-12-28 15:54:49,777 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:49,782 - root - DEBUG - Getting rating for user with ID 1 and person with ID 1
+2024-12-28 15:54:49,782 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:49,782 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.user_id = ? AND rating.person_id = ?
+2024-12-28 15:54:49,782 - sqlalchemy.engine.Engine - INFO - [cached since 43.47s ago] (1, 1)
+2024-12-28 15:54:49,783 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:49,788 - root - DEBUG - Getting user with ID 1
+2024-12-28 15:54:49,788 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:49,788 - sqlalchemy.engine.Engine - INFO - SELECT user.id AS user_id, user.person_id AS user_person_id, user.username AS user_username, user.email AS user_email 
+FROM user 
+WHERE user.id = ?
+2024-12-28 15:54:49,789 - sqlalchemy.engine.Engine - INFO - [cached since 43.48s ago] (1,)
+2024-12-28 15:54:49,789 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:51,965 - root - DEBUG - Getting all persons
+2024-12-28 15:54:51,966 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:51,966 - sqlalchemy.engine.Engine - INFO - SELECT person.id AS person_id, person.user_id AS person_user_id, person.name AS person_name, person.surname AS person_surname, person.image_url AS person_image_url 
+FROM person
+2024-12-28 15:54:51,966 - sqlalchemy.engine.Engine - INFO - [cached since 39.16s ago] ()
+2024-12-28 15:54:51,967 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:52,143 - root - DEBUG - Getting ratings for person with ID 1
+2024-12-28 15:54:52,144 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:52,144 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:52,144 - sqlalchemy.engine.Engine - INFO - [cached since 46.08s ago] (1,)
+2024-12-28 15:54:52,145 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2024-12-28 15:54:52,205 - root - DEBUG - Getting ratings for person with ID 2
+2024-12-28 15:54:52,205 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-12-28 15:54:52,205 - sqlalchemy.engine.Engine - INFO - SELECT rating.id AS rating_id, rating.person_id AS rating_person_id, rating.user_id AS rating_user_id, rating.score AS rating_score, rating.hot AS rating_hot, rating.crazy AS rating_crazy, rating.nice AS rating_nice, rating.comment AS rating_comment 
+FROM rating 
+WHERE rating.person_id = ?
+2024-12-28 15:54:52,206 - sqlalchemy.engine.Engine - INFO - [cached since 46.14s ago] (2,)
+2024-12-28 15:54:52,206 - sqlalchemy.engine.Engine - INFO - ROLLBACK
